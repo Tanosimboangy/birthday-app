@@ -28,67 +28,9 @@ async function populatePerson() {
 populatePerson();
 
 
-
-
-const editPersonList = (e) => {
-    console.log(e.target);
-    const editButton = e.target.closest("button .edit");
-    console.log(editButton);
-	if (editButton) {
-        const article = e.target.closest('article');
-        console.log(article);
-		const idToEdit = article.dataset.id;
-		console.log(idToEdit);
-		//  editPartnerPopup(idToEdit);
-	}
-};
-editPersonList();
-window.addEventListener('click', editPersonList);
-
-// async function destroyPopup(popup) {
-// 	popup.classList.remove('open');
-// 	popup.remove();
-// }
-
-// const editPartnerPopup = idToEdit => {
-//     const lists = await fetchPeopleList();
-// 	const editpersons = lists.find(person => person.id === idToEdit);
-// 	console.log(editpersons);
-// 	return new Promise(async resolve => {
-// 	const popup = document.createElement('form');
-// 	popup.classList.add('popup');
-// 	popup.insertAdjacentHTML('afterbegin', 
-// 		`<fieldset>
-// 			<label>Last Name</label>
-// 			<input type="text" name="lastName" value="${editpersons.lastName}">
-// 			<label>First Name</label>
-// 			<input type="text" name="firstName" value="${editpersons.firstName}">
-// 			<label></label>
-// 			<input type="text" name="firstName" value="${editpersons.firstName}">
-// 			<button class="submit" data-id="${editpersons.id}">Submit</button>
-// 		</fieldset>`);
-
-// 		// const CancelButton = document.createElement('button');
-// 		// CancelButton.type = 'button';
-// 		// CancelButton.classList.add('cancel');
-// 		// CancelButton.textContent = 'cancel';
-// 		// popup.appendChild(CancelButton);
-// 		// CancelButton.addEventListener('click', () => { resolve();
-// 		// 		destroyPopup(popup);
-// 		// 	},	{ once: true });
-
-// 		// popup.addEventListener('submit', e => { 
-// 		// 	e.preventDefault();
-// 		// 	editpersons.firstName = popup.firstName.value;
-// 		// 	editpersons.lastName = popup.lastName.value;
-// 		// 	editpersons.jobTitle = popup.jobTitle.value;
-// 		// 	editpersons.jobArea = popup.jobArea.value;
-// 		// 	editpersons.phone = popup.phone.value;
-// 		// 	displayList(persons);
-// 		// 	destroyPopup(popup);
-// 		// }, { once: true });
-// 		// document.body.appendChild(popup);
-// 		// popup.classList.add('open');
-// 	});
-// };
-
+function editFunction(e) {
+    const editBtn = e.target.matches(".edit");
+    console.log(editBtn);
+}
+editFunction();
+window.addEventListener("click", editFunction);
