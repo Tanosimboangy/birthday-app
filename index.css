@@ -3,10 +3,8 @@ body {
     padding: 1rem;
 }
 
-main {
-    padding: 1rem 0;
-    background-color:rgba(255, 166, 0, 0.653);
-    border-radius: 10px;
+h1 {
+    text-align: center;
 }
 
 img {
@@ -19,6 +17,9 @@ img {
     align-items: center;
     justify-content: space-between;
     margin-bottom: 1rem;
+    background-color:rgba(255, 166, 0, 0.653);
+    padding: 1rem;
+    border-radius: 10px;
 }
 
 button {
