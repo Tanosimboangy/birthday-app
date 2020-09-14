@@ -1,0 +1,21 @@
+body {
+    font-family: sans-serif;
+    padding: 1rem;
+}
+
+main {
+    padding: 1rem 0;
+    background-color:rgba(255, 166, 0, 0.653);
+    border-radius: 10px;
+}
+
+img {
+    border-radius: 50%;
+}
+
+.article {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
