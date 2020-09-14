@@ -11,7 +11,7 @@ async function populatePerson() {
     const lists = await fetchPeopleList();
     const html = lists.map(person => {
         return `
-        <article data-id="${person.id}">
+        <article data-id="${person.id}" class="article">
             <img src="${person.picture}">
             <p>${person.lastName}</p>
             <p>${person.firstName}</p>
@@ -28,9 +28,65 @@ async function populatePerson() {
 populatePerson();
 
 
-function editFunction(e) {
-    const editBtn = e.target.matches(".edit");
+const editFunction = (e) => {
+    const editBtn = e.target.closest(".edit");
     console.log(editBtn);
+    if (editBtn) {
+        const article = e.target.closest('.article');
+        console.log(article);
+		const idToEdit = article.dataset.id;
+		console.log(idToEdit);
+		// editPartnerPopup(idToEdit);
+	}	
 }
-editFunction();
 window.addEventListener("click", editFunction);
+
+// async function destroyPopup(popup) {
+// 	popup.classList.remove('open');
+// 	popup.remove();
+// }
+
+const editPartnerPopup = idToEdit => {
+	const editpersons = persons.find(person => person.id === idToEdit);
+	console.log(editpersons);
+	return new Promise(async resolve => {
+	const popup = document.createElement('form');
+	popup.classList.add('popup');
+	popup.insertAdjacentHTML('afterbegin', 
+		`<fieldset>
+			<label>Last Name</label>
+			<input type="text" name="lastName" value="${editpersons.lastName}">
+			<label>First Name</label>
+			<input type="text" name="firstName" value="${editpersons.firstName}">
+			<label>Job Title</label>
+			<input type="text" name="jobTitle" value="${editpersons.jobTitle}">
+			<label>Job Area</label>
+			<input type="text" name="jobArea" value="${editpersons.jobArea}">
+			<label>Phone Number</label>
+			<input type="text" name="phone" value="${editpersons.phone}">
+			<button class="submit" data-id="${editpersons.id}">Submit</button>
+		</fieldset>`);
+
+	// 	const CancelButton = document.createElement('button');
+	// 	CancelButton.type = 'button';
+	// 	CancelButton.classList.add('cancel');
+	// 	CancelButton.textContent = 'cancel';
+	// 	popup.appendChild(CancelButton);
+	// 	CancelButton.addEventListener('click', () => { resolve();
+	// 			destroyPopup(popup);
+	// 		},	{ once: true });
+
+	// 	popup.addEventListener('submit', e => { 
+	// 		e.preventDefault();
+	// 		editpersons.firstName = popup.firstName.value;
+	// 		editpersons.lastName = popup.lastName.value;
+	// 		editpersons.jobTitle = popup.jobTitle.value;
+	// 		editpersons.jobArea = popup.jobArea.value;
+	// 		editpersons.phone = popup.phone.value;
+	// 		displayList(persons);
+	// 		destroyPopup(popup);
+	// 	}, { once: true });
+		document.body.appendChild(popup);
+		popup.classList.add('open');
+	});
+};
