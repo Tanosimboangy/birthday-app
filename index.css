@@ -4,7 +4,8 @@ body {
 }
 
 h1 {
-    text-align: center;
+	text-align: center;
+	color: white;
 }
 
 img {
@@ -27,13 +28,19 @@ button {
     background-color:rgba(255, 166, 0, 0.653);
 }
 
+.popup button {
+    border: none;
+	background-color: darkgreen;
+	border-radius: 5px;
+}
+
 svg {
 	height: 25px;
 	color: #ff8e3c;
 }
 
 .popup {
-	background: hsla(0, 0%, 30%, 0.5);
+	background: hsla(0, 0%, 30%);
 	position: fixed;
 	height: 100vh;
 	width: 100vw;
@@ -63,6 +70,19 @@ svg {
 	transform: scale(var(--scale));
 }
 
+.popup fieldset input {
+	margin-bottom: 1rem;
+	padding: .5rem;
+	border-radius: 5px;
+	border: none;
+}
+
+h2 {
+    margin-bottom: .5rem;
+    font-weight: 500;
+	line-height: 1.2;
+	color: white;
+}
 .popup fieldset button {
 	color: white;
 	font-size: 28px;
@@ -81,6 +101,5 @@ svg {
 
 label {
     display: inline-block;
-    margin-bottom: .5rem;
-    color: white;
+	color: white;
 }

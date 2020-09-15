@@ -5,11 +5,12 @@ async function fetchPeopleList() {
     const data = await response.json();
     return data;
 }
-// let lists = [];
+let lists = [];	
+
 async function populatePerson() {
 	const persons = await fetchPeopleList();
-	// lists.push(persons);
-	// console.log(lists);
+	lists.push(persons);
+	// Needs to sort the lists from the closest birthday to the farthest
     const html = persons.map(person => {
         return `
         <article data-id="${person.id}" class="article">
@@ -27,22 +28,23 @@ async function populatePerson() {
     container.innerHTML = html;
 }
 populatePerson();
+
 const editFunction = (e) => {
     const editBtn = e.target.closest(".edit");
-    // console.log(editBtn);
     if (editBtn) {
         const article = e.target.closest('.article');
-        // console.log(article);
+        console.log(article);
 		const idToEdit = article.dataset.id;
-		// console.log(idToEdit);
+		console.log(idToEdit);
 		editPartnerPopup(idToEdit);
-	}	
+	}
 }
-window.addEventListener("click", editFunction);
-// async function destroyPopup(popup) {
-// 	popup.classList.remove('open');
-// 	popup.remove();
-// }
+
+async function destroyPopup(popup) {
+	popup.classList.remove('open');
+	popup.remove();
+}
+
 const editPartnerPopup = async idToEdit => {
 	const persons = await fetchPeopleList();
 	const editpersons = persons.find(person => person.id === idToEdit);
@@ -52,33 +54,99 @@ const editPartnerPopup = async idToEdit => {
 	popup.classList.add('popup');
 	popup.insertAdjacentHTML('afterbegin', 
 		`<fieldset>
+			<h1>Edit the list</h1>
 			<label>Last Name</label>
 			<input type="text" name="lastName" value="${editpersons.lastName}">
 			<label>First Name</label>
 			<input type="text" name="firstName" value="${editpersons.firstName}">
 			<label>Job Title</label>
 			<input type="text" name="jobTitle" value="${editpersons.birthday}">
+			<button class="submit" data-id="${editpersons.id}">Submit</button>
 		</fieldset>`);
-	// 	const CancelButton = document.createElement('button');
-	// 	CancelButton.type = 'button';
-	// 	CancelButton.classList.add('cancel');
-	// 	CancelButton.textContent = 'cancel';
-	// 	popup.appendChild(CancelButton);
-	// 	CancelButton.addEventListener('click', () => { resolve();
-	// 			destroyPopup(popup);
-	// 		},	{ once: true });
-	// 	popup.addEventListener('submit', e => { 
-	// 		e.preventDefault();
-	// 		person.firstName = popup.firstName.value;
-	// 		person.lastName = popup.lastName.value;
-	// 		person.jobTitle = popup.jobTitle.value;
-	// 		person.jobArea = popup.jobArea.value;
-	// 		person.phone = popup.phone.value;
-	// 		displayList(persons);
-	// 		destroyPopup(popup);
-	// 	}, { once: true });
+		const CancelButton = document.createElement('button');
+		CancelButton.type = 'button';
+		CancelButton.classList.add('cancel');
+		CancelButton.textContent = 'cancel';
+		popup.appendChild(CancelButton);
+		CancelButton.addEventListener('click', () => { resolve();
+				destroyPopup(popup);
+			},	{ once: true });
+
+		popup.addEventListener('submit', e => {
+			e.preventDefault();
+			editpersons.firstName = popup.firstName.value;
+			console.log(popup.firstName.value);
+			console.log(editpersons.firstName);
+
+			editpersons.lastName = popup.lastName.value;
+			console.log(popup.lastName.value);
+			console.log(editpersons.lastName);
+			
+			populatePerson(editpersons);
+			destroyPopup(popup);
+		}, { once: true });
+
 		document.body.appendChild(popup);
 		popup.classList.add('open');
 	});
 };
+
+
+
+
+
+
+
+
+// // code delete function here
+// const deletePartner = e => {
+// 	// Grabbing the delete button with event delegation
+// 	const remove = e.target.closest(".delete");
+// 	// console.log(remove);
+// 	if (remove) {
+// 		const delBtn = remove.closest('.delete');
+// 		// console.log(delBtn);
+// 		const id = delBtn.dataset.id;
+// 		// console.log(id);
+// 		deleteDeletePopup(id);
+// 	}
+// }
+
+// const deleteDeletePopup = async id => {
+// 	const persons = await fetchPeopleList();
+// 	return new Promise(async function(resolve) {
+// 	// create confirmation popup here
+// 	const popup = document.createElement('form');
+// 	popup.classList.add('popup');
+// 	// Insert the html inside of the popup form
+// 	popup.insertAdjacentHTML('afterbegin', 
+// 		`<h2>Are you sure you want to delete this?</h2>`);
+// 		const button = document.createElement("button");
+// 		button.textContent = "delete"
+// 		popup.appendChild(button);
+// 		popup.classList.add('open');
+// 		button.addEventListener("click", (e) => {
+// 			e.preventDefault();
+// 			const newList = lists.filter(person => person.id !== id);
+// 			populatePerson(newList);
+// 			popup.classList.remove("open");
+// 		});
+
+// 		// const cancelbutton = document.createElement("button");
+// 		// cancelbutton.textContent = "cancel"
+// 		// popup.appendChild(cancelbutton);
+// 		// cancelbutton.addEventListener("click", (e) => {
+// 		// 	console.log("this is the real cancel button");
+// 		// 	e.preventDefault();
+// 		// 	destroyPopup();
+// 		// 	popup.classList.remove("open");
+// 		// 	console.log(e);
+// 		// });
+// 	// Append the popup inside of the html 
+// 	document.body.appendChild(popup);
+// 	});
+// };
+
 editPartnerPopup();
+window.addEventListener("click", editFunction);
+// window.addEventListener("click", deletePartner);
