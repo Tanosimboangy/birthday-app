@@ -1,15 +1,16 @@
 const dataJson = './people.json';
 const container = document.querySelector(".container");
-
 async function fetchPeopleList() {
     const response = await fetch(dataJson);
     const data = await response.json();
     return data;
 }
-
+// let lists = [];
 async function populatePerson() {
-    const lists = await fetchPeopleList();
-    const html = lists.map(person => {
+	const persons = await fetchPeopleList();
+	// lists.push(persons);
+	// console.log(lists);
+    const html = persons.map(person => {
         return `
         <article data-id="${person.id}" class="article">
             <img src="${person.picture}">
@@ -26,27 +27,24 @@ async function populatePerson() {
     container.innerHTML = html;
 }
 populatePerson();
-
-
 const editFunction = (e) => {
     const editBtn = e.target.closest(".edit");
-    console.log(editBtn);
+    // console.log(editBtn);
     if (editBtn) {
         const article = e.target.closest('.article');
-        console.log(article);
+        // console.log(article);
 		const idToEdit = article.dataset.id;
-		console.log(idToEdit);
-		// editPartnerPopup(idToEdit);
+		// console.log(idToEdit);
+		editPartnerPopup(idToEdit);
 	}	
 }
 window.addEventListener("click", editFunction);
-
 // async function destroyPopup(popup) {
 // 	popup.classList.remove('open');
 // 	popup.remove();
 // }
-
-const editPartnerPopup = idToEdit => {
+const editPartnerPopup = async idToEdit => {
+	const persons = await fetchPeopleList();
 	const editpersons = persons.find(person => person.id === idToEdit);
 	console.log(editpersons);
 	return new Promise(async resolve => {
@@ -59,14 +57,8 @@ const editPartnerPopup = idToEdit => {
 			<label>First Name</label>
 			<input type="text" name="firstName" value="${editpersons.firstName}">
 			<label>Job Title</label>
-			<input type="text" name="jobTitle" value="${editpersons.jobTitle}">
-			<label>Job Area</label>
-			<input type="text" name="jobArea" value="${editpersons.jobArea}">
-			<label>Phone Number</label>
-			<input type="text" name="phone" value="${editpersons.phone}">
-			<button class="submit" data-id="${editpersons.id}">Submit</button>
+			<input type="text" name="jobTitle" value="${editpersons.birthday}">
 		</fieldset>`);
-
 	// 	const CancelButton = document.createElement('button');
 	// 	CancelButton.type = 'button';
 	// 	CancelButton.classList.add('cancel');
@@ -75,14 +67,13 @@ const editPartnerPopup = idToEdit => {
 	// 	CancelButton.addEventListener('click', () => { resolve();
 	// 			destroyPopup(popup);
 	// 		},	{ once: true });
-
 	// 	popup.addEventListener('submit', e => { 
 	// 		e.preventDefault();
-	// 		editpersons.firstName = popup.firstName.value;
-	// 		editpersons.lastName = popup.lastName.value;
-	// 		editpersons.jobTitle = popup.jobTitle.value;
-	// 		editpersons.jobArea = popup.jobArea.value;
-	// 		editpersons.phone = popup.phone.value;
+	// 		person.firstName = popup.firstName.value;
+	// 		person.lastName = popup.lastName.value;
+	// 		person.jobTitle = popup.jobTitle.value;
+	// 		person.jobArea = popup.jobArea.value;
+	// 		person.phone = popup.phone.value;
 	// 		displayList(persons);
 	// 		destroyPopup(popup);
 	// 	}, { once: true });
@@ -90,3 +81,4 @@ const editPartnerPopup = idToEdit => {
 		popup.classList.add('open');
 	});
 };
+editPartnerPopup();

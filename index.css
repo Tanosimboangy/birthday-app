@@ -76,5 +76,11 @@ svg {
 
 .popup.open fieldset {
 	--scale: 1;
-	background-color: black;
+	background-color: rgb(97, 2, 2);
+}
+
+label {
+    display: inline-block;
+    margin-bottom: .5rem;
+    color: white;
 }
