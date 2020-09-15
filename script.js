@@ -25,9 +25,12 @@ async function populatePerson() {
                 <svg viewBox="0 0 20 20" class="trash w-6 h-6"><path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg>
             </button>
         </article>`;}).join('');
-    container.innerHTML = html;
+	container.innerHTML = html;
 }
 populatePerson();
+
+
+
 
 const editFunction = (e) => {
     const editBtn = e.target.closest(".edit");
@@ -48,6 +51,7 @@ async function destroyPopup(popup) {
 const editPartnerPopup = async idToEdit => {
 	const persons = await fetchPeopleList();
 	const editpersons = persons.find(person => person.id === idToEdit);
+	console.log(idToEdit);
 	console.log(editpersons);
 	return new Promise(async resolve => {
 	const popup = document.createElement('form');
@@ -61,10 +65,10 @@ const editPartnerPopup = async idToEdit => {
 			<input type="text" name="firstName" value="${editpersons.firstName}">
 			<label>Job Title</label>
 			<input type="text" name="jobTitle" value="${editpersons.birthday}">
-			<button class="submit" data-id="${editpersons.id}">Submit</button>
+			<button class="submit" type="submit" data-id="${editpersons.id}">Submit</button>
 		</fieldset>`);
 		const CancelButton = document.createElement('button');
-		CancelButton.type = 'button';
+		CancelButton.type = 'submit';
 		CancelButton.classList.add('cancel');
 		CancelButton.textContent = 'cancel';
 		popup.appendChild(CancelButton);
@@ -75,21 +79,43 @@ const editPartnerPopup = async idToEdit => {
 		popup.addEventListener('submit', e => {
 			e.preventDefault();
 			editpersons.firstName = popup.firstName.value;
-			console.log(popup.firstName.value);
+			console.log(editpersons);
 			console.log(editpersons.firstName);
 
 			editpersons.lastName = popup.lastName.value;
-			console.log(popup.lastName.value);
 			console.log(editpersons.lastName);
 			
 			populatePerson(editpersons);
 			destroyPopup(popup);
 		}, { once: true });
-
 		document.body.appendChild(popup);
 		popup.classList.add('open');
 	});
 };
+
+
+
+const initLocalStorage = () => {
+	const stringFromLS = localStorage.getItem('lists');
+	const lsItems = JSON.parse(stringFromLS);
+	console.log(lsItems);
+	if (lsItems) {
+		lists = lsItems;
+	} else {
+		lists = [lists];
+	}
+};
+
+const updateLocalStorage = () => {
+	localStorage.setItem('lists', JSON.stringify(lists));
+};
+window.addEventListener("click", updateLocalStorage);
+initLocalStorage();
+
+
+
+// var date = new Date(1546108200 * 1000);
+// console.log(date.toUTCString())
 
 
 
