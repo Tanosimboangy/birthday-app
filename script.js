@@ -6,6 +6,7 @@
 // 6 Activate the edit button
 // 7 Activate the delete button
 
+// Import the data from people.json
 const dataJson = './people.json';
 const container = document.querySelector(".container");
 async function fetchPeopleList() {
@@ -13,6 +14,7 @@ async function fetchPeopleList() {
 	const data = await response.json();
 	const persons = data;
 
+	// Create a function to store the html so that you can reuse it again
 	function populatePersons(people) {
 		return people.map(person => {
 			return `
@@ -30,12 +32,15 @@ async function fetchPeopleList() {
 			</article>`;}).join('');
 	}
 
+	// Push the html into the container
 	const showPeople = () => {
 		const html = populatePersons(persons);
 		container.innerHTML = html;
 	}
 	showPeople();
 
+
+	// Store the data the data inside of local storage
 	const initLocalStorage = () => {
 		const stringFromLS = localStorage.getItem('persons');
 		const lsItems = JSON.parse(stringFromLS);
@@ -43,91 +48,74 @@ async function fetchPeopleList() {
 			let persons = lsItems;
 			showPeople();
 		}
-		container.dispatchEvent(new CustomEvent('listUpdated'));
+		// container.dispatchEvent(new CustomEvent('listUpdated'));
 	};
 	const updateLocalStorage = () => {
 		localStorage.setItem('persons', JSON.stringify(persons));
 	};
+	// Adding eventListner in the updateLocalStorage
 	container.addEventListener("listUpdated", updateLocalStorage);
 	initLocalStorage();
 
 
-	
 	const editFunction = e => {
 		const editBtn = e.target.closest(".edit");
-		console.log(editFunction);
+		console.log(editBtn);
 		if (editBtn) {
 			const article = e.target.closest('.article');
-			console.log(article);
 			const idToEdit = article.dataset.id;
 			console.log(idToEdit);
-			// editPartnerPopup(idToEdit);
+			editPartnerPopup(idToEdit);
 		}
 	}
-	editFunction();
+
+	const editPartnerPopup = idToEdit => {
+		const editpersons = persons.find(person => person.id === idToEdit);
+		console.log(persons);
+		console.log(editpersons);
+		return new Promise(async resolve => {
+		const popup = document.createElement('form');
+		popup.classList.add('popup');
+		popup.insertAdjacentHTML('afterbegin', 
+			`<fieldset>
+				<h1>Edit the list</h1>
+				<label>Last Name</label>
+				<input type="text" name="lastName" value="${editpersons.lastName}">
+				<label>First Name</label>
+				<input type="text" name="firstName" value="${editpersons.firstName}">
+				<label>Job Title</label>
+				<input type="text" name="jobTitle" value="${editpersons.birthday}">
+				<button class="submit" type="submit" data-id="${editpersons.id}">Submit</button>
+			</fieldset>`);
+			// Creating a cancel button 
+			// Adding addeventListener in to that button
+			const CancelButton = document.createElement('button');
+			CancelButton.type = 'submit';
+			CancelButton.classList.add('cancel');
+			CancelButton.textContent = 'cancel';
+			popup.appendChild(CancelButton);
+			CancelButton.addEventListener('click', () => { resolve();
+					destroyPopup(popup);
+				},	{ once: true });
+	
+			// Adding eventListener in the popup form
+			popup.addEventListener('submit', e => {
+				e.preventDefault();
+				editpersons.firstName = popup.firstName.value;
+				editpersons.lastName = popup.lastName.value;
+				showPeople();
+			}, { once: true });
+			document.body.appendChild(popup);
+			popup.classList.add('open');
+		});
+	};
+	editPartnerPopup();
+	
 	window.addEventListener("click", editFunction);
-
-
 }
 fetchPeopleList();
 
 
-
-
-
-// async function destroyPopup(popup) {
-// 	popup.classList.remove('open');
-// 	popup.remove();
-// }
-
-
-// const editPartnerPopup = async idToEdit => {
-// 	const persons = await fetchPeopleList(dataJson);
-// 	const editpersons = persons.find(person => person.id === idToEdit);
-// 	// console.log(idToEdit);
-// 	// console.log(editpersons);
-// 	return new Promise(async resolve => {
-// 	const popup = document.createElement('form');
-// 	popup.classList.add('popup');
-// 	popup.insertAdjacentHTML('afterbegin', 
-// 		`<fieldset>
-// 			<h1>Edit the list</h1>
-// 			<label>Last Name</label>
-// 			<input type="text" name="lastName" value="${editpersons.lastName}">
-// 			<label>First Name</label>
-// 			<input type="text" name="firstName" value="${editpersons.firstName}">
-// 			<label>Job Title</label>
-// 			<input type="text" name="jobTitle" value="${editpersons.birthday}">
-// 			<button class="submit" type="submit" data-id="${editpersons.id}">Submit</button>
-// 		</fieldset>`);
-// 		// Creating a cancel button 
-// 		// Adding addeventListener in to that button
-// 		const CancelButton = document.createElement('button');
-// 		CancelButton.type = 'submit';
-// 		CancelButton.classList.add('cancel');
-// 		CancelButton.textContent = 'cancel';
-// 		popup.appendChild(CancelButton);
-// 		CancelButton.addEventListener('click', () => { resolve();
-// 				destroyPopup(popup);
-// 			},	{ once: true });
-
-// 		// Adding eventListener in the popup form
-// 		popup.addEventListener('submit', e => {
-// 			e.preventDefault();
-// 			editpersons.firstName = popup.firstName.value;
-// 			// console.log(editpersons);
-// 			// console.log(editpersons.firstName);
-// 			editpersons.lastName = popup.lastName.value;
-// 			// console.log(editpersons.lastName);
-// 			populatePerson(editpersons);
-// 			// initLocalStorage(editpersons);
-// 			destroyPopup(popup);
-// 		}, { once: true });
-// 		document.body.appendChild(popup);
-// 		popup.classList.add('open');
-// 	});
-// };
-// editPartnerPopup();
 
 
 
@@ -205,8 +193,12 @@ fetchPeopleList();
 // 	});
 // };
 
-
 // window.addEventListener("click", deletePartner);
 
 // var date = new Date(1546108200 * 1000);
 // console.log(date.toUTCString());
+
+// async function destroyPopup(popup) {
+// 	popup.classList.remove('open');
+// 	popup.remove();
+// }
