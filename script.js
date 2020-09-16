@@ -38,6 +38,7 @@ const editFunction = (e) => {
 		console.log(idToEdit);
 		editPartnerPopup(idToEdit);
 	}
+	container.dispatchEvent(new CustomEvent('listUpdated'));
 }
 
 async function destroyPopup(popup) {
@@ -87,83 +88,86 @@ const editPartnerPopup = async idToEdit => {
 		}, { once: true });
 		document.body.appendChild(popup);
 		popup.classList.add('open');
+		container.dispatchEvent(new CustomEvent('listUpdated'));
 	});
 };
 
 // var date = new Date(1546108200 * 1000);
-// console.log(date.toUTCString())
+// console.log(date.toUTCString())	
 
-const initLocalStorage = () => {
-	const stringFromLS = localStorage.getItem('lists');
-	const lsItems = JSON.parse(stringFromLS);
-	console.log(lsItems);
-	if (lsItems) {
-		lists = lsItems;
-	} else {
-		lists = [];
-	}
-};
+// const initLocalStorage = () => {
+// 	const stringFromLS = localStorage.getItem('lists');
+// 	const lsItems = JSON.parse(stringFromLS);
+// 	console.log(lsItems);
+// 	if (lsItems) {
+// 		lists = lsItems;
+// 	} else {
+// 		lists = [];
+// 	}
+// 	container.dispatchEvent(new CustomEvent('listUpdated'));
+// };
 
-const updateLocalStorage = () => {
-	localStorage.setItem('lists', JSON.stringify(lists));
-};
-window.addEventListener("click", updateLocalStorage);
-initLocalStorage();
+// const updateLocalStorage = () => {
+// 	localStorage.setItem('lists', JSON.stringify(lists));
+// };
+// container.addEventListener("listUpdated", updateLocalStorage);
+// initLocalStorage();
+
 
 
 // code delete function here
-const deletePartner = e => {
-	// Grabbing the delete button with event delegation
-	const remove = e.target.closest(".delete");
-	console.log(remove);
-	if (remove) {
-		const delBtn = remove.closest('.delete');
-		console.log(delBtn);
-		const id = delBtn.dataset.id;
-		console.log(id);
-		deleteDeletePopup(id);
-	}
-}
+// const deletePartner = e => {
+// 	// Grabbing the delete button with event delegation
+// 	const remove = e.target.closest(".delete");
+// 	console.log(remove);
+// 	if (remove) {
+// 		const delBtn = remove.closest('.delete');
+// 		console.log(delBtn);
+// 		const id = delBtn.dataset.id;
+// 		console.log(id);
+// 		deleteDeletePopup(id);
+// 	}
+// }
 
-const deleteDeletePopup = async id => {
-	const persons = await fetchPeopleList();
-	return new Promise(async function(resolve) {
-	// create confirmation popup here
-	const popup = document.createElement('form');
-	popup.classList.add('popup');
-	// Insert the html inside of the popup form
-	popup.insertAdjacentHTML('afterbegin', 
-		`<h2>Are you sure you want to delete this?</h2>`);
-		// const button = document.createElement("button");
-		// button.textContent = "delete"
-		// popup.appendChild(button);
-		// popup.classList.add('open');
-		// button.addEventListener("click", (e) => {
-		// 	e.preventDefault();
-		// 	const article = e.target.closest("article");
-		// 	console.log(article);
-		// 	console.log(e.target);
-		// 	console.log(e.currentTarget);
-		// 	const newList = lists.filter(person => person.id !== id);
-		// 	populatePerson(newList);
-		// 	popup.classList.remove("open");
-		// });
+// const deleteDeletePopup = async id => {
+// 	const persons = await fetchPeopleList();
+// 	return new Promise(async function(resolve) {
+// 	// create confirmation popup here
+// 	const popup = document.createElement('form');
+// 	popup.classList.add('popup');
+// 	// Insert the html inside of the popup form
+// 	popup.insertAdjacentHTML('afterbegin', 
+// 		`<h2>Are you sure you want to delete this?</h2>`);
+// 		// const button = document.createElement("button");
+// 		// button.textContent = "delete"
+// 		// popup.appendChild(button);
+// 		// popup.classList.add('open');
+// 		// button.addEventListener("click", (e) => {
+// 		// 	e.preventDefault();
+// 		// 	const article = e.target.closest("article");
+// 		// 	console.log(article);
+// 		// 	console.log(e.target);
+// 		// 	console.log(e.currentTarget);
+// 		// 	const newList = lists.filter(person => person.id !== id);
+// 		// 	populatePerson(newList);
+// 		// 	popup.classList.remove("open");
+// 		// });
 
-		// const cancelbutton = document.createElement("button");
-		// cancelbutton.textContent = "cancel"
-		// popup.appendChild(cancelbutton);
-		// cancelbutton.addEventListener("click", (e) => {
-		// 	console.log("this is the real cancel button");
-		// 	e.preventDefault();
-		// 	destroyPopup();
-		// 	popup.classList.remove("open");
-		// 	console.log(e);
-		// });
-	// Append the popup inside of the html 
-	document.body.appendChild(popup);
-	});
-};
+// 		// const cancelbutton = document.createElement("button");
+// 		// cancelbutton.textContent = "cancel"
+// 		// popup.appendChild(cancelbutton);
+// 		// cancelbutton.addEventListener("click", (e) => {
+// 		// 	console.log("this is the real cancel button");
+// 		// 	e.preventDefault();
+// 		// 	destroyPopup();
+// 		// 	popup.classList.remove("open");
+// 		// 	console.log(e);
+// 		// });
+// 	// Append the popup inside of the html 
+// 	document.body.appendChild(popup);
+// 	});
+// };
 
 editPartnerPopup();
 window.addEventListener("click", editFunction);
-window.addEventListener("click", deletePartner);
+// window.addEventListener("click", deletePartner);
