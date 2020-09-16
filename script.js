@@ -5,10 +5,11 @@ async function fetchPeopleList() {
     const data = await response.json();
     return data;
 }
-let lists = [];	
+let lists = [];
+// console.log(lists);
 
 async function populatePerson() {
-	const persons = await fetchPeopleList();
+	const persons = await fetchPeopleList(dataJson);
 	lists.push(persons);
 	// Needs to sort the lists from the closest birthday to the farthest
     const html = persons.map(person => {
@@ -26,6 +27,7 @@ async function populatePerson() {
             </button>
         </article>`;}).join('');
 	container.innerHTML = html;
+	container.dispatchEvent(new CustomEvent('listUpdated'));
 }
 populatePerson();
 
@@ -35,11 +37,30 @@ const editFunction = (e) => {
         const article = e.target.closest('.article');
         console.log(article);
 		const idToEdit = article.dataset.id;
-		console.log(idToEdit);
 		editPartnerPopup(idToEdit);
 	}
 	container.dispatchEvent(new CustomEvent('listUpdated'));
 }
+
+
+const initLocalStorage = () => {
+	const stringFromLS = localStorage.getItem('lists');
+	const lsItems = JSON.parse(stringFromLS);
+	console.log(lsItems);
+	// if (lsItems) {
+	// 	lists = lsItems;
+	// } else {
+	// 	lists = [];
+	// }
+	container.dispatchEvent(new CustomEvent('listUpdated'));
+};
+const updateLocalStorage = () => {
+	localStorage.setItem('lists', JSON.stringify(lists));
+};
+container.addEventListener("listUpdated", updateLocalStorage);
+initLocalStorage();
+
+
 
 async function destroyPopup(popup) {
 	popup.classList.remove('open');
@@ -47,7 +68,7 @@ async function destroyPopup(popup) {
 }
 
 const editPartnerPopup = async idToEdit => {
-	const persons = await fetchPeopleList();
+	const persons = await fetchPeopleList(dataJson);
 	const editpersons = persons.find(person => person.id === idToEdit);
 	// console.log(idToEdit);
 	// console.log(editpersons);
@@ -79,39 +100,22 @@ const editPartnerPopup = async idToEdit => {
 			editpersons.firstName = popup.firstName.value;
 			console.log(editpersons);
 			console.log(editpersons.firstName);
-
 			editpersons.lastName = popup.lastName.value;
 			console.log(editpersons.lastName);
-			
 			populatePerson(editpersons);
+			initLocalStorage(editpersons);
 			destroyPopup(popup);
 		}, { once: true });
 		document.body.appendChild(popup);
 		popup.classList.add('open');
-		container.dispatchEvent(new CustomEvent('listUpdated'));
 	});
 };
 
-// var date = new Date(1546108200 * 1000);
-// console.log(date.toUTCString())	
 
-// const initLocalStorage = () => {
-// 	const stringFromLS = localStorage.getItem('lists');
-// 	const lsItems = JSON.parse(stringFromLS);
-// 	console.log(lsItems);
-// 	if (lsItems) {
-// 		lists = lsItems;
-// 	} else {
-// 		lists = [];
-// 	}
-// 	container.dispatchEvent(new CustomEvent('listUpdated'));
-// };
 
-// const updateLocalStorage = () => {
-// 	localStorage.setItem('lists', JSON.stringify(lists));
-// };
-// container.addEventListener("listUpdated", updateLocalStorage);
-// initLocalStorage();
+
+
+
 
 
 
@@ -171,3 +175,5 @@ const editPartnerPopup = async idToEdit => {
 editPartnerPopup();
 window.addEventListener("click", editFunction);
 // window.addEventListener("click", deletePartner);
+// var date = new Date(1546108200 * 1000);
+// console.log(date.toUTCString());
