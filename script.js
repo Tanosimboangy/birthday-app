@@ -6,7 +6,6 @@
 // 6 Activate the edit button
 // 7 Activate the delete button
 
-
 // Import the data from people.json
 const dataJson = './people.json';
 const container = document.querySelector(".container");
@@ -14,16 +13,22 @@ async function fetchPeopleList() {
     const response = await fetch(dataJson);
 	const data = await response.json();
 	let persons = data;
-
 	// Create a function to store the html so that you can reuse it again
 	function populatePersons(people) {
 		return people.map(person => {
+			const date = new Date();
+			let dateNow = new Date(person.birthday);
+			const day = dateNow.getDate();
+			const month = (dateNow.getMonth() + 1);
+			const year = (dateNow.getFullYear());
+			const fullDate = `${day} / ${month} / ${year}`;
+			const personAge = date.getFullYear() - year;
+			const fututreAge = personAge + 1;
 			return `
 			<article data-id="${person.id}" value="${person.id}" class="article">
 				<img src="${person.picture}">
-				<p>${person.lastName}</p>
-				<p>${person.firstName}</p>
-				<p>${person.birthday}</p>
+				<p><b>${person.lastName}</b> ${person.firstName} is born in <b>${year}</b>.<br> He will turn <b>${fututreAge}</b> years old on the <b>${day}</b> of <b>${month}</b></p>
+				<p><b>${fullDate}</b></p>
 				<button class="edit" value="${person.id}" data-id="${person.id}">
 					<svg viewBox="0 0 20 20" class="pencil w-6 h-6"><path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path></svg>
 				</button>
@@ -32,6 +37,13 @@ async function fetchPeopleList() {
 				</button>
 			</article>`;}).join('');
 	}
+	// Turns ${personAge} years old on
+	// ${new Date(person.birthday)
+	// 	.toLocaleString("en-US", 
+	// 	{ day: "numeric" })}<sup>${nthDate(currentDay)}</sup> of 
+	// ${new Date(person.birthday)
+	// 	.toLocaleString("en-US", 
+	// 	{ month: "long" })}
 
 	// Push the html into the container
 	const showPeople = () => {
@@ -88,7 +100,7 @@ async function fetchPeopleList() {
 				<input type="text" name="lastName" value="${editpersons.lastName}">
 				<label>First Name</label>
 				<input type="text" name="firstName" value="${editpersons.firstName}">
-				<label>Job Title</label>
+				<label>Date of birthday</label>
 				<input type="text" name="jobTitle" value="${editpersons.birthday}">
 				<button class="submit" type="submit" data-id="${editpersons.id}">Submit</button>
 			</fieldset>`);
@@ -108,7 +120,7 @@ async function fetchPeopleList() {
 				e.preventDefault();
 				editpersons.firstName = popup.firstName.value;
 				editpersons.lastName = popup.lastName.value;
-				editpersons.lastName = popup.birthday.value;
+				// editpersons.lastName = popup.birthday.value;
 				showPeople(editpersons);
 				destroyPopup(popup);
 				container.dispatchEvent(new CustomEvent('listUpdated'));
@@ -119,24 +131,16 @@ async function fetchPeopleList() {
 			popup.classList.add('open');
 		});
 	};
-
-
-
-
-
-
-
-
-
-
+	// Creating the delete function
 	const deletePartner = e => {
+		// Grabbing the delete button with event delegation
 		if (e.target.closest(".delete")) {
 			const delBtn = e.target.closest('.delete');
 			const id = delBtn.dataset.id;
 			deleteDeletePopup(id);
 		}
 	}
-	
+	// Finction that run the delete function
 	const deleteDeletePopup = async id => {
 		return new Promise(async function(resolve) {
 		// create confirmation popup here
@@ -155,11 +159,13 @@ async function fetchPeopleList() {
 				persons = persons.filter(person => person.id !== id);
 				console.log(persons);
 				showPeople();
+				localStorage.setItem('persons', JSON.stringify(persons));
 			});
-
+			// Creating a new delete button for the form 
 			const cancelbutton = document.createElement("button");
 			cancelbutton.textContent = "cancel"
 			popup.appendChild(cancelbutton);
+			// Adding eventListener in the delete button
 			cancelbutton.addEventListener("click", e => {
 				e.preventDefault();
 				destroyPopup(popup);
@@ -169,6 +175,48 @@ async function fetchPeopleList() {
 		popup.classList.add('open');
 		});
 	};
+
+	// Creating a new form for the add list
+	// const newList = e => {
+	// 	const popup = document.createElement('form');
+	// 	console.log(popup);
+	// 	popup.classList.add('popup');
+
+	// 	popup.insertAdjacentHTML('afterbegin', 
+	// 		`<ul class="wrapper">
+	// 			<li>
+	// 				<label>Picture</label><br>
+	// 				<input type="text" class="image" value="https://">
+	// 			</li>
+	// 			<li>
+	// 				<label>Last Name</label><br>
+	// 				<input type="text" class="last_name" placeholder="last name">
+	// 			</li>
+	// 			<li>
+	// 				<label>First Name</label><br>
+	// 				<input type="text" class="first_name" placeholder="first name">
+	// 			</li>
+	// 			<li>
+	// 				<label>The birthday date: </label><br>
+	// 				<input type="date"> 
+	// 			</li>
+	// 			<li>
+	// 				<button type="submit" class="submit">submit</button>
+	// 			</li>
+	// 		</ul>`);
+
+	// 	document.body.appendChild(popup);
+	// 	popup.classList.add('open');
+	// };
+
+	// // const newSubmitBtn = e => {
+	// // 	const sub = e.target.closest('.submit');
+	// // 	console.log(sub);
+	// // }
+	
+	// const addBtn = document.querySelector('.add');
+	// addBtn.addEventListener('click', newList);
+
 	// Adding event Listener to the edit fuction
 	window.addEventListener("click", editFunction);
 	// Adding event Listener to the delete fuction

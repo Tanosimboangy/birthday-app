@@ -24,12 +24,12 @@ img {
 
 button {
     border: none;
-    background-color:rgba(255, 166, 0, 0.653);
+	background-color:rgb(255, 255, 255);
 }
 
 .popup button {
     border: none;
-	background-color: darkgreen;
+	background-color: rgb(220, 220, 0);
 	border-radius: 5px;
 }
 
@@ -102,6 +102,7 @@ h2 {
 label {
     display: inline-block;
 	color: white;
+	margin-bottom: 0;
 }
 
 .add {
@@ -109,4 +110,27 @@ label {
 	border-radius: 6px;
 	background-color: blue;
 	padding: .5rem 1rem;
+}
+
+li {
+	list-style: none;
+	margin-bottom: .5rem;
+}
+
+.wrapper {
+	padding: 1rem;
+	background-color: cadetblue;
+	border-radius: 5px;
+	box-shadow: 2px 2px 2px wheat;
+}
+
+.wrapper button {
+	padding: .5rem 1rem;
+}
+
+.wrapper input {
+	padding: .5rem;
+	border-radius: 6px;
+	border: none;
+	background-color: wheat;
 }
