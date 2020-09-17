@@ -40,7 +40,6 @@ async function fetchPeopleList() {
 	}
 	showPeople();
 
-
 	// Store the data the data inside of local storage
 	const initLocalStorage = () => {
 		const stringFromLS = localStorage.getItem('persons');
@@ -120,95 +119,62 @@ async function fetchPeopleList() {
 			popup.classList.add('open');
 		});
 	};
+
+
+
+
+
+
+
+
+
+
+	const deletePartner = e => {
+		if (e.target.closest(".delete")) {
+			const delBtn = e.target.closest('.delete');
+			const id = delBtn.dataset.id;
+			deleteDeletePopup(id);
+		}
+	}
+	
+	const deleteDeletePopup = async id => {
+		return new Promise(async function(resolve) {
+		// create confirmation popup here
+		const popup = document.createElement('form');
+		popup.classList.add('popup');
+		// Insert the html inside of the popup form
+		popup.insertAdjacentHTML('afterbegin', 
+			`<h2>Are you sure you want to delete this?</h2>`);
+			const button = document.createElement("button");
+			button.textContent = "delete";
+			popup.appendChild(button);
+			// popup.classList.add('open');
+			button.addEventListener("click", e => {
+				e.preventDefault();
+				destroyPopup(popup);
+				persons = persons.filter(person => person.id !== id);
+				console.log(persons);
+				showPeople();
+			});
+
+			const cancelbutton = document.createElement("button");
+			cancelbutton.textContent = "cancel"
+			popup.appendChild(cancelbutton);
+			cancelbutton.addEventListener("click", e => {
+				e.preventDefault();
+				destroyPopup(popup);
+			});
+		// Append the popup inside of the html 
+		document.body.appendChild(popup);
+		popup.classList.add('open');
+		});
+	};
 	// Adding event Listener to the edit fuction
 	window.addEventListener("click", editFunction);
+	// Adding event Listener to the delete fuction
+	window.addEventListener("click", deletePartner);
 }
 fetchPeopleList();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// const deletePartner = e => {
-// 	// Grabbing the delete button with event delegation
-// 	const remove = e.target.closest(".delete");
-// 	if (remove) {
-// 		const delBtn = remove.closest('.delete');
-// 		console.log(delBtn);
-// 		const id = delBtn.dataset.id;
-// 		deleteDeletePopup(id);
-// 	}
-// }
-
-// const deleteDeletePopup = async id => {
-// 	// const persons = await fetchPeopleList();
-// 	return new Promise(async function(resolve) {
-// 	// create confirmation popup here
-// 	const popup = document.createElement('form');
-// 	popup.classList.add('popup');
-// 	// Insert the html inside of the popup form
-// 	popup.insertAdjacentHTML('afterbegin', 
-// 		`<h2>Are you sure you want to delete this?</h2>`);
-// 		const button = document.createElement("button");
-// 		button.textContent = "delete"
-// 		popup.appendChild(button);
-// 		popup.classList.add('open');
-// 		button.addEventListener("click", (e) => {
-// 			e.preventDefault();
-// 			const newList = lists.filter(person => person.id !== id);
-// 			populatePerson(newList);
-// 			popup.classList.remove("open");
-// 		});
-
-// 		const cancelbutton = document.createElement("button");
-// 		cancelbutton.textContent = "cancel"
-// 		popup.appendChild(cancelbutton);
-// 		cancelbutton.addEventListener("click", (e) => {
-// 			e.preventDefault();
-// 			popup.classList.remove("open");
-// 		});
-// 	// Append the popup inside of the html 
-// 	document.body.appendChild(popup);
-// 	});
-// };
-
-// window.addEventListener("click", deletePartner);
-
 // var date = new Date(1546108200 * 1000);
 // console.log(date.toUTCString());
-
-// async function destroyPopup(popup) {
-// 	popup.classList.remove('open');
-// 	popup.remove();
-// }

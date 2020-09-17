@@ -81,6 +81,7 @@ h2 {
     font-weight: 500;
 	line-height: 1.2;
 	color: white;
+	max-width: 400px;
 }
 .popup fieldset button {
 	color: white;
