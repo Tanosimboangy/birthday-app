@@ -103,3 +103,10 @@ label {
     display: inline-block;
 	color: white;
 }
+
+.add {
+	margin: 1rem;
+	border-radius: 6px;
+	background-color: blue;
+	padding: .5rem 1rem;
+}
