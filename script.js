@@ -6,24 +6,25 @@
 // 6 Activate the edit button
 // 7 Activate the delete button
 
+
 // Import the data from people.json
 const dataJson = './people.json';
 const container = document.querySelector(".container");
 async function fetchPeopleList() {
     const response = await fetch(dataJson);
 	const data = await response.json();
-	const persons = data;
+	let persons = data;
 
 	// Create a function to store the html so that you can reuse it again
 	function populatePersons(people) {
 		return people.map(person => {
 			return `
-			<article data-id="${person.id}" class="article">
+			<article data-id="${person.id}" value="${person.id}" class="article">
 				<img src="${person.picture}">
 				<p>${person.lastName}</p>
 				<p>${person.firstName}</p>
 				<p>${person.birthday}</p>
-				<button class="edit" data-id="${person.id}">
+				<button class="edit" value="${person.id}" data-id="${person.id}">
 					<svg viewBox="0 0 20 20" class="pencil w-6 h-6"><path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path></svg>
 				</button>
 				<button class="delete" data-id="${person.id}">
@@ -45,7 +46,7 @@ async function fetchPeopleList() {
 		const stringFromLS = localStorage.getItem('persons');
 		const lsItems = JSON.parse(stringFromLS);
 		if (lsItems) {
-			let persons = lsItems;
+			persons = lsItems;
 			showPeople();
 		}
 		// container.dispatchEvent(new CustomEvent('listUpdated'));
@@ -57,23 +58,29 @@ async function fetchPeopleList() {
 	container.addEventListener("listUpdated", updateLocalStorage);
 	initLocalStorage();
 
+	async function destroyPopup(popup) {
+		popup.classList.remove('open');
+		popup.remove();
+	}
 
+	// Creating an edit function
+	// Grabbing the edit button by event delegation
 	const editFunction = e => {
-		const editBtn = e.target.closest(".edit");
-		console.log(editBtn);
-		if (editBtn) {
-			const article = e.target.closest('.article');
-			const idToEdit = article.dataset.id;
-			console.log(idToEdit);
-			editPartnerPopup(idToEdit);
+		if (e.target.closest('.edit')) {
+			const article = e.target.closest(".article");
+			const id = article.dataset.id;
+			console.log(id);
+			editPartnerPopup(id);
 		}
 	}
 
+	// Activating the edit button by showing the form
 	const editPartnerPopup = idToEdit => {
+		console.log(idToEdit);
+		// Finding the object mathes to the id
 		const editpersons = persons.find(person => person.id === idToEdit);
-		console.log(persons);
-		console.log(editpersons);
 		return new Promise(async resolve => {
+		// Creating a form element to contain the form
 		const popup = document.createElement('form');
 		popup.classList.add('popup');
 		popup.insertAdjacentHTML('afterbegin', 
@@ -103,14 +110,18 @@ async function fetchPeopleList() {
 				e.preventDefault();
 				editpersons.firstName = popup.firstName.value;
 				editpersons.lastName = popup.lastName.value;
-				showPeople();
+				showPeople(editpersons);
+				destroyPopup(popup);
+				container.dispatchEvent(new CustomEvent('listUpdated'));
 			}, { once: true });
+			// Adding the popup in the html
 			document.body.appendChild(popup);
+			// Adding the open class to the popup form
 			popup.classList.add('open');
 		});
 	};
 	editPartnerPopup();
-	
+	// Adding event Listener to the edit fuction
 	window.addEventListener("click", editFunction);
 }
 fetchPeopleList();
