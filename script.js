@@ -69,16 +69,15 @@ async function fetchPeopleList() {
 		if (e.target.closest('.edit')) {
 			const article = e.target.closest(".article");
 			const id = article.dataset.id;
-			console.log(id);
+			console.log(id)
 			editPartnerPopup(id);
 		}
 	}
 
 	// Activating the edit button by showing the form
 	const editPartnerPopup = idToEdit => {
-		console.log(idToEdit);
 		// Finding the object mathes to the id
-		const editpersons = persons.find(person => person.id === idToEdit);
+		const editpersons = persons.find(person => person.id === idToEdit); 
 		return new Promise(async resolve => {
 		// Creating a form element to contain the form
 		const popup = document.createElement('form');
@@ -110,6 +109,7 @@ async function fetchPeopleList() {
 				e.preventDefault();
 				editpersons.firstName = popup.firstName.value;
 				editpersons.lastName = popup.lastName.value;
+				editpersons.lastName = popup.birthday.value;
 				showPeople(editpersons);
 				destroyPopup(popup);
 				container.dispatchEvent(new CustomEvent('listUpdated'));
@@ -120,7 +120,6 @@ async function fetchPeopleList() {
 			popup.classList.add('open');
 		});
 	};
-	editPartnerPopup();
 	// Adding event Listener to the edit fuction
 	window.addEventListener("click", editFunction);
 }
