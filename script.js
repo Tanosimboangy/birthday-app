@@ -1,14 +1,8 @@
-// 1 Import the data
-// 2 Display the data in the lists
-// 3 Changing the numbers into date
-// 4 Store the data into the local storage
-// 5 Sort the data from the nearest to the farthest
-// 6 Activate the edit button
-// 7 Activate the delete button
-
 // Import the data from people.json
 const dataJson = './people.json';
+// Grabbing the container element
 const container = document.querySelector(".container");
+// Fetching the data from the people.json
 async function fetchPeopleList() {
     const response = await fetch(dataJson);
 	const data = await response.json();
@@ -25,28 +19,29 @@ async function fetchPeopleList() {
 					default: return "th"; 
 				}
 			}
+
+			// Getting the date with the day, month, year
 			const date = new Date();
-			let dateNow = new Date(person.birthday);
+			const dateNow = new Date(person.birthday);
 			const day = dateNow.getDate();
-			var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'][dateNow.getMonth()];
+			const months = dateNow.getMonth();
 			const year = dateNow.getFullYear();
-			const fullDate = `${day} / ${months} / ${year}`;
+			const fullDate = `${day} / ${months + 1} / ${year}`;
 			const personAge = date.getFullYear() - year;
-			const fututreAge = personAge;
+			const futureAge = personAge;
 
-			// Counting the days until the birthday comes 
-			const momentYear = date.getFullYear();
-			const birthDayDate = new Date(momentYear, month, currentDay );
-			// console.log(birth);
-			// let oneDay=1000*60*60*24;
-			// const dayLeft = Math.ceil((birthDayDate.getTime() - today.getTime()) / (oneDay));
-
+			// Counting the days until the birthday comes
+			const Year = dateNow.getFullYear();
+			const birthDayDate = new Date(Year, months, day);
+			let oneDay=1000*60*60*24;
+			const dayLeft = Math.ceil((birthDayDate.getTime() - dateNow.getTime()) / (oneDay));
 
 			return `
 			<article data-id="${person.id}" value="${person.id}" class="article">
 				<img src="${person.picture}">
-				<p>${person.lastName} ${person.firstName} is born in ${year}.<br>He will turn ${fututreAge} years old on the ${day} of ${months}</p>
-				<p>${fullDate}</p>
+				<p><b>${person.lastName}</b> ${person.firstName} will turn ${futureAge} years old on the ${new Date(person.birthday).toLocaleString("en-US", { month: "long" })}<time datetime="${fullDate}"> ${new Date(person.birthday).toLocaleString("en-US", { day: "numeric" })}<sup>${nthDate(dateNow)}</sup></time></p>
+				<td><time datetime="${fullDate}">${fullDate}</time></td>
+				<td>${dayLeft < 0 ? dayLeft * -1 + " " + "days ago" : dayLeft + " days"}
 				<button class="edit" value="${person.id}" data-id="${person.id}">
 					<svg viewBox="0 0 20 20" class="pencil w-6 h-6"><path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path></svg>
 				</button>
@@ -188,45 +183,36 @@ async function fetchPeopleList() {
 	// Creating a new form for the add list
 	const newList = (e) => {
 		const popup = document.createElement('form');
-		console.log(popup);
 		popup.classList.add('popup');
-
 		popup.insertAdjacentHTML('afterbegin', 
 			`<ul class="wrapper">
 				<li>
 					<label>Picture</label><br>
-					<input type="text" class="image" value="https://">
+					<input type="text" class="image" value="https://" required>
 				</li>
 				<li>
 					<label>Last Name</label><br>
-					<input type="text" class="last_name" placeholder="last name">
+					<input type="text" class="last_name" placeholder="last name" required>
 				</li>
 				<li>
 					<label>First Name</label><br>
-					<input type="text" class="first_name" placeholder="first name">
+					<input type="text" class="first_name" placeholder="first name" required>
 				</li>
 				<li>
 					<label>The birthday date: </label><br>
 					<input type="date"> 
 				</li>
 				<li>
-					<button type="submit" class="submit">submit</button>
+					<button type="submit" class="save">save</button>
 				</li>
 			</ul>`);
+			popup.addEventListener("submit", e => {
+				e.preventDefault();
 
+			});
 		document.body.appendChild(popup);
 		popup.classList.add('open');
 	};
-
-	// const addingList = e => {
-	// 	console.log("here it is");
-	// }
-
-	// const newSubmitBtn = e => {
-	// 	e.preventDefault();
-	// 	const sub = e.target.closest('.submit');
-	// 	console.log(sub);
-	// }
 	
 	const addBtn = document.querySelector('.add');
 	addBtn.addEventListener('click', newList);
@@ -235,10 +221,5 @@ async function fetchPeopleList() {
 	window.addEventListener("click", editFunction);
 	// Adding event Listener to the delete fuction
 	window.addEventListener("click", deletePartner);
-	// // Adding event Listener to the submit fuction
-	// window.addEventListener("click", newSubmitBtn);
 }
 fetchPeopleList();
-
-// var date = new Date(1546108200 * 1000);
-// console.log(date.toUTCString());
