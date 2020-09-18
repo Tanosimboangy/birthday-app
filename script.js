@@ -16,22 +16,37 @@ async function fetchPeopleList() {
 	// Create a function to store the html so that you can reuse it again
 	function populatePersons(people) {
 		return people.map(person => {
+			function nthDate(day) {
+				if (day > 3 && day < 21) return "th";
+				switch (day % 10) {
+					case 1: return "st";
+					case 2: return "nd";
+					case 3: return "rd";
+					default: return "th"; 
+				}
+			}
 			const date = new Date();
 			let dateNow = new Date(person.birthday);
 			const day = dateNow.getDate();
 			var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'][dateNow.getMonth()];
-			console.log(months);
 			const year = dateNow.getFullYear();
 			const fullDate = `${day} / ${months} / ${year}`;
 			const personAge = date.getFullYear() - year;
 			const fututreAge = personAge;
-			// const days = personAge;
+
+			// Counting the days until the birthday comes 
+			const momentYear = date.getFullYear();
+			const birthDayDate = new Date(momentYear, month, currentDay );
+			// console.log(birth);
+			// let oneDay=1000*60*60*24;
+			// const dayLeft = Math.ceil((birthDayDate.getTime() - today.getTime()) / (oneDay));
+
 
 			return `
 			<article data-id="${person.id}" value="${person.id}" class="article">
 				<img src="${person.picture}">
-				<p><b>${person.lastName}</b> ${person.firstName} is born in <b>${year}</b>.<br>He will turn <b>${fututreAge}</b> years old on the <b>${day}</b> of <b>${months}</b></p>
-				<p><b>${fullDate}</b></p>
+				<p>${person.lastName} ${person.firstName} is born in ${year}.<br>He will turn ${fututreAge} years old on the ${day} of ${months}</p>
+				<p>${fullDate}</p>
 				<button class="edit" value="${person.id}" data-id="${person.id}">
 					<svg viewBox="0 0 20 20" class="pencil w-6 h-6"><path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path></svg>
 				</button>
@@ -76,7 +91,6 @@ async function fetchPeopleList() {
 		if (e.target.closest('.edit')) {
 			const article = e.target.closest(".article");
 			const id = article.dataset.id;
-			console.log(id)
 			editPartnerPopup(id);
 		}
 	}
@@ -153,7 +167,6 @@ async function fetchPeopleList() {
 				e.preventDefault();
 				destroyPopup(popup);
 				persons = persons.filter(person => person.id !== id);
-				console.log(persons);
 				showPeople();
 				localStorage.setItem('persons', JSON.stringify(persons));
 			});
