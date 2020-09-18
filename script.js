@@ -19,15 +19,18 @@ async function fetchPeopleList() {
 			const date = new Date();
 			let dateNow = new Date(person.birthday);
 			const day = dateNow.getDate();
-			const month = (dateNow.getMonth() + 1);
-			const year = (dateNow.getFullYear());
-			const fullDate = `${day} / ${month} / ${year}`;
+			var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'][dateNow.getMonth()];
+			console.log(months);
+			const year = dateNow.getFullYear();
+			const fullDate = `${day} / ${months} / ${year}`;
 			const personAge = date.getFullYear() - year;
-			const fututreAge = personAge + 1;
+			const fututreAge = personAge;
+			// const days = personAge;
+
 			return `
 			<article data-id="${person.id}" value="${person.id}" class="article">
 				<img src="${person.picture}">
-				<p><b>${person.lastName}</b> ${person.firstName} is born in <b>${year}</b>.<br> He will turn <b>${fututreAge}</b> years old on the <b>${day}</b> of <b>${month}</b></p>
+				<p><b>${person.lastName}</b> ${person.firstName} is born in <b>${year}</b>.<br>He will turn <b>${fututreAge}</b> years old on the <b>${day}</b> of <b>${months}</b></p>
 				<p><b>${fullDate}</b></p>
 				<button class="edit" value="${person.id}" data-id="${person.id}">
 					<svg viewBox="0 0 20 20" class="pencil w-6 h-6"><path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path></svg>
@@ -37,13 +40,6 @@ async function fetchPeopleList() {
 				</button>
 			</article>`;}).join('');
 	}
-	// Turns ${personAge} years old on
-	// ${new Date(person.birthday)
-	// 	.toLocaleString("en-US", 
-	// 	{ day: "numeric" })}<sup>${nthDate(currentDay)}</sup> of 
-	// ${new Date(person.birthday)
-	// 	.toLocaleString("en-US", 
-	// 	{ month: "long" })}
 
 	// Push the html into the container
 	const showPeople = () => {
@@ -177,50 +173,57 @@ async function fetchPeopleList() {
 	};
 
 	// Creating a new form for the add list
-	// const newList = e => {
-	// 	const popup = document.createElement('form');
-	// 	console.log(popup);
-	// 	popup.classList.add('popup');
+	const newList = (e) => {
+		const popup = document.createElement('form');
+		console.log(popup);
+		popup.classList.add('popup');
 
-	// 	popup.insertAdjacentHTML('afterbegin', 
-	// 		`<ul class="wrapper">
-	// 			<li>
-	// 				<label>Picture</label><br>
-	// 				<input type="text" class="image" value="https://">
-	// 			</li>
-	// 			<li>
-	// 				<label>Last Name</label><br>
-	// 				<input type="text" class="last_name" placeholder="last name">
-	// 			</li>
-	// 			<li>
-	// 				<label>First Name</label><br>
-	// 				<input type="text" class="first_name" placeholder="first name">
-	// 			</li>
-	// 			<li>
-	// 				<label>The birthday date: </label><br>
-	// 				<input type="date"> 
-	// 			</li>
-	// 			<li>
-	// 				<button type="submit" class="submit">submit</button>
-	// 			</li>
-	// 		</ul>`);
+		popup.insertAdjacentHTML('afterbegin', 
+			`<ul class="wrapper">
+				<li>
+					<label>Picture</label><br>
+					<input type="text" class="image" value="https://">
+				</li>
+				<li>
+					<label>Last Name</label><br>
+					<input type="text" class="last_name" placeholder="last name">
+				</li>
+				<li>
+					<label>First Name</label><br>
+					<input type="text" class="first_name" placeholder="first name">
+				</li>
+				<li>
+					<label>The birthday date: </label><br>
+					<input type="date"> 
+				</li>
+				<li>
+					<button type="submit" class="submit">submit</button>
+				</li>
+			</ul>`);
 
-	// 	document.body.appendChild(popup);
-	// 	popup.classList.add('open');
-	// };
+		document.body.appendChild(popup);
+		popup.classList.add('open');
+	};
 
-	// // const newSubmitBtn = e => {
-	// // 	const sub = e.target.closest('.submit');
-	// // 	console.log(sub);
-	// // }
+	// const addingList = e => {
+	// 	console.log("here it is");
+	// }
+
+	// const newSubmitBtn = e => {
+	// 	e.preventDefault();
+	// 	const sub = e.target.closest('.submit');
+	// 	console.log(sub);
+	// }
 	
-	// const addBtn = document.querySelector('.add');
-	// addBtn.addEventListener('click', newList);
+	const addBtn = document.querySelector('.add');
+	addBtn.addEventListener('click', newList);
 
 	// Adding event Listener to the edit fuction
 	window.addEventListener("click", editFunction);
 	// Adding event Listener to the delete fuction
 	window.addEventListener("click", deletePartner);
+	// // Adding event Listener to the submit fuction
+	// window.addEventListener("click", newSubmitBtn);
 }
 fetchPeopleList();
 
