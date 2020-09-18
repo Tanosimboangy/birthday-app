@@ -78,6 +78,8 @@ async function fetchPeopleList() {
 	async function destroyPopup(popup) {
 		popup.classList.remove('open');
 		popup.remove();
+        await wait(500);
+        popup = null;
 	}
 
 	// Creating an edit function
@@ -180,6 +182,12 @@ async function fetchPeopleList() {
 		});
 	};
 
+	const AddBtn = e => {
+        if (e.target.closest('button.save')) {
+            newList();
+        }
+    }
+
 	// Creating a new form for the add list
 	const newList = (e) => {
 		const popup = document.createElement('form');
@@ -210,16 +218,38 @@ async function fetchPeopleList() {
 				e.preventDefault();
 
 			});
-		document.body.appendChild(popup);
-		popup.classList.add('open');
-	};
+
+			window.addEventListener('click', e => {
+                if (e.target.closest('button.cancelCond')) {
+                    destroyPopup(popupAddForm);
+                }
+            })
+
+            popupAddForm.addEventListener('submit', e => {
+                e.preventDefault();
+                const form = e.currentTarget;
+    
+                const newPerso = {
+                    picture: form.pic.value,
+                    lastName: form.lastname.value,
+                    firstName: form.firstname.value,
+                    birthday: form.birthDay.value,
+                    id: Date.now()
+                }
+                persons.push(newPerso);
+                displayList(persons);
+                destroyPopup(popupAddForm);
+                tbody.dispatchEvent(new CustomEvent('updatePeopleLs'));
+				document.body.appendChild(popup);
+				popup.classList.add('open');
+			});
 	
 	const addBtn = document.querySelector('.add');
 	addBtn.addEventListener('click', newList);
 
-	// Adding event Listener to the edit fuction
+	// Adding event Listener to the edit fuction, delete fuction
 	window.addEventListener("click", editFunction);
-	// Adding event Listener to the delete fuction
 	window.addEventListener("click", deletePartner);
+	window.addEventListener("click", AddBtn);
 }
 fetchPeopleList();
