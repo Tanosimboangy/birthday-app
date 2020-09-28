@@ -66,7 +66,7 @@ async function fetchPeopleList() {
 			persons = lsItems;
 			showPeople();
 		}
-		// container.dispatchEvent(new CustomEvent('listUpdated'));
+		container.dispatchEvent(new CustomEvent('listUpdated'));
 	};
 	const updateLocalStorage = () => {
 		localStorage.setItem('persons', JSON.stringify(persons));
@@ -78,7 +78,6 @@ async function fetchPeopleList() {
 	async function destroyPopup(popup) {
 		popup.classList.remove('open');
 		popup.remove();
-        await wait(500);
         popup = null;
 	}
 
@@ -196,53 +195,53 @@ async function fetchPeopleList() {
 			`<ul class="wrapper">
 				<li>
 					<label>Picture</label><br>
-					<input type="text" class="image" value="https://" required>
+					<input type="url" class="image"  name="pic" value="https://picsum.photos/seed/picsum/150/150" required>
 				</li>
 				<li>
 					<label>Last Name</label><br>
-					<input type="text" class="last_name" placeholder="last name" required>
+					<input type="text" class="last_name" name="lastName" value="jacquit" placeholder="last name" required>
 				</li>
 				<li>
 					<label>First Name</label><br>
-					<input type="text" class="first_name" placeholder="first name" required>
+					<input type="text" class="first_name" name="firstName" placeholder="first name" value="Valentino" required>
 				</li>
 				<li>
-					<label>The birthday date: </label><br>
-					<input type="date"> 
+					<label>The birthday date: </label><br> 
+					<input type="date" name="birthday">
 				</li>
 				<li>
 					<button type="submit" class="save">save</button>
+					<button type="button" class="cancel_list">cancel</button>
 				</li>
 			</ul>`);
-			popup.addEventListener("submit", e => {
-				e.preventDefault();
-
-			});
+			document.body.appendChild(popup);
+			popup.classList.add('open');
 
 			window.addEventListener('click', e => {
-                if (e.target.closest('button.cancelCond')) {
-                    destroyPopup(popupAddForm);
+                if (e.target.closest('button.cancel_list')) {
+                    destroyPopup(popup);
                 }
             })
 
-            popupAddForm.addEventListener('submit', e => {
-                e.preventDefault();
-                const form = e.currentTarget;
+            popup.addEventListener('submit', e => {
+				e.preventDefault();
+				const newForm = e.currentTarget;
+				console.log(newForm);
     
-                const newPerso = {
-                    picture: form.pic.value,
-                    lastName: form.lastname.value,
-                    firstName: form.firstname.value,
-                    birthday: form.birthDay.value,
-                    id: Date.now()
-                }
-                persons.push(newPerso);
-                displayList(persons);
-                destroyPopup(popupAddForm);
-                tbody.dispatchEvent(new CustomEvent('updatePeopleLs'));
-				document.body.appendChild(popup);
-				popup.classList.add('open');
+                const newList = {
+					id: Date.now(),
+					lastName: newForm.lastName.value,
+					firstName: newForm.firstName.value,
+                    picture: newForm.pic.value,
+                    birthday: newForm.birthday.value,
+				}
+
+				persons.push(newList);
+				container.dispatchEvent(new CustomEvent('listUpdated'));
+				destroyPopup(popup);
+				showPeople(persons);
 			});
+		};
 	
 	const addBtn = document.querySelector('.add');
 	addBtn.addEventListener('click', newList);
@@ -253,3 +252,5 @@ async function fetchPeopleList() {
 	window.addEventListener("click", AddBtn);
 }
 fetchPeopleList();
+
+
