@@ -24,7 +24,7 @@ img {
     justify-content: space-between;
     margin-bottom: 1rem;
     background-color:rgba(255, 166, 0, 0.653);
-    padding: 1rem;
+    padding: .4rem;
     border-radius: 10px;
 }
 
@@ -75,16 +75,23 @@ svg {
 	transform: scale(var(--scale));
 }
 
+.popup fieldset ul li {
+	display: flex;
+	flex-direction: column;
+}
+.popup fieldset ul li:last-of-type {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+.popup fieldset ul li:last-of-type .submit, .cancel {
+	padding: .5rem 1rem;
+}
 .popup fieldset input {
 	margin-bottom: 1rem;
 	padding: .5rem;
 	border-radius: 5px;
 	border: none;
-}
-
-.popup fieldset button {
-	color: white;
-	font-size: 28px;
 }
 
 .popup.open {
@@ -95,6 +102,9 @@ svg {
 .popup.open fieldset {
 	--scale: 1;
 	background-color: rgb(97, 2, 2);
+}
+.popup.open fieldset ul {
+	padding: 0;
 }
 
 label {

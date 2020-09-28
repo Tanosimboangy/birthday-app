@@ -104,25 +104,36 @@ async function fetchPeopleList() {
 		popup.classList.add('popup');
 		popup.insertAdjacentHTML('afterbegin', 
 			`<fieldset>
-				<h1>Edit the list</h1>
-				<label>Last Name</label>
-				<input type="text" name="lastName" value="${editpersons.lastName}">
-				<label>First Name</label>
-				<input type="text" name="firstName" value="${editpersons.firstName}">
-				<label>Date of birthday</label>
-				<input type="text" name="birthday" value="${editpersons.birthday}">
-				<button class="submit" type="submit" data-id="${editpersons.id}">Submit</button>
+				<ul>
+					<li>
+						<h1>Edit the list</h1>
+					</li>
+					<li>
+						<label>Last Name</label>
+						<input type="text" name="lastName" value="${editpersons.lastName}">
+					</li>
+					<li>
+						<label>First Name</label>
+					<input type="text" name="firstName" value="${editpersons.firstName}">
+					</li>
+					<li>
+						<label>Date of birthday</label>
+						<input type="text" name="birthday" value="${editpersons.birthday}">
+					</li>
+					<li>
+						<button class="submit" type="submit" data-id="${editpersons.id}">Submit</button>
+						<button class="cancel" type="button" data-id="${editpersons.id}">Cancel</button>
+					</li>
+				</ul>
 			</fieldset>`);
-			// Creating a cancel button 
-			// Adding addeventListener in to that button
-			const CancelButton = document.createElement('button');
-			CancelButton.type = 'submit';
-			CancelButton.classList.add('cancel');
-			CancelButton.textContent = 'cancel';
-			popup.appendChild(CancelButton);
-			CancelButton.addEventListener('click', () => { resolve();
+
+			// Adding addeventListener in to cancel button in to that button
+			window.addEventListener('click', e => {
+				if (e.target.closest('button.cancel')) {
 					destroyPopup(popup);
-				},	{ once: true });
+				}
+			});
+			
 	
 			// Adding eventListener in the popup form
 			popup.addEventListener('submit', e => {
@@ -140,6 +151,7 @@ async function fetchPeopleList() {
 			popup.classList.add('open');
 		});
 	};
+
 	// Creating the delete function
 	const deletePartner = e => {
 		// Grabbing the delete button with event delegation
