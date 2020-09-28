@@ -131,3 +131,20 @@ li {
 	border: none;
 	background-color: wheat;
 }
+
+.extra_wrapper {
+	max-width: 300px;
+	background-color: rgb(82, 0, 0);
+	padding: 1rem;
+	border-radius: 5px;
+}
+
+.extra_wrapper li:nth-of-type(2) {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.extra_wrapper .delete, .cancel {
+	padding: .5rem 1rem;
+}

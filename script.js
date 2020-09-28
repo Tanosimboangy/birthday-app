@@ -154,7 +154,7 @@ async function fetchPeopleList() {
 		popup.classList.add('popup');
 		// Insert the html inside of the popup form
 		popup.insertAdjacentHTML('afterbegin', 
-			`<ul>
+			`<ul class="extra_wrapper">
 				<li>
 					<h2>Are you sure you want to delete this?</h2>
 				</li>
@@ -167,11 +167,14 @@ async function fetchPeopleList() {
 			window.addEventListener('click', e => {
                 if (e.target.closest('button.cancel')) {
                     destroyPopup(popup);
-				}
-				if (e.target.closest('button.delete')) {
-                    destroyPopup(popup);
                 }
 			})
+			
+			window.addEventListener('click', e => {
+                if (e.target.closest('button.delete')) {
+                    destroyPopup(popup);
+                }
+            })
 			
 			// const button = document.createElement("button");
 			// button.textContent = "delete";
