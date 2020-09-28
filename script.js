@@ -8,8 +8,6 @@ async function fetchPeopleList() {
 	const data = await response.json();
 	let persons = data;
 
-	// import { populatePersons } from '../lib/html.js'
-
 	// Create a function to store the html so that you can reuse it again
 	function populatePersons(people) {
 		return people.map(person => {
