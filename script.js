@@ -154,28 +154,37 @@ async function fetchPeopleList() {
 		popup.classList.add('popup');
 		// Insert the html inside of the popup form
 		popup.insertAdjacentHTML('afterbegin', 
-			`<h2>Are you sure you want to delete this?</h2>`);
-			const button = document.createElement("button");
-			button.textContent = "delete";
-			popup.appendChild(button);
-			// popup.classList.add('open');
-			button.addEventListener("click", e => {
-				e.preventDefault();
-				destroyPopup(popup);
-				const myPersons = persons.filter(person => person.id != id);
-				persons = myPersons;
-				showPeople(myPersons);
-				localStorage.setItem('persons', JSON.stringify(persons));
-			});
-			// Creating a new delete button for the form 
-			const cancelbutton = document.createElement("button");
-			cancelbutton.textContent = "cancel"
-			popup.appendChild(cancelbutton);
-			// Adding eventListener in the delete button
-			cancelbutton.addEventListener("click", e => {
-				e.preventDefault();
-				destroyPopup(popup);
-			});
+			`<ul>
+				<li>
+					<h2>Are you sure you want to delete this?</h2>
+				</li>
+				<li>
+					<button type="button" class="cancel">cancel</button>
+					<button type="button" class="delete">delete</button>
+				</li>
+			</ul>`);
+
+			window.addEventListener('click', e => {
+                if (e.target.closest('button.cancel')) {
+                    destroyPopup(popup);
+				}
+				if (e.target.closest('button.delete')) {
+                    destroyPopup(popup);
+                }
+			})
+			
+			// const button = document.createElement("button");
+			// button.textContent = "delete";
+			// popup.appendChild(button);
+			// // popup.classList.add('open');
+			// button.addEventListener("click", e => {
+			// 	e.preventDefault();
+			// 	destroyPopup(popup);
+			// 	const myPersons = persons.filter(person => person.id != id);
+			// 	persons = myPersons;
+			// 	showPeople(myPersons);
+			// 	localStorage.setItem('persons', JSON.stringify(persons));
+			// });
 		// Append the popup inside of the html 
 		document.body.appendChild(popup);
 		popup.classList.add('open');
