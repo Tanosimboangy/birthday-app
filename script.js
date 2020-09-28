@@ -7,6 +7,9 @@ async function fetchPeopleList() {
     const response = await fetch(dataJson);
 	const data = await response.json();
 	let persons = data;
+
+	// import { populatePersons } from '../lib/html.js'
+
 	// Create a function to store the html so that you can reuse it again
 	function populatePersons(people) {
 		return people.map(person => {
@@ -107,7 +110,7 @@ async function fetchPeopleList() {
 				<label>First Name</label>
 				<input type="text" name="firstName" value="${editpersons.firstName}">
 				<label>Date of birthday</label>
-				<input type="text" name="jobTitle" value="${editpersons.birthday}">
+				<input type="text" name="birthday" value="${editpersons.birthday}">
 				<button class="submit" type="submit" data-id="${editpersons.id}">Submit</button>
 			</fieldset>`);
 			// Creating a cancel button 
@@ -163,34 +166,24 @@ async function fetchPeopleList() {
 					<button type="button" class="delete">delete</button>
 				</li>
 			</ul>`);
+			// Append the popup inside of the html 
+			document.body.appendChild(popup);
+			popup.classList.add('open');
 
 			window.addEventListener('click', e => {
+				if (e.target.closest('button.delete')) {
+					destroyPopup(popup);
+					e.preventDefault();
+					const myPersons = persons.filter(person => person.id != id);
+					persons = myPersons;
+					showPeople(myPersons);
+					localStorage.setItem('persons', JSON.stringify(persons));
+					console.log("This is deleted");
+                }
                 if (e.target.closest('button.cancel')) {
                     destroyPopup(popup);
-                }
-			})
-			
-			window.addEventListener('click', e => {
-                if (e.target.closest('button.delete')) {
-                    destroyPopup(popup);
-                }
-            })
-			
-			// const button = document.createElement("button");
-			// button.textContent = "delete";
-			// popup.appendChild(button);
-			// // popup.classList.add('open');
-			// button.addEventListener("click", e => {
-			// 	e.preventDefault();
-			// 	destroyPopup(popup);
-			// 	const myPersons = persons.filter(person => person.id != id);
-			// 	persons = myPersons;
-			// 	showPeople(myPersons);
-			// 	localStorage.setItem('persons', JSON.stringify(persons));
-			// });
-		// Append the popup inside of the html 
-		document.body.appendChild(popup);
-		popup.classList.add('open');
+				}
+			});
 		});
 	};
 
@@ -220,7 +213,7 @@ async function fetchPeopleList() {
 				</li>
 				<li>
 					<label>The birthday date: </label><br> 
-					<input type="date" name="birthday">
+					<input type="date" name="birthday" required>
 				</li>
 				<li>
 					<button type="submit" class="save">save</button>
