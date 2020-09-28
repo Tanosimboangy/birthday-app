@@ -7,6 +7,11 @@ h1 {
 	color: white;
 }
 
+h2 {
+	color: white;
+	text-transform: capitalize;
+}
+
 img {
     border-radius: 50%;
 }
