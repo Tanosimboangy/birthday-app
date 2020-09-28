@@ -94,7 +94,7 @@ async function fetchPeopleList() {
 	// Activating the edit button by showing the form
 	const editPartnerPopup = idToEdit => {
 		// Finding the object mathes to the id
-		const editpersons = persons.find(person => person.id === idToEdit); 
+		const editpersons = persons.find(person => person.id == idToEdit); 
 		return new Promise(async resolve => {
 		// Creating a form element to contain the form
 		const popup = document.createElement('form');
@@ -162,8 +162,9 @@ async function fetchPeopleList() {
 			button.addEventListener("click", e => {
 				e.preventDefault();
 				destroyPopup(popup);
-				persons = persons.filter(person => person.id !== id);
-				showPeople();
+				const myPersons = persons.filter(person => person.id != id);
+				persons = myPersons;
+				showPeople(myPersons);
 				localStorage.setItem('persons', JSON.stringify(persons));
 			});
 			// Creating a new delete button for the form 
@@ -214,8 +215,6 @@ async function fetchPeopleList() {
 					<button type="button" class="cancel_list">cancel</button>
 				</li>
 			</ul>`);
-			document.body.appendChild(popup);
-			popup.classList.add('open');
 
 			window.addEventListener('click', e => {
                 if (e.target.closest('button.cancel_list')) {
@@ -241,6 +240,8 @@ async function fetchPeopleList() {
 				destroyPopup(popup);
 				showPeople(persons);
 			});
+			document.body.appendChild(popup);
+			popup.classList.add('open');
 		};
 	
 	const addBtn = document.querySelector('.add');
