@@ -1,6 +1,6 @@
 body {
 	font-family: sans-serif;
-	background-color: rgb(196, 196, 196);	
+	background-color: rgb(0, 0, 0);	
 }
 
 h1 {
@@ -120,11 +120,40 @@ label {
 	margin-bottom: 0;
 }
 
+.new_list ul {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.new_list ul li {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.new_list ul li input {
+	padding: 12px;
+	border-radius: 5px;
+	border: none;
+}
+
+.new_list ul li select {
+	padding: .5rem;
+	border-radius: 5px;
+	border: none;
+	font-size: 20px;
+}
+
 .add {
-	margin: 1rem;
 	border-radius: 6px;
-	background-color: blue;
 	padding: .5rem 1rem;
+	font-size: 20px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+.add:hover {
+	background-color: blue;
 }
 
 li {

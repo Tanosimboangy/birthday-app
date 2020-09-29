@@ -5,6 +5,9 @@ const container = document.querySelector(".container");
 
 // Importing these files
 import { populatePersons } from './lib/html.js';
+// import { editPartnerPopup } from './lib/edit.js';
+// import { deleteDeletePopup } from './lib/delete.js';
+// import { newList } from './lib/add_list.js';
 
 // Fetching the data from the people.json
 async function fetchPeopleList() {
@@ -108,7 +111,7 @@ async function fetchPeopleList() {
 			// Adding the open class to the popup form
 			popup.classList.add('open');
 		});
-	};
+	}
 
 	// Creating the delete function
 	const deletePartner = e => {
