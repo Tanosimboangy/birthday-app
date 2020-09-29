@@ -2,12 +2,13 @@
 const dataJson = './people.json';
 // Grabbing the container element
 const container = document.querySelector(".container");
+const inputSearchName = document.querySelector(".input");
+const filterByMonth = document.querySelector("#month");
+const resetBtn = document.querySelector("reset");
+const formFilter = document.querySelector("form.new_list");
 
 // Importing these files
 import { populatePersons } from './lib/html.js';
-// import { editPartnerPopup } from './lib/edit.js';
-// import { deleteDeletePopup } from './lib/delete.js';
-// import { newList } from './lib/add_list.js';
 
 // Fetching the data from the people.json
 async function fetchPeopleList() {
@@ -221,13 +222,42 @@ async function fetchPeopleList() {
 		document.body.appendChild(popup);
 		popup.classList.add('open');
 	};
-
 	const addBtn = document.querySelector('.add');
 	addBtn.addEventListener('click', newList);
+
+	// Filter the list by searching the lastName or the firstName of the person
+	const filterName = () => {
+		// Grabbing the value of the input
+		const input = inputSearchName.value;
+		const inputSearch = input.toLowerCase();
+		const filterPersName = persons.filter(person => person.lastName.toLowerCase().includes(inputSearch) || person.firstName.toLowerCase().includes(inputSearch));
+		const myHTML = populatePersons(filterPersName);
+        container.innerHTML = myHTML;
+	}
+
+	const filterMonth = () => {
+		const select = filterByMonth.value;
+		const filterPeople = persons.filter(person => {
+			const month = new Date(person.birthday).toLocaleString("en-US", { month: "long" });
+			return month.toLowerCase().includes(select.toLowerCase());
+		});
+		const html = populatePersons(filterPeople);
+		container.innerHTML = html;
+	}
+
+	const reset = e => {
+		console.log("here it is ee!");
+		formFilter.reset();
+		showPeople();
+	}
 
 	// Adding event Listener to the edit fuction, delete fuction
 	window.addEventListener("click", editFunction);
 	window.addEventListener("click", deletePartner);
 	window.addEventListener("click", AddBtn);
+	// Event listener for the input and search and reset
+	inputSearchName.addEventListener("input", filterName);
+	filterByMonth.addEventListener("input", filterMonth);
+	resetBtn.addEventListener("click", reset);
 }
 fetchPeopleList();
