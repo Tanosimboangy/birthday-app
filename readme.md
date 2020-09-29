@@ -32,5 +32,6 @@ Template for the student report :
 ## New explanation I would like about a specific topic:
 
 - I would like a new explanation about `date fns` and using module with import to split a big file into many files.
+- A way of accessing the list of the persons from the big scoped function
 
 ## Any other comments
