@@ -1,11 +1,4 @@
-// Import the data from people.json
-const dataJson = './people.json';
-// Grabbing the container element
-const container = document.querySelector(".container");
-const inputSearchName = document.querySelector(".input");
-const filterByMonth = document.querySelector("#month");
-const resetBtn = document.querySelector("reset");
-const formFilter = document.querySelector("form.new_list");
+import { container, dataJson, inputSearchName, filterByMonth, resetBtn, formFilter } from './lib/elements.js';
 
 // Importing these files
 import { populatePersons } from './lib/html.js';
@@ -22,6 +15,8 @@ async function fetchPeopleList() {
 		container.innerHTML = html;
 	}
 	showPeople();
+
+	// *************** LOCAL STORAGE **************** //
 
 	// Store the data the data inside of local storage
 	const initLocalStorage = () => {
@@ -46,8 +41,9 @@ async function fetchPeopleList() {
 		popup = null;
 	}
 
-	// Creating an edit function
-	// Grabbing the edit button by event delegation
+	// **************** EDIT PERSON **************** //
+
+	// Creating an edit function by grabbing the edit button using event delegation
 	const editFunction = e => {
 		if (e.target.closest('.edit')) {
 			const article = e.target.closest(".article");
@@ -114,6 +110,8 @@ async function fetchPeopleList() {
 		});
 	}
 
+	// ******************* DELETE PERSON ***************** /
+
 	// Creating the delete function
 	const deletePartner = e => {
 		// Grabbing the delete button with event delegation
@@ -129,7 +127,7 @@ async function fetchPeopleList() {
 			// create confirmation popup here
 			const popup = document.createElement('form');
 			popup.classList.add('popup');
-			// Insert the html inside of the popup form
+			// Insert the html inside the popup form
 			popup.insertAdjacentHTML('afterbegin',
 				`<ul class="extra_wrapper">
 				<li>
@@ -152,7 +150,6 @@ async function fetchPeopleList() {
 					persons = myPersons;
 					showPeople(myPersons);
 					localStorage.setItem('persons', JSON.stringify(persons));
-					console.log("This is deleted");
 				}
 				if (e.target.closest('button.cancel')) {
 					destroyPopup(popup);
@@ -160,6 +157,8 @@ async function fetchPeopleList() {
 			});
 		});
 	};
+
+	// *************************** ADDING PERSON TO THE LIST *************************** //
 
 	const AddBtn = e => {
 		if (e.target.closest('button.save')) {
@@ -169,9 +168,9 @@ async function fetchPeopleList() {
 	
 	// Creating a new form for the add list
 	const newList = (e) => {
-		const popup = document.createElement('form');
-		popup.classList.add('popup');
-		popup.insertAdjacentHTML('afterbegin',
+		const popupAdd = document.createElement('form');
+		popupAdd.classList.add('popup');
+		popupAdd.insertAdjacentHTML('afterbegin',
 			`<ul class="wrapper">
 				<li>
 					<label>Picture</label><br>
@@ -197,11 +196,12 @@ async function fetchPeopleList() {
 
 		window.addEventListener('click', e => {
 			if (e.target.closest('button.cancel_list')) {
-				destroyPopup(popup);
+				destroyPopup(popupAdd);
 			}
 		})
 
-		popup.addEventListener('submit', e => {
+		// 
+		popupAdd.addEventListener('submit', e => {
 			e.preventDefault();
 			const newForm = e.currentTarget;
 			console.log(newForm);
@@ -216,14 +216,16 @@ async function fetchPeopleList() {
 
 			persons.push(newList);
 			container.dispatchEvent(new CustomEvent('listUpdated'));
-			destroyPopup(popup);
+			destroyPopup(popupAdd);
 			showPeople(persons);
 		});
-		document.body.appendChild(popup);
-		popup.classList.add('open');
+		document.body.appendChild(popupAdd);
+		popupAdd.classList.add('open');
 	};
 	const addBtn = document.querySelector('.add');
 	addBtn.addEventListener('click', newList);
+
+	// ****************************** FILTER EVENTS ************************************ //
 
 	// Filter the list by searching the lastName or the firstName of the person
 	const filterName = () => {
@@ -250,6 +252,8 @@ async function fetchPeopleList() {
 		formFilter.reset();
 		showPeople();
 	}
+
+	// ***************************** ADD EVENT LISTENER ********************************** //
 
 	// Adding event Listener to the edit fuction, delete fuction
 	window.addEventListener("click", editFunction);

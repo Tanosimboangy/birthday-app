@@ -161,6 +161,10 @@ li {
 	box-shadow: 2px 2px 2px wheat;
 }
 
+.wrapper ul li {
+	margin-bottom: 1rem;
+}
+
 .wrapper button {
 	padding: .5rem 1rem;
 }
