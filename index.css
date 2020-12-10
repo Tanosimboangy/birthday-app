@@ -28,7 +28,8 @@ h1, h2 {
 }
 
 img {
-    border-radius: 50%;
+	border-radius: 50%;
+	max-width: 50%;
 }
 
 .container > article ul {
@@ -36,14 +37,61 @@ img {
     flex-direction: row;
     align-items: center;
     margin-bottom: 1rem;
-    background-color:#55423d;
-	padding: .8rem;
+    background-color: black;
+	padding: 16px;
 	justify-content: space-between;
 	color: white;
 }
 
-.container > article ul li:last-of-type button {
-	margin: .3rem;
+.container > article ul li:last-of-type {	
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+}
+.container > article ul li:last-of-type div:first-of-type {
+	margin-right: 20px;
+}
+
+label {
+    display: inline-block;
+	color: white;
+	margin-bottom: 0;
+}
+
+.new_list ul {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	align-items: center;
+	padding-top: 10px;
+	margin-bottom: 20px;
+}
+
+.new_list ul li {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	padding-bottom: 10px;
+}
+.new_list ul label {
+	padding-bottom: 10px;
+	font-size: 20px;
+}
+
+.new_list ul li input {
+	padding: 12px;
+	border-radius: 5px;
+	border: none;
+	max-width: 100%;
+}
+
+.new_list ul li select {
+	padding: .5rem;
+	border-radius: 5px;
+	border: none;
+	font-size: 20px;
 }
 
 button {
@@ -69,7 +117,7 @@ button {
 
 .popup button {
 	border: 0;
-	line-height: 2.5;
+	line-height: 1.5;
 	padding: 20 10px;
 	font-size: 1rem;
 	text-transform: uppercase;
@@ -90,7 +138,7 @@ button {
 
 svg {
 	height: 25px;
-	color: #ff8e3c;
+	fill: orangered;
 }
 
 .popup {
@@ -154,46 +202,6 @@ svg {
 }
 .popup.open fieldset ul {
 	padding: 0;
-}
-
-label {
-    display: inline-block;
-	color: white;
-	margin-bottom: 0;
-}
-
-.new_list ul {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	flex-wrap: wrap;
-	align-items: center;
-	padding-top: 10px;
-}
-
-.new_list ul li {
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	padding-bottom: 10px;
-}
-.new_list ul label {
-	padding-bottom: 10px;
-	font-size: 20px;
-}
-
-.new_list ul li input {
-	padding: 12px;
-	border-radius: 5px;
-	border: none;
-	max-width: 100%;
-}
-
-.new_list ul li select {
-	padding: .5rem;
-	border-radius: 5px;
-	border: none;
-	font-size: 20px;
 }
 
 .wrapper {

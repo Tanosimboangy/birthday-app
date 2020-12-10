@@ -1,11 +1,9 @@
-import { container, dataJson, inputSearchName, filterByMonth, resetBtn, formFilter } from './lib/elements.js';
-
-// Importing these files
+import { container, dataJson, inputSearchName, filterByMonth, formFilter } from './lib/elements.js';
 import { populatePersons } from './lib/html.js';
 
 // Fetching the data from the people.json
 async function fetchPeopleList() {
-	const response = await fetch(dataJson);
+	const response = await fetch("https://gist.githubusercontent.com/Pinois/e1c72b75917985dc77f5c808e876b67f/raw/93debb7463fbaaec29622221b8f9e719bd5b119f/birthdayPeople.json");
 	const data = await response.json();
 	let persons = data;
 
@@ -14,12 +12,9 @@ async function fetchPeopleList() {
 		const html = populatePersons(persons);
 		container.innerHTML = html;
 	}
-	
 	showPeople();
 
-	// *************** LOCAL STORAGE **************** //
-
-	// Store the data the data inside of local storage
+	// Store the data inside of local storage
 	const initLocalStorage = () => {
 		const stringFromLS = localStorage.getItem('persons');
 		const lsItems = JSON.parse(stringFromLS);
@@ -33,7 +28,7 @@ async function fetchPeopleList() {
 	const updateLocalStorage = () => {
 		localStorage.setItem('persons', JSON.stringify(persons));
 	};
-	// Adding eventListner in the updateLocalStorage
+	// Update the LocalStorage by adding event Listener
 	container.addEventListener("listUpdated", updateLocalStorage);
 	initLocalStorage();
 
@@ -43,9 +38,7 @@ async function fetchPeopleList() {
 		popup = null;
 	}
 
-	// **************** EDIT PERSON **************** //
-
-	// Creating an edit function by grabbing the edit button using event delegation
+	// Creating an edit function in order to give access to the user to edit the lists
 	const editFunction = e => {
 		if (e.target.closest('.edit')) {
 			const article = e.target.closest(".article");
@@ -112,8 +105,6 @@ async function fetchPeopleList() {
 		});
 	}
 
-	// ******************* DELETE PERSON ***************** /
-
 	// Creating the delete function
 	const deletePartner = e => {
 		// Grabbing the delete button with event delegation
@@ -160,8 +151,6 @@ async function fetchPeopleList() {
 		});
 	};
 
-	// *************************** ADDING PERSON TO THE LIST *************************** //
-
 	const AddBtn = e => {
 		if (e.target.closest('button.save')) {
 			newList();
@@ -176,7 +165,7 @@ async function fetchPeopleList() {
 			`<ul class="wrapper">
 				<li>
 					<label>Picture</label><br>
-					<input type="url" class="image"  name="pic" value="https://picsum.photos/seed/picsum/150/150" required>
+					<input type="url" class="image"  name="pic" value="https://picsum.photos/seed/picsum/100/150" required>
 				</li>
 				<li>
 					<label>Last Name</label><br>
@@ -227,8 +216,6 @@ async function fetchPeopleList() {
 	const addBtn = document.querySelector('.add');
 	addBtn.addEventListener('click', newList);
 
-	// ****************************** FILTER EVENTS ************************************ //
-
 	// Filter the list by searching the lastName or the firstName of the person
 	const filterName = () => {
 		// Grabbing the value of the input
@@ -255,8 +242,6 @@ async function fetchPeopleList() {
 		showPeople();
 	}
 
-	// ***************************** ADD EVENT LISTENER ********************************** //
-
 	// Adding event Listener to the edit fuction, delete fuction
 	window.addEventListener("click", editFunction);
 	window.addEventListener("click", deletePartner);
@@ -264,6 +249,5 @@ async function fetchPeopleList() {
 	// Event listener for the input and search and reset
 	inputSearchName.addEventListener("input", filterName);
 	filterByMonth.addEventListener("input", filterMonth);
-	resetBtn.addEventListener("click", reset);
 }
 fetchPeopleList();
