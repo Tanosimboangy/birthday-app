@@ -14,6 +14,7 @@ async function fetchPeopleList() {
 		const html = populatePersons(persons);
 		container.innerHTML = html;
 	}
+	
 	showPeople();
 
 	// *************** LOCAL STORAGE **************** //
@@ -28,6 +29,7 @@ async function fetchPeopleList() {
 		}
 		container.dispatchEvent(new CustomEvent('listUpdated'));
 	};
+
 	const updateLocalStorage = () => {
 		localStorage.setItem('persons', JSON.stringify(persons));
 	};
