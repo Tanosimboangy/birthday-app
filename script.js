@@ -135,12 +135,12 @@ async function fetchPeopleList() {
 			document.body.appendChild(popup);
 			popup.classList.add('open');
 
-			window.addEventListener('click', e => {
+			popup.addEventListener('click', e => {
 				if (e.target.closest('button.delete')) {
-					destroyPopup(popup);
 					e.preventDefault();
 					const myPersons = persons.filter(person => person.id != id);
 					persons = myPersons;
+					destroyPopup(popup);
 					showPeople(myPersons);
 					localStorage.setItem('persons', JSON.stringify(persons));
 				}
@@ -180,7 +180,7 @@ async function fetchPeopleList() {
 					<input type="date" name="birthday" required>
 				</li>
 				<li>
-					<button type="submit" class="save">save</button>
+					<button type="submit" class="save">save list</button>
 					<button type="button" class="cancel_list">cancel</button>
 				</li>
 			</ul>`);
@@ -206,8 +206,8 @@ async function fetchPeopleList() {
 			}
 
 			persons.push(newList);
-			container.dispatchEvent(new CustomEvent('listUpdated'));
 			destroyPopup(popupAdd);
+			container.dispatchEvent(new CustomEvent('listUpdated'));
 			showPeople(persons);
 		});
 		document.body.appendChild(popupAdd);
