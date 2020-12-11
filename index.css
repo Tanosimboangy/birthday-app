@@ -11,7 +11,6 @@ ul {
 }
 li {
 	list-style: none;
-	color: white;
 }
 a {
 	text-decoration: none;
@@ -20,50 +19,31 @@ h1, h2, h3, h4, h5, h6, p {
 	margin: 0;
 }
 
-h1, h2 {
-	text-transform: capitalize;
+h1 {
+	/* font-family: Rubik; */
+	font-style: normal;
+	font-weight: bold;
+	font-size: 64px;
+	line-height: 76px;
 	color: #094067;
-	padding-top: 20px;
 }
 
-img {
-	border-radius: 50%;
-	max-width: 50%;
-}
-
-.container > article ul {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-bottom: 1rem;
-    background-color: black;
-	padding: 16px;
-	justify-content: space-between;
-	color: white;
-}
-
-.article ul li:last-of-type {	
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	justify-content: space-between;
-}
-.article ul li:last-of-type div:first-of-type {
-	margin-right: 20px;
-}
-
-label {
-    display: inline-block;
-	color: white;
-	margin-bottom: 0;
-}
+/* label {
+	font-family: Rubik;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 21px;
+	color: #094067;
+	padding-bottom: 13px;
+} */
 
 .new_list ul {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
 	flex-wrap: wrap;
-	align-items: center;
+	align-items: flex-end;
 	padding-top: 10px;
 	margin-bottom: 20px;
 }
@@ -73,6 +53,7 @@ label {
 	flex-direction: column;
 	justify-content: space-between;
 	padding-bottom: 10px;
+	font-style: normal;
 }
 .new_list ul label {
 	padding-bottom: 10px;
@@ -83,14 +64,65 @@ label {
 	padding: 12px;
 	border-radius: 5px;
 	border: none;
-	max-width: 100%;
+	outline: none;
+	cursor: pointer;
+	/* font-family: Rubik; */
+	font-weight: 500;
+	font-size: 18px;
+	line-height: 21px;
+	color: #5F6C7B;
 }
 
 .new_list ul li select {
-	padding: .5rem;
+	padding: 12px;
 	border-radius: 5px;
 	border: none;
+	cursor: pointer;
+	outline: none;
+	/* font-family: Rubik; */
+	font-weight: 500;
+	font-size: 18px;
+	line-height: 21px;
+	color: #5F6C7B;
+}
+
+.container > article ul {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+	margin-bottom: 1rem;
+	padding: 3% 4%;
+    background-color: white;
+	justify-content: space-between;
+	border-radius: 4px;
+}
+.container > article ul li img {
+	width: 100%;
+	border-radius: 10px;
+}
+
+.article ul li:last-of-type {	
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+}
+.article ul li:nth-of-type(2) {	
+	/* font-family: Rubik; */
+	font-style: normal;
+	font-weight: 500;
+}
+.article ul li:nth-of-type(2) h2 {	
 	font-size: 20px;
+	color: #000000;
+	padding-bottom: 10px;
+}
+.article ul li:nth-of-type(2) span {	
+	font-size: 16px;
+	color: #5F6C7B;
+}
+.article ul li:last-of-type div:first-of-type {
+	margin-right: 20px;
 }
 
 button {
@@ -162,13 +194,13 @@ svg {
 	align-items: center;
 	justify-content: center;
 	background: var(--grey);
-	padding: 1rem 4rem;
 	border: 3px solid var(--pink);
-	border-radius: 8px;
 	box-shadow: var(--box-shadow);
 	transition: all 0.2s;
     --scale: 0.3;
 	transform: scale(var(--scale));
+	color: white;
+	padding: 30px;
 }
 
 .popup fieldset ul li {
@@ -181,11 +213,11 @@ svg {
 	justify-content: space-between;
 }
 .popup fieldset ul li:last-of-type .submit, .cancel {
-	padding: .5rem 1rem;
+	padding: 8px 16px;
 }
 .popup fieldset input {
-	margin-bottom: 1rem;
-	padding: .5rem;
+	margin-bottom: 5px;
+	padding: 10px;
 	border-radius: 5px;
 	border: none;
 }
@@ -197,10 +229,31 @@ svg {
 
 .popup.open fieldset {
 	--scale: 1;
-	background-color: rgb(97, 2, 2);
+	background: hsla(0, 0%, 30%);
+	box-shadow: 0px 0px 4px black;
 }
-.popup.open fieldset ul {
-	padding: 0;
+.popup.open fieldset label {
+	color: white;
+	padding-bottom: 0;
+	/* font-family: Rubik; */
+	font-style: normal;
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 21px;
+}
+.popup.open fieldset ul li {
+	padding-bottom: 10px;	
+}
+.popup.open fieldset ul li input {
+	/* font-family: Rubik; */
+	font-style: normal;
+	font-weight: 500;
+	font-size: 18px;
+	line-height: 21px;
+	color: #094067;
+}
+.popup.open fieldset ul li:last-of-type .submit {
+	margin-right: 20px;
 }
 
 .wrapper {
@@ -229,9 +282,12 @@ svg {
 	max-width: 300px;
     background-color: transparent;
     padding: 1rem;
-    box-shadow: 0px 0px 4px black;
+	box-shadow: 0px 0px 10px black;
 }
-
+.extra_wrapper li:first-of-type h2 {
+	color: white;
+    padding-bottom: 10px;
+}
 .extra_wrapper li:nth-of-type(2) {
 	display: flex;
 	flex-direction: row;
@@ -241,7 +297,7 @@ svg {
 
 @media(min-width: 720px) {
 	body {
-		max-width: 800px;
+		max-width: 650px;
 		margin: auto;
 	}
 }

@@ -1,4 +1,4 @@
-import { container, dataJson, inputSearchName, filterByMonth, formFilter } from './lib/elements.js';
+import { container, inputSearchName, filterByMonth, formFilter } from './lib/elements.js';
 import { populatePersons } from './lib/html.js';
 
 // Fetching the data from the people.json
@@ -59,19 +59,19 @@ async function fetchPeopleList() {
 				`<fieldset>
 				<ul>
 					<li>
-						<h1>Edit the list</h1>
+						<h2>Edit ${editpersons.lastName} ${editpersons.firstName}</h2>
 					</li>
 					<li>
-						<label>Last Name</label>
+						<label>Last Name:</label>
 						<input type="text" name="lastName" value="${editpersons.lastName}">
 					</li>
 					<li>
-						<label>First Name</label>
+						<label>First Name:</label>
 					<input type="text" name="firstName" value="${editpersons.firstName}">
 					</li>
 					<li>
-						<label>Date of birthday</label>
-						<input type="text" name="birthday" value="${editpersons.birthday}">
+						<label>Date of birthday:</label>
+						<input type="date" name="birthday" value="${editpersons.birthday}">
 					</li>
 					<li>
 						<button class="submit" type="submit" data-id="${editpersons.id}">Submit</button>
