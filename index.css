@@ -1,6 +1,6 @@
 body {
 	font-family: sans-serif;
-	background-color: #004643;
+	background: #D8EEFE;;
 	margin: 0;
 	max-width: 95%;
 	margin: auto;
@@ -21,9 +21,8 @@ h1, h2, h3, h4, h5, h6, p {
 }
 
 h1, h2 {
-	text-align: center;
 	text-transform: capitalize;
-	color: white;
+	color: #094067;
 	padding-top: 20px;
 }
 
@@ -43,13 +42,13 @@ img {
 	color: white;
 }
 
-.container > article ul li:last-of-type {	
+.article ul li:last-of-type {	
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	justify-content: space-between;
 }
-.container > article ul li:last-of-type div:first-of-type {
+.article ul li:last-of-type div:first-of-type {
 	margin-right: 20px;
 }
 

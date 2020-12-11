@@ -165,7 +165,7 @@ async function fetchPeopleList() {
 			`<ul class="wrapper">
 				<li>
 					<label>Picture</label><br>
-					<input type="url" class="image"  name="pic" value="https://picsum.photos/seed/picsum/100/150" required>
+					<input type="url" class="image"  name="pic" value="https://picsum.photos/seed/picsum/100/100" required>
 				</li>
 				<li>
 					<label>Last Name</label><br>
