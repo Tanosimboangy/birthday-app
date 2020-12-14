@@ -1,4 +1,4 @@
-import { container, inputSearchName, filterByMonth, formFilter } from './lib/elements.js';
+import { container, inputSearchName, filterByMonth, formFilter } from './Elements/elements.js';
 import { populatePersons } from './Elements/html.js';
 
 // Fetching the data from the people.json
