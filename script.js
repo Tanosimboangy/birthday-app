@@ -1,5 +1,5 @@
 import { container, inputSearchName, filterByMonth, formFilter } from './lib/elements.js';
-import { populatePersons } from './lib/html.js';
+import { populatePersons } from './Elements/html.js';
 
 // Fetching the data from the people.json
 async function fetchPeopleList() {
@@ -192,7 +192,7 @@ async function fetchPeopleList() {
 		})
 
 		// 
-		popupAdd.addEventListener('submit', e => {
+		window.addEventListener('submit', e => {
 			e.preventDefault();
 			const newForm = e.currentTarget;
 			console.log(newForm);

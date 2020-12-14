@@ -132,9 +132,11 @@ body {
 						color: #000000;
 						padding-bottom: 10px;
 					}
-					span {	
-						font-size: 16px;
-						color: #5F6C7B;
+					p {
+						span {
+							color: orangered;
+							font-size: 16px;
+						}
 					}
 				}
 				li:last-of-type {	
