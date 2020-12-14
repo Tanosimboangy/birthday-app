@@ -25,7 +25,7 @@ export function populatePersons(people) {
         const Year = date.getFullYear();
         const birthDayDate = new Date(Year, months, day);
         let oneDay = 1000*60*60*24;
-        const dayLeft = Math.ceil((birthDayDate.getTime() - date.getTime()) / (oneDay));
+        const dayLeft = Math.ceil((birthDayDate.getTime() - date.getTime()) / (oneDay)) + 365 ;
 
         return `
         <article data-id="${person.id}" value="${person.id}" class="article">
@@ -34,7 +34,7 @@ export function populatePersons(people) {
                 <li>
                     <h2>${person.lastName} ${person.firstName}</h2> 
                     <p>
-                        Turns <span>${futureAge}</span> on ${new Date(person.birthday).toLocaleString("en-US", { month: "long" })} <time datetime="${fullDate}"> ${new Date(person.birthday).toLocaleString("en-Us", { day: "numeric" })}${nthDate(date)}</time>
+                        Turns <span>${futureAge + 1}</span> on ${new Date(person.birthday).toLocaleString("en-US", { month: "long" })} <time datetime="${fullDate}"> ${new Date(person.birthday).toLocaleString("en-Us", { day: "numeric" })}${nthDate(date)}</time>
                          
                     </p>    
                 </li>
@@ -44,11 +44,11 @@ export function populatePersons(people) {
                             in ${dayLeft < 0 ? dayLeft * -1 + " " + "days" : dayLeft + " days"}</li>
                         </li>
                         <li>
-                            <div class="edit" value="${person.id}" data-id="${person.id}">
-                                <svg viewBox="0 0 20 20" class="pencil w-6 h-6"><path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path></svg>
-                            </div>
-                            <div class="delete" data-id="${person.id}">
-                                <svg viewBox="0 0 20 20" class="trash w-6 h-6"><path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg>
+                        <div class="edit" value="${person.id}" data-id="${person.id}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40px" height="40px" fill="blue" enable-background="new 0 0 24 24" height="24" viewBox="0 0 24 24" width="24"><rect fill="none" height="24" width="24"/><path d="M22,24H2v-4h20V24z M13.06,5.19l3.75,3.75L7.75,18H4v-3.75L13.06,5.19z M17.88,7.87l-3.75-3.75 l1.83-1.83c0.39-0.39,1.02-0.39,1.41,0l2.34,2.34c0.39,0.39,0.39,1.02,0,1.41L17.88,7.87z" enable-background="new"/></svg>
+                        </div>
+                        <div class="delete" data-id="${person.id}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40px" height="40px" fill="red" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM8 9h8v10H8V9zm7.5-5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
                             </div>
                         </li>
                     </ul>

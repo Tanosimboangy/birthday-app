@@ -108,8 +108,12 @@ body {
 				display: flex;
 				flex-direction: row;
 				align-items: center;
+				// flex-wrap: wrap;
 				margin-bottom: 1rem;
-				padding: 3% 4%;
+				padding-bottom: 10px;
+				padding-top: 20px;
+				padding-right: 20px;
+				padding-left: 20px;
 				background-color: white;
 				justify-content: space-between;
 				border-radius: 4px;
@@ -117,22 +121,24 @@ body {
 					font-family: "Rubik";
 					font-style: normal;
 					font-weight: 500;
+					margin-bottom: 10px;
 					img {
 						width: 100%;
 						border-radius: 10px;
 					}
 					svg {
-						height: 25px;
-						fill: orangered;
+						width: 45px;
 					}
 				} 
 				li:nth-of-type(2) {	
+					padding-left: 4px;
 					h2 {	
 						font-size: 20px;
 						color: #000000;
 						padding-bottom: 10px;
 					}
 					p {
+						font-size: 18px;
 						span {
 							color: orangered;
 							font-size: 16px;
@@ -140,12 +146,29 @@ body {
 					}
 				}
 				li:last-of-type {	
-					display: flex;
-					flex-direction: row;
-					align-items: center;
-					justify-content: space-between;
-					div:first-of-type {
-						margin-right: 20px;
+					ul {
+						display: flex;
+						flex-direction: column;
+						margin-bottom: 0;
+						padding: 0;
+						li:first-of-type {
+							padding-bottom: 10px;
+							font-family: "Rubik";
+							font-style: normal;
+							font-weight: 500;
+							font-size: 18px;
+							line-height: 28px;
+							color: #5F6C7B;
+						}
+						li:last-of-type {
+							display: flex;
+							flex-direction: row;
+							align-items: center;
+							justify-content: space-between;
+							.edit {
+								margin-right: 20px;
+							}
+						}
 					}
 				}
 			}
@@ -293,7 +316,7 @@ body {
 @media(min-width: 720px) {
 	body {
 		.main {
-			max-width: 650px;
+			max-width: 800px;
 			margin: auto;
 		}
 	}

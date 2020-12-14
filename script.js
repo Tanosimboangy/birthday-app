@@ -93,10 +93,12 @@ async function fetchPeopleList() {
 				e.preventDefault();
 				editpersons.firstName = popup.firstName.value;
 				editpersons.lastName = popup.lastName.value;
-				// editpersons.lastName = popup.birthday.value;
+				let newDate = new Date(popup.birthday.value).toDateString();
+				editpersons.lastName = newDate;
+				console.log(popup.birthday);
 				showPeople(editpersons);
-				destroyPopup(popup);
 				container.dispatchEvent(new CustomEvent('listUpdated'));
+				destroyPopup(popup);
 			}, { once: true });
 			// Adding the popup in the html
 			document.body.appendChild(popup);
@@ -140,11 +142,10 @@ async function fetchPeopleList() {
 					e.preventDefault();
 					const myPersons = persons.filter(person => person.id != id);
 					persons = myPersons;
-					destroyPopup(popup);
 					showPeople(myPersons);
 					localStorage.setItem('persons', JSON.stringify(persons));
-				}
-				if (e.target.closest('button.cancel')) {
+					destroyPopup(popup);
+				} else if (e.target.closest('button.cancel')) {
 					destroyPopup(popup);
 				}
 			});
@@ -192,10 +193,9 @@ async function fetchPeopleList() {
 		})
 
 		// 
-		window.addEventListener('submit', e => {
+		popupAdd.addEventListener('submit', e => {
 			e.preventDefault();
 			const newForm = e.currentTarget;
-			console.log(newForm);
 
 			const newList = {
 				id: Date.now(),
@@ -236,11 +236,11 @@ async function fetchPeopleList() {
 		container.innerHTML = html;
 	}
 
-	const reset = e => {
-		console.log("here it is ee!");
-		formFilter.reset();
-		showPeople();
-	}
+	// const reset = e => {
+	// 	console.log("here it is ee!");
+	// 	formFilter.reset();
+	// 	showPeople();
+	// }
 
 	// Adding event Listener to the edit fuction, delete fuction
 	window.addEventListener("click", editFunction);
