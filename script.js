@@ -143,7 +143,6 @@ async function fetchPeopleList() {
 					showPeople(myPersons);
 					localStorage.setItem('persons', JSON.stringify(persons));
 					destroyPopup(deletePopup);
-					console.log("I am working");
 				} else if (e.target.closest('button.cancel')) {
 					destroyPopup(deletePopup);
 				}
