@@ -55,6 +55,7 @@ async function fetchPeopleList() {
 			// Creating a form element to contain the form
 			const popup = document.createElement('form');
 			popup.classList.add('popup');
+			const newDate = new Date(editpersons.birthday).toDateString();
 			popup.insertAdjacentHTML('afterbegin',
 				`<fieldset>
 					<ul>
@@ -71,7 +72,7 @@ async function fetchPeopleList() {
 						</li>
 						<li>
 							<label>Date of birthday:</label>
-							<input type="date" name="birthday" value="${new Date(editpersons.birthday).toDateString()}">
+							<input type="date" name="birthday" value="${newDate}">
 						</li>
 						<li>
 							<button class="submit" type="submit" data-id="${editpersons.id}">Save changes</button>
@@ -82,12 +83,11 @@ async function fetchPeopleList() {
 			`);
 
 			// Adding addeventListener in to cancel button in to that button
-			window.addEventListener('click', e => {
+			popup.addEventListener('click', e => {
 				if (e.target.closest('button.cancel')) {
 					destroyPopup(popup);
 				}
 			});
-
 
 			// Adding eventListener in the popup form
 			popup.addEventListener('submit', e => {
@@ -164,15 +164,15 @@ async function fetchPeopleList() {
 			`<ul class="wrapper">
 				<li>
 					<label>Picture</label><br>
-					<input type="url" class="image"  name="pic" value="https://picsum.photos/seed/picsum/100/100" required>
+					<input type="url" class="image" placeholder="url" name="pic" value="" required>
 				</li>
 				<li>
 					<label>Last Name</label><br>
-					<input type="text" class="last_name" name="lastName" value="jacquit" placeholder="last name" required>
+					<input type="text" class="last_name" name="lastName" value="" placeholder="last name" required>
 				</li>
 				<li>
 					<label>First Name</label><br>
-					<input type="text" class="first_name" name="firstName" placeholder="first name" value="Valentino" required>
+					<input type="text" class="first_name" name="firstName" placeholder="first name" value="" required>
 				</li>
 				<li>
 					<label>The birthday date: </label><br> 
@@ -190,7 +190,6 @@ async function fetchPeopleList() {
 			}
 		})
 
-		// 
 		popupAdd.addEventListener('submit', e => {
 			e.preventDefault();
 			const newForm = e.currentTarget;
@@ -204,7 +203,6 @@ async function fetchPeopleList() {
 			}
 
 			persons.push(newList);
-			destroyPopup(popupAdd);
 			container.dispatchEvent(new CustomEvent('listUpdated'));
 			showPeople(persons);
 		});
