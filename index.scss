@@ -137,6 +137,7 @@ body {
 						font-size: 36px;
 						line-height: 43px;
 						color: #000000;
+						max-width: 300px;
 					}
 					p {
 						font-size: 24px;
@@ -180,6 +181,9 @@ body {
 						}
 					}
 				}
+			}
+			article:hover {
+				box-shadow: 0px 0px 6px black;
 			}
 		}
 	}

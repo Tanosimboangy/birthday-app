@@ -83,7 +83,7 @@ async function fetchPeopleList() {
 			`);
 
 			// Adding addeventListener in to cancel button in to that button
-			popup.addEventListener('click', e => {
+			window.addEventListener('click', e => {
 				if (e.target.closest('button.cancel')) {
 					destroyPopup(popup);
 				}
@@ -96,7 +96,7 @@ async function fetchPeopleList() {
 				editpersons.lastName = popup.lastName.value;
 				showPeople(editpersons);
 				container.dispatchEvent(new CustomEvent('listUpdated'));
-				destroyPopup(popup);
+				destroyPopup(popup)
 			}, { once: true });
 			// Adding the popup in the html
 			document.body.appendChild(popup);
@@ -118,10 +118,10 @@ async function fetchPeopleList() {
 	const deleteDeletePopup = async id => {
 		return new Promise(async function (resolve) {
 			// create confirmation popup here
-			const popup = document.createElement('form');
-			popup.classList.add('popup');
+			const deletePopup = document.createElement('form');
+			deletePopup.classList.add('popup');
 			// Insert the html inside the popup form
-			popup.insertAdjacentHTML('afterbegin',
+			deletePopup.insertAdjacentHTML('afterbegin',
 				`<ul class="extra_wrapper">
 				<li>
 					<h2>Are you sure you want to delete this?</h2>
@@ -131,20 +131,21 @@ async function fetchPeopleList() {
 					<button type="button" class="cancel">cancel</button>
 				</li>
 			</ul>`);
-			// Append the popup inside of the html 
-			document.body.appendChild(popup);
-			popup.classList.add('open');
+			// Append the deletePopup inside of the html 
+			document.body.appendChild(deletePopup);
+			deletePopup.classList.add('open');
 
-			popup.addEventListener('click', e => {
-				if (e.target.closest('button.delete')) {
+			deletePopup.addEventListener('click', e => {
+				if (e.target.matches('button.delete')) {
 					e.preventDefault();
 					const myPersons = persons.filter(person => person.id != id);
 					persons = myPersons;
 					showPeople(myPersons);
 					localStorage.setItem('persons', JSON.stringify(persons));
-					destroyPopup(popup);
+					destroyPopup(deletePopup);
+					console.log("I am working");
 				} else if (e.target.closest('button.cancel')) {
-					destroyPopup(popup);
+					destroyPopup(deletePopup);
 				}
 			});
 		});
@@ -193,7 +194,6 @@ async function fetchPeopleList() {
 		popupAdd.addEventListener('submit', e => {
 			e.preventDefault();
 			const newForm = e.currentTarget;
-
 			const newList = {
 				id: Date.now(),
 				lastName: newForm.lastName.value,
@@ -205,6 +205,7 @@ async function fetchPeopleList() {
 			persons.push(newList);
 			container.dispatchEvent(new CustomEvent('listUpdated'));
 			showPeople(persons);
+			destroyPopup(popupAdd);
 		});
 		document.body.appendChild(popupAdd);
 		popupAdd.classList.add('open');
@@ -241,7 +242,7 @@ async function fetchPeopleList() {
 	// Adding event Listener to the edit fuction, delete fuction
 	window.addEventListener("click", editFunction);
 	window.addEventListener("click", deletePartner);
-	window.addEventListener("click", AddBtn);
+	window.addEventListener("submit", AddBtn);
 	// Event listener for the input and search and reset
 	inputSearchName.addEventListener("input", filterName);
 	filterByMonth.addEventListener("input", filterMonth);
