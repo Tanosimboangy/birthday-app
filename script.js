@@ -57,28 +57,29 @@ async function fetchPeopleList() {
 			popup.classList.add('popup');
 			popup.insertAdjacentHTML('afterbegin',
 				`<fieldset>
-				<ul>
-					<li>
-						<h2>Edit ${editpersons.lastName} ${editpersons.firstName}</h2>
-					</li>
-					<li>
-						<label>Last Name:</label>
-						<input type="text" name="lastName" value="${editpersons.lastName}">
-					</li>
-					<li>
-						<label>First Name:</label>
-					<input type="text" name="firstName" value="${editpersons.firstName}">
-					</li>
-					<li>
-						<label>Date of birthday:</label>
-						<input type="date" name="birthday" value="${editpersons.birthday}">
-					</li>
-					<li>
-						<button class="submit" type="submit" data-id="${editpersons.id}">Save changes</button>
-						<button class="cancel" type="button" data-id="${editpersons.id}">Cancel</button>
-					</li>
-				</ul>
-			</fieldset>`);
+					<ul>
+						<li>
+							<h2>Edit ${editpersons.lastName} ${editpersons.firstName}</h2>
+						</li>
+						<li>
+							<label>Last Name:</label>
+							<input type="text" name="lastName" value="${editpersons.lastName}">
+						</li>
+						<li>
+							<label>First Name:</label>
+							<input type="text" name="firstName" value="${editpersons.firstName}">
+						</li>
+						<li>
+							<label>Date of birthday:</label>
+							<input type="date" name="birthday" value="${new Date(editpersons.birthday).toDateString()}">
+						</li>
+						<li>
+							<button class="submit" type="submit" data-id="${editpersons.id}">Save changes</button>
+							<button class="cancel" type="button" data-id="${editpersons.id}">Cancel</button>
+						</li>
+					</ul>
+				</fieldset>
+			`);
 
 			// Adding addeventListener in to cancel button in to that button
 			window.addEventListener('click', e => {
@@ -93,9 +94,6 @@ async function fetchPeopleList() {
 				e.preventDefault();
 				editpersons.firstName = popup.firstName.value;
 				editpersons.lastName = popup.lastName.value;
-				let newDate = new Date(popup.birthday.value).toDateString();
-				editpersons.lastName = newDate;
-				console.log(popup.birthday);
 				showPeople(editpersons);
 				container.dispatchEvent(new CustomEvent('listUpdated'));
 				destroyPopup(popup);
@@ -129,8 +127,8 @@ async function fetchPeopleList() {
 					<h2>Are you sure you want to delete this?</h2>
 				</li>
 				<li>
-					<button type="button" class="cancel">cancel</button>
 					<button type="button" class="delete">delete</button>
+					<button type="button" class="cancel">cancel</button>
 				</li>
 			</ul>`);
 			// Append the popup inside of the html 
