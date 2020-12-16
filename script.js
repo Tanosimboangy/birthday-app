@@ -74,7 +74,7 @@ async function fetchPeopleList() {
 						<input type="date" name="birthday" value="${editpersons.birthday}">
 					</li>
 					<li>
-						<button class="submit" type="submit" data-id="${editpersons.id}">Submit</button>
+						<button class="submit" type="submit" data-id="${editpersons.id}">Save changes</button>
 						<button class="cancel" type="button" data-id="${editpersons.id}">Cancel</button>
 					</li>
 				</ul>
