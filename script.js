@@ -6,6 +6,7 @@ async function fetchPeopleList() {
 	const response = await fetch("https://gist.githubusercontent.com/Pinois/e1c72b75917985dc77f5c808e876b67f/raw/93debb7463fbaaec29622221b8f9e719bd5b119f/birthdayPeople.json");
 	const data = await response.json();
 	let persons = data;
+	console.log(persons);
 
 	// Push the html into the container
 	const showPeople = () => {
@@ -55,7 +56,7 @@ async function fetchPeopleList() {
 			// Creating a form element to contain the form
 			const popup = document.createElement('form');
 			popup.classList.add('popup');
-			const newDate = new Date(editpersons.birthday).toDateString();
+			const newDate = new Date(editpersons.birthday).toLocaleDateString();
 			popup.insertAdjacentHTML('afterbegin',
 				`<fieldset>
 					<ul>
@@ -63,16 +64,16 @@ async function fetchPeopleList() {
 							<h2>Edit ${editpersons.lastName} ${editpersons.firstName}</h2>
 						</li>
 						<li>
-							<label>Last Name:</label>
-							<input type="text" name="lastName" value="${editpersons.lastName}">
-						</li>
-						<li>
 							<label>First Name:</label>
+							<input type="text" name="lastName" value="${editpersons.lastName}">
+							</li>
+							<li>
+							<label>Last Name:</label>
 							<input type="text" name="firstName" value="${editpersons.firstName}">
 						</li>
 						<li>
 							<label>Date of birthday:</label>
-							<input type="date" name="birthday" value="${newDate}">
+							<input type="text" name="birthday" value="${newDate}">
 						</li>
 						<li>
 							<button class="submit" type="submit" data-id="${editpersons.id}">Save changes</button>
@@ -94,6 +95,7 @@ async function fetchPeopleList() {
 				e.preventDefault();
 				editpersons.firstName = popup.firstName.value;
 				editpersons.lastName = popup.lastName.value;
+				editpersons.birthday= popup.birthday.value;
 				showPeople(editpersons);
 				container.dispatchEvent(new CustomEvent('listUpdated'));
 				destroyPopup(popup)
@@ -136,12 +138,12 @@ async function fetchPeopleList() {
 			deletePopup.classList.add('open');
 
 			deletePopup.addEventListener('click', e => {
-				if (e.target.matches('button.delete')) {
+				if (e.target.closest('button.delete')) {
 					e.preventDefault();
 					const myPersons = persons.filter(person => person.id != id);
 					persons = myPersons;
-					showPeople(myPersons);
 					localStorage.setItem('persons', JSON.stringify(persons));
+					showPeople(myPersons);
 					destroyPopup(deletePopup);
 				} else if (e.target.closest('button.cancel')) {
 					destroyPopup(deletePopup);
@@ -231,12 +233,6 @@ async function fetchPeopleList() {
 		const html = populatePersons(filterPeople);
 		container.innerHTML = html;
 	}
-
-	// const reset = e => {
-	// 	console.log("here it is ee!");
-	// 	formFilter.reset();
-	// 	showPeople();
-	// }
 
 	// Adding event Listener to the edit fuction, delete fuction
 	window.addEventListener("click", editFunction);
