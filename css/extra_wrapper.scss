@@ -1,0 +1,46 @@
+.extra_wrapper {
+    max-width: 400px;
+    font-family: "Rubik";
+    font-style: normal;
+    font-weight: 500;
+    padding: 20px;
+    background-color: rgba(246, 245, 245, 0.985) transparent;
+    li:first-of-type {
+        h2 {
+            color: #094067;
+            font-size: 32px;
+            line-height: 35px;
+            padding-bottom: 10px;
+        }
+    }
+    li:nth-of-type(2) {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        button {
+            outline: none;
+            cursor: pointer;
+            width: 151px;
+            padding-left: 20px;
+            padding-top: 14px;
+            padding-bottom: 15px;
+            border-radius: 5px;
+            font-size: 18px;
+            line-height: 21px;
+            border: none;
+            margin-bottom: 10px;
+        }
+        .delete {
+            background: #EF4565;
+            color: #FFFFFE;
+        }
+        .cancel {
+            color: #5F6C7B;
+            border-radius: 5px;
+            background: #FFFFFF;
+            box-sizing: border-box;
+            border: 2px solid #5F6C7B;
+        }
+    }
+}

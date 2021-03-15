@@ -1,0 +1,82 @@
+.container {
+    article ul {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        flex-wrap: wrap;
+        margin-bottom: 31px;
+        padding-bottom: 22px;
+        padding-right: 25px;
+        padding-top: 22px;
+        padding-left: 42px;
+        background-color: white;
+        justify-content: space-between;
+        border-radius: 4px;
+        li {
+            font-family: "Rubik";
+            font-style: normal;
+            font-weight: 500;
+            img {
+                width: 92px;
+                height: 94px;
+                border-radius: 5px;
+            }
+            svg {
+                width: 40px;
+            }
+        }
+        li:nth-of-type(2) {
+            padding-left: 4px;
+            h2 {
+                font-size: 30px;
+                line-height: 43px;
+                color: #000000;
+                max-width: 300px;
+            }
+            p {
+                font-size: 24px;
+                line-height: 28px;
+                color: #5F6C7B;
+                span {
+                    font-size: 24px;
+                    line-height: 28px;
+                    color: orangered;
+                }
+            }
+        }
+        li:last-of-type {
+            ul {
+                display: flex;
+                flex-direction: column;
+                margin-bottom: 0;
+                padding: 0;
+                li:first-of-type {
+                    padding-bottom: 10px;
+                    line-height: 28px;
+                    padding-bottom: 0;
+                    font-size: 24px;
+                    color: #5F6C7B;
+                    padding-bottom: 20px;
+                }
+                li:last-of-type {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: space-between;
+                    margin-bottom: 0;
+                    .delete {
+                        svg {
+                            color: red;
+                        }
+                    }
+                    .edit {
+                        margin-right: 20px;
+                    }
+                }
+            }
+        }
+    }
+    article:hover {
+        box-shadow: 0px 0px 6px black;
+    }
+}

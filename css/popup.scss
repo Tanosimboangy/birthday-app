@@ -1,0 +1,53 @@
+.popup {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: #0000009e;
+    transition: all 0.25s;
+    top: 0;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+    --opacity: 1;
+    opacity: var(--opacity);
+    z-index: 1;
+    fieldset {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: var(--grey);
+        border: 3px solid var(--pink);
+        box-shadow: var(--box-shadow);
+        transition: all 0.2s;
+        --scale: 0.3;
+        transform: scale(var(--scale));
+        ul {
+            li {
+                display: flex;
+                flex-direction: column;
+                input {
+                    margin-bottom: 5px;
+                    padding: 10px;
+                    border: none;
+                    background: #D8EEFE;
+                    border-radius: 5px;
+                    outline: none;
+                }
+            }
+            li:last-of-type {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                .submit,
+                .cancel {
+                    padding: 8px 16px;
+                }
+                .submit {
+                    margin-right: 20px;
+                }
+            }
+        }
+    }
+}

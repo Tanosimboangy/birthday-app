@@ -1,0 +1,42 @@
+@font-face {
+    font-family: "Rubik";
+    src: local(Rubik), url(/fonts/Rubik-Regular.woff2) format("woff2"), url(/fonts/Rubik-Regular.woff) format("woff"),
+}
+
+body {
+    font-family: sans-serif;
+    background: #D8EEFE;
+    margin: 0;
+    ul {
+        padding: 0;
+        margin: 0;
+        li {
+            list-style: none;
+        }
+    }
+    a {
+        text-decoration: none;
+    }
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p {
+        margin: 0;
+    }
+    .main {
+        padding: 0 16px;
+    }
+}
+
+@media(min-width: 820px) {
+    body {
+        .main {
+            padding: 0px 0px;
+            max-width: 800px;
+            margin: auto;
+        }
+    }
+}

@@ -6,7 +6,6 @@ async function fetchPeopleList() {
 	const response = await fetch("https://gist.githubusercontent.com/Pinois/e1c72b75917985dc77f5c808e876b67f/raw/93debb7463fbaaec29622221b8f9e719bd5b119f/birthdayPeople.json");
 	const data = await response.json();
 	let persons = data;
-	console.log(persons);
 
 	// Push the html into the container
 	const showPeople = () => {
@@ -38,6 +37,12 @@ async function fetchPeopleList() {
 		popup.remove();
 		popup = null;
 	}
+	// export async function destroyPopup(popup) {
+	// 	popup.classList.remove('open'); 
+	// 	await wait(500);
+	// 	popup.remove();
+	// 	popup = null;
+	// }
 
 	// Creating an edit function in order to give access to the user to edit the lists
 	const editFunction = e => {
@@ -49,7 +54,7 @@ async function fetchPeopleList() {
 	}
 
 	// Activating the edit button by showing the form
-	const editPartnerPopup = idToEdit => {
+	const editPartnerPopup = (idToEdit) => {
 		// Finding the object mathes to the id
 		const editpersons = persons.find(person => person.id == idToEdit);
 		return new Promise(async resolve => {
@@ -125,17 +130,23 @@ async function fetchPeopleList() {
 			// Insert the html inside the popup form
 			deletePopup.insertAdjacentHTML('afterbegin',
 				`<ul class="extra_wrapper">
-				<li>
-					<h2>Are you sure you want to delete this?</h2>
-				</li>
-				<li>
-					<button type="button" class="delete">delete</button>
-					<button type="button" class="cancel">cancel</button>
-				</li>
-			</ul>`);
+					<li>
+						<h2>Are you sure you want to delete this?</h2>
+					</li>
+					<li>
+						<button type="submit" class="delete">delete</button>
+						<button type="button" class="cancel">cancel</button>
+					</li>
+				</ul>`);
 			// Append the deletePopup inside of the html 
 			document.body.appendChild(deletePopup);
 			deletePopup.classList.add('open');
+
+			window.addEventListener('click', e => {
+				if (e.target.closest('button.cancel')) {
+					destroyPopup(deletePopup);
+				}
+			});
 
 			deletePopup.addEventListener('click', e => {
 				if (e.target.closest('button.delete')) {
@@ -143,10 +154,8 @@ async function fetchPeopleList() {
 					const myPersons = persons.filter(person => person.id != id);
 					persons = myPersons;
 					localStorage.setItem('persons', JSON.stringify(persons));
-					showPeople(myPersons);
-					destroyPopup(deletePopup);
-				} else if (e.target.closest('button.cancel')) {
-					destroyPopup(deletePopup);
+					showPeople(myPersons); 
+					destroyPopup(deletePopup);	
 				}
 			});
 		});

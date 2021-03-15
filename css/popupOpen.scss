@@ -1,0 +1,65 @@
+.popup.open {
+    --opacity: 1;
+    pointer-events: all;
+    fieldset {
+        --scale: 1;
+        font-family: "Rubik";
+        font-style: normal;
+        font-weight: 500;
+        ul {
+            li {
+                padding-bottom: 10px;
+                color: #094067;
+                h2 {
+                    padding-top: 0;
+                    font-size: 48px;
+                    line-height: 57px;
+                    color: #094067;
+                }
+                label {
+                    font-size: 18px;
+                    line-height: 21px;
+                    color: #094067;
+                    padding-bottom: 8px;
+                }
+                input {
+                    font-size: 18px;
+                    line-height: 21px;
+                    color: #094067;
+                    padding-bottom: 14px;
+                    padding-top: 15px;
+                    padding-right: 20px;
+                    width: 60%;
+                }
+            }
+            li:last-of-type {
+                button {
+                    border: none;
+                    outline: none;
+                    cursor: pointer;
+                    padding-right: 20px;
+                    padding-bottom: 15px;
+                    padding-top: 14px;
+                    margin-bottom: 10px;
+                    width: 151px;
+                }
+                .submit {
+                    background: #EF4565;
+                    border-radius: 5px;
+                    font-size: 18px;
+                    line-height: 21px;
+                    color: #FFFFFE;
+                }
+                .cancel {
+                    font-size: 18px;
+                    line-height: 21px;
+                    color: #5F6C7B;
+                    background: #FFFFFF;
+                    border: 2px solid #5F6C7B;
+                    box-sizing: border-box;
+                    border-radius: 5px;
+                }
+            }
+        }
+    }
+}
