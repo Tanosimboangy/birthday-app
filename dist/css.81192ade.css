@@ -1,0 +1,423 @@
+@font-face {
+  font-family: "Rubik";
+  src: local(Rubik), url(/Rubik-Regular.3e635f3a.woff2) format("woff2"), url(/Rubik-Regular.d8384832.woff) format("woff");
+}
+body {
+  font-family: sans-serif;
+  background: #D8EEFE;
+  margin: 0;
+}
+body ul {
+  padding: 0;
+  margin: 0;
+}
+body ul li {
+  list-style: none;
+}
+body a {
+  text-decoration: none;
+}
+body h1,
+body h2,
+body h3,
+body h4,
+body h5,
+body h6,
+body p {
+  margin: 0;
+}
+body .main {
+  padding: 0 16px;
+}
+
+@media (min-width: 820px) {
+  body .main {
+    padding: 0px 0px;
+    max-width: 800px;
+    margin: auto;
+  }
+}
+.header {
+  padding: 0 16px;
+}
+.header .title {
+  font-family: "Rubik";
+  font-style: normal;
+  font-weight: bold;
+  font-size: 64px;
+  line-height: 76px;
+  color: #094067;
+  padding-top: 63px;
+  padding-bottom: 42px;
+}
+
+@media (min-width: 720px) {
+  body .header {
+    padding: 0px 0px;
+  }
+  body .header .title {
+    margin: 0;
+    max-width: 800px;
+    margin: auto;
+  }
+}
+.container article ul {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 31px;
+  padding-bottom: 22px;
+  padding-right: 25px;
+  padding-top: 22px;
+  padding-left: 42px;
+  background-color: white;
+  justify-content: space-between;
+  border-radius: 4px;
+}
+.container article ul li {
+  font-family: "Rubik";
+  font-style: normal;
+  font-weight: 500;
+}
+.container article ul li img {
+  width: 92px;
+  height: 94px;
+  border-radius: 5px;
+}
+.container article ul li svg {
+  width: 40px;
+}
+.container article ul li:nth-of-type(2) {
+  padding-left: 4px;
+}
+.container article ul li:nth-of-type(2) h2 {
+  font-size: 30px;
+  line-height: 43px;
+  color: #000000;
+  max-width: 300px;
+}
+.container article ul li:nth-of-type(2) p {
+  font-size: 24px;
+  line-height: 28px;
+  color: #5F6C7B;
+}
+.container article ul li:nth-of-type(2) p span {
+  font-size: 24px;
+  line-height: 28px;
+  color: orangered;
+}
+.container article ul li:last-of-type ul {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0;
+  padding: 0;
+}
+.container article ul li:last-of-type ul li:first-of-type {
+  padding-bottom: 10px;
+  line-height: 28px;
+  padding-bottom: 0;
+  font-size: 24px;
+  color: #5F6C7B;
+  padding-bottom: 20px;
+}
+.container article ul li:last-of-type ul li:last-of-type {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0;
+}
+.container article ul li:last-of-type ul li:last-of-type .delete svg {
+  color: red;
+}
+.container article ul li:last-of-type ul li:last-of-type .edit {
+  margin-right: 20px;
+}
+.container article:hover {
+  box-shadow: 0px 0px 6px black;
+}
+
+.form .form_lists {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  padding-top: 10px;
+  font-family: "Rubik";
+  font-weight: 500;
+  padding-bottom: 30px;
+}
+.form .form_lists li {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-style: normal;
+}
+.form .form_lists li label {
+  padding-bottom: 13px;
+  font-size: 20px;
+  font-family: "Rubik";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+  color: #094067;
+}
+.form .form_lists li input {
+  padding: 12px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom: 17px;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+  color: #5F6C7B;
+}
+.form .form_lists li select {
+  padding: 12px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  font-size: 18px;
+  line-height: 21px;
+  color: #5F6C7B;
+  margin-bottom: 17px;
+}
+.form .form_lists li button {
+  padding: 12px;
+  background: #EF4565;
+  border-radius: 5px;
+  margin-bottom: 17px;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  font-family: "Rubik";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+  color: #FFFFFE;
+}
+
+.extra_wrapper {
+  max-width: 400px;
+  font-family: "Rubik";
+  font-style: normal;
+  font-weight: 500;
+  padding: 20px;
+  background-color: rgba(246, 245, 245, 0.985) transparent;
+}
+.extra_wrapper li:first-of-type h2 {
+  color: #094067;
+  font-size: 32px;
+  line-height: 35px;
+  padding-bottom: 10px;
+}
+.extra_wrapper li:nth-of-type(2) {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.extra_wrapper li:nth-of-type(2) button {
+  outline: none;
+  cursor: pointer;
+  width: 151px;
+  padding-left: 20px;
+  padding-top: 14px;
+  padding-bottom: 15px;
+  border-radius: 5px;
+  font-size: 18px;
+  line-height: 21px;
+  border: none;
+  margin-bottom: 10px;
+}
+.extra_wrapper li:nth-of-type(2) .delete {
+  background: #EF4565;
+  color: #FFFFFE;
+}
+.extra_wrapper li:nth-of-type(2) .cancel {
+  color: #5F6C7B;
+  border-radius: 5px;
+  background: #FFFFFF;
+  box-sizing: border-box;
+  border: 2px solid #5F6C7B;
+}
+
+.popup {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: #0000009e;
+  transition: all 0.25s;
+  top: 0;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+  --opacity: 1;
+  opacity: var(--opacity);
+  z-index: 1;
+}
+.popup fieldset {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--grey);
+  border: 3px solid var(--pink);
+  box-shadow: var(--box-shadow);
+  transition: all 0.2s;
+  --scale: 0.3;
+  transform: scale(var(--scale));
+}
+.popup fieldset ul li {
+  display: flex;
+  flex-direction: column;
+}
+.popup fieldset ul li input {
+  margin-bottom: 5px;
+  padding: 10px;
+  border: none;
+  background: #D8EEFE;
+  border-radius: 5px;
+  outline: none;
+}
+.popup fieldset ul li:last-of-type {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.popup fieldset ul li:last-of-type .submit,
+.popup fieldset ul li:last-of-type .cancel {
+  padding: 8px 16px;
+}
+.popup fieldset ul li:last-of-type .submit {
+  margin-right: 20px;
+}
+
+.popup.open {
+  --opacity: 1;
+  pointer-events: all;
+}
+.popup.open fieldset {
+  --scale: 1;
+  font-family: "Rubik";
+  font-style: normal;
+  font-weight: 500;
+}
+.popup.open fieldset ul li {
+  padding-bottom: 10px;
+  color: #094067;
+}
+.popup.open fieldset ul li h2 {
+  padding-top: 0;
+  font-size: 48px;
+  line-height: 57px;
+  color: #094067;
+}
+.popup.open fieldset ul li label {
+  font-size: 18px;
+  line-height: 21px;
+  color: #094067;
+  padding-bottom: 8px;
+}
+.popup.open fieldset ul li input {
+  font-size: 18px;
+  line-height: 21px;
+  color: #094067;
+  padding-bottom: 14px;
+  padding-top: 15px;
+  padding-right: 20px;
+  width: 60%;
+}
+.popup.open fieldset ul li:last-of-type button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding-right: 20px;
+  padding-bottom: 15px;
+  padding-top: 14px;
+  margin-bottom: 10px;
+  width: 151px;
+}
+.popup.open fieldset ul li:last-of-type .submit {
+  background: #EF4565;
+  border-radius: 5px;
+  font-size: 18px;
+  line-height: 21px;
+  color: #FFFFFE;
+}
+.popup.open fieldset ul li:last-of-type .cancel {
+  font-size: 18px;
+  line-height: 21px;
+  color: #5F6C7B;
+  background: #FFFFFF;
+  border: 2px solid #5F6C7B;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+
+.wrapper {
+  padding: 20px 40px;
+  background-color: white;
+  border-radius: 5px;
+  font-family: "Rubik";
+  font-style: normal;
+  font-weight: 500;
+}
+.wrapper li {
+  margin-bottom: 1rem;
+}
+.wrapper li label {
+  font-size: 18px;
+  line-height: 21px;
+  color: #094067;
+  margin-bottom: 8px;
+}
+.wrapper li input {
+  border: none;
+  background: #D8EEFE;
+  border-radius: 5px;
+  outline: none;
+  font-size: 18px;
+  line-height: 21px;
+  color: #094067;
+  padding-top: 14px;
+  padding-bottom: 15px;
+  padding-left: 20px;
+  width: 100%;
+}
+.wrapper li button {
+  outline: none;
+  cursor: pointer;
+  width: 151px;
+  padding-left: 20px;
+  padding-top: 14px;
+  padding-bottom: 15px;
+  border-radius: 5px;
+  font-size: 18px;
+  line-height: 21px;
+  margin-bottom: 10px;
+  border: 2px solid #5F6C7B;
+}
+.wrapper li .save {
+  background: #EF4565;
+  color: #FFFFFE;
+  margin-right: 20px;
+  border: none;
+}
+.wrapper li .cancel {
+  color: #5F6C7B;
+  border-radius: 5px;
+  background: #FFFFFF;
+  box-sizing: border-box;
+}
+
+/*# sourceMappingURL=/css.81192ade.css.map */

@@ -1,0 +1,301 @@
+body .main {
+  padding: 0 16px;
+}
+body .main .form ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  padding-top: 10px;
+  font-family: "Rubik";
+  font-weight: 500;
+  padding-bottom: 30px;
+}
+body .main .form ul li {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-style: normal;
+}
+body .main .form ul li label {
+  padding-bottom: 13px;
+  font-size: 20px;
+  font-family: "Rubik";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+  color: #094067;
+}
+body .main .form ul li input {
+  padding: 12px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom: 17px;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+  color: #5F6C7B;
+}
+body .main .form ul li select {
+  padding: 12px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  font-size: 18px;
+  line-height: 21px;
+  color: #5F6C7B;
+  margin-bottom: 17px;
+}
+body .main .form ul li button {
+  padding: 12px;
+  background: #EF4565;
+  border-radius: 5px;
+  margin-bottom: 17px;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  font-family: "Rubik";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+  color: #FFFFFE;
+}
+body .popup {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: #0000009e;
+  transition: all 0.25s;
+  top: 0;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+  --opacity: 1;
+  opacity: var(--opacity);
+  z-index: 1;
+}
+body .popup fieldset {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--grey);
+  border: 3px solid var(--pink);
+  box-shadow: var(--box-shadow);
+  transition: all 0.2s;
+  --scale: 0.3;
+  transform: scale(var(--scale));
+}
+body .popup fieldset ul li {
+  display: flex;
+  flex-direction: column;
+}
+body .popup fieldset ul li input {
+  margin-bottom: 5px;
+  padding: 10px;
+  border: none;
+  background: #D8EEFE;
+  border-radius: 5px;
+  outline: none;
+}
+body .popup fieldset ul li:last-of-type {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+body .popup fieldset ul li:last-of-type .submit,
+body .popup fieldset ul li:last-of-type .cancel {
+  padding: 8px 16px;
+}
+body .popup fieldset ul li:last-of-type .submit {
+  margin-right: 20px;
+}
+
+.popup.open {
+  --opacity: 1;
+  pointer-events: all;
+}
+.popup.open fieldset {
+  --scale: 1;
+  font-family: "Rubik";
+  font-style: normal;
+  font-weight: 500;
+}
+.popup.open fieldset ul li {
+  padding-bottom: 10px;
+  color: #094067;
+}
+.popup.open fieldset ul li h2 {
+  padding-top: 0;
+  font-size: 48px;
+  line-height: 57px;
+  color: #094067;
+}
+.popup.open fieldset ul li label {
+  font-size: 18px;
+  line-height: 21px;
+  color: #094067;
+  padding-bottom: 8px;
+}
+.popup.open fieldset ul li input {
+  font-size: 18px;
+  line-height: 21px;
+  color: #094067;
+  padding-bottom: 14px;
+  padding-top: 15px;
+  padding-right: 20px;
+  width: 60%;
+}
+.popup.open fieldset ul li:last-of-type button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding-right: 20px;
+  padding-bottom: 15px;
+  padding-top: 14px;
+  margin-bottom: 10px;
+  width: 151px;
+}
+.popup.open fieldset ul li:last-of-type .submit {
+  background: #EF4565;
+  border-radius: 5px;
+  font-size: 18px;
+  line-height: 21px;
+  color: #FFFFFE;
+}
+.popup.open fieldset ul li:last-of-type .cancel {
+  font-size: 18px;
+  line-height: 21px;
+  color: #5F6C7B;
+  background: #FFFFFF;
+  border: 2px solid #5F6C7B;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+.popup.open .extra_wrapper {
+  max-width: 400px;
+  font-family: "Rubik";
+  font-style: normal;
+  font-weight: 500;
+  padding: 20px;
+  background-color: rgba(246, 245, 245, 0.985) transparent;
+}
+.popup.open .extra_wrapper li:first-of-type h2 {
+  color: #094067;
+  font-size: 32px;
+  line-height: 35px;
+  padding-bottom: 10px;
+}
+.popup.open .extra_wrapper li:nth-of-type(2) {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.popup.open .extra_wrapper li:nth-of-type(2) button {
+  outline: none;
+  cursor: pointer;
+  width: 151px;
+  padding-left: 20px;
+  padding-top: 14px;
+  padding-bottom: 15px;
+  border-radius: 5px;
+  font-size: 18px;
+  line-height: 21px;
+  border: none;
+  margin-bottom: 10px;
+}
+.popup.open .extra_wrapper li:nth-of-type(2) .delete {
+  background: #EF4565;
+  color: #FFFFFE;
+}
+.popup.open .extra_wrapper li:nth-of-type(2) .cancel {
+  color: #5F6C7B;
+  border-radius: 5px;
+  background: #FFFFFF;
+  box-sizing: border-box;
+  border: 2px solid #5F6C7B;
+}
+.popup.open .wrapper {
+  padding: 20px 40px;
+  background-color: white;
+  border-radius: 5px;
+  font-family: "Rubik";
+  font-style: normal;
+  font-weight: 500;
+}
+.popup.open .wrapper li {
+  margin-bottom: 1rem;
+}
+.popup.open .wrapper li label {
+  font-size: 18px;
+  line-height: 21px;
+  color: #094067;
+  margin-bottom: 8px;
+}
+.popup.open .wrapper li input {
+  border: none;
+  background: #D8EEFE;
+  border-radius: 5px;
+  outline: none;
+  font-size: 18px;
+  line-height: 21px;
+  color: #094067;
+  padding-top: 14px;
+  padding-bottom: 15px;
+  padding-left: 20px;
+  width: 100%;
+}
+.popup.open .wrapper li button {
+  outline: none;
+  cursor: pointer;
+  width: 151px;
+  padding-left: 20px;
+  padding-top: 14px;
+  padding-bottom: 15px;
+  border-radius: 5px;
+  font-size: 18px;
+  line-height: 21px;
+  margin-bottom: 10px;
+  border: 2px solid #5F6C7B;
+}
+.popup.open .wrapper li .save {
+  background: #EF4565;
+  color: #FFFFFE;
+  margin-right: 20px;
+  border: none;
+}
+.popup.open .wrapper li .cancel {
+  color: #5F6C7B;
+  border-radius: 5px;
+  background: #FFFFFF;
+  box-sizing: border-box;
+}
+
+@media (min-width: 720px) {
+  body main {
+    padding: 0;
+    max-width: 800px;
+    margin: auto;
+  }
+}
+@media (min-width: 800px) {
+  body .header {
+    padding: 0px 0px;
+  }
+  body .header .title {
+    margin: 0;
+    max-width: 800px;
+    margin: auto;
+  }
+}
+
+/*# sourceMappingURL=/birthday-app.80ee2152.css.map */
