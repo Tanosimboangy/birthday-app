@@ -331,13 +331,7 @@ async function fetchPeopleList() {
     popup.classList.remove('open');
     popup.remove();
     popup = null;
-  } // export async function destroyPopup(popup) {
-  // 	popup.classList.remove('open'); 
-  // 	await wait(500);
-  // 	popup.remove();
-  // 	popup = null;
-  // }
-  // Creating an edit function in order to give access to the user to edit the lists
+  } // Creating an edit function in order to give access to the user to edit the lists
 
 
   const editFunction = e => {
@@ -444,12 +438,13 @@ async function fetchPeopleList() {
       });
       deletePopup.addEventListener('click', e => {
         if (e.target.closest('button.delete')) {
-          e.preventDefault();
+          destroyPopup(deletePopup); // e.preventDefault();
+
           const myPersons = persons.filter(person => person.id != id);
           persons = myPersons;
-          localStorage.setItem('persons', JSON.stringify(persons));
           showPeople(myPersons);
-          destroyPopup(deletePopup);
+          localStorage.setItem('persons', JSON.stringify(persons));
+          console.log(destroyPopup, "I am deleted");
         }
       });
     });
@@ -576,7 +571,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55815" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54644" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

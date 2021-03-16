@@ -37,12 +37,6 @@ async function fetchPeopleList() {
 		popup.remove();
 		popup = null;
 	}
-	// export async function destroyPopup(popup) {
-	// 	popup.classList.remove('open'); 
-	// 	await wait(500);
-	// 	popup.remove();
-	// 	popup = null;
-	// }
 
 	// Creating an edit function in order to give access to the user to edit the lists
 	const editFunction = e => {
@@ -150,12 +144,13 @@ async function fetchPeopleList() {
 
 			deletePopup.addEventListener('click', e => {
 				if (e.target.closest('button.delete')) {
-					e.preventDefault();
+					destroyPopup(deletePopup);
+					// e.preventDefault();
 					const myPersons = persons.filter(person => person.id != id);
 					persons = myPersons;
+					showPeople(myPersons);
 					localStorage.setItem('persons', JSON.stringify(persons));
-					showPeople(myPersons); 
-					destroyPopup(deletePopup);	
+					console.log(destroyPopup, "I am deleted");
 				}
 			});
 		});

@@ -1,28 +1,29 @@
 {
-  "name": "birthday-app-original",
-  "version": "1.0.0",
-  "description": "Template for the student report : ## In a few sentences, explain the structure of my project: - First of all, I fetched the data from people.json file and map through each one of the list. After that. - I displayed the data and translated all of the numeric number into readable date. - Secondly, I mirrored and stored all the data into the local storage, this is quite useful so that you do not need to fetch everytime. - Apart from that, I created a function called `destryoPopup`, which is responsible for removing the class open. - After all, I created a function called `editFunction` in charge of the editing actions, inside of this function I grabbed the edit button and activated it. An `editPartnerPopup` function is for rendering the form for the user to edit the data in each list. Only with the data it does not work. While working on that, I managed to add eventListenr on the cancel and the submit button for the user to choose whether the want to submit the change they have made or cancel it. - Then, for the delete fuction, I managed to grab the delete button and create sort of little form, which contains cancel and delete buttons, that reassures to the user if they really want to delete the list or not. - On top of taht, I succeeded in adding a new list of person from the user's value. - I tried to divide the huge function into many files, such as edit function, delete function and addList but only for the html for dispaying the lists that I could manage to do. I still have difficulty with this part.",
-  "main": "script.js",
-  "directories": {
-    "lib": "lib"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Tanosimboangy/birthday-app.git"
-  },
-  "browserslist": [
-    "last 1 Chrome version"
-  ],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Tanosimboangy/birthday-app/issues"
-  },
-  "homepage": "https://github.com/Tanosimboangy/birthday-app#readme",
-  "devDependencies": {
-    "sass": "^1.30.0"
-  }
+    "name": "birthday-app-original",
+    "version": "1.0.0",
+    "description": "Template for the student report : ## In a few sentences, explain the structure of my project: - First of all, I fetched the data from people.json file and map through each one of the list. After that. - I displayed the data and translated all of the numeric number into readable date. - Secondly, I mirrored and stored all the data into the local storage, this is quite useful so that you do not need to fetch everytime. - Apart from that, I created a function called `destryoPopup`, which is responsible for removing the class open. - After all, I created a function called `editFunction` in charge of the editing actions, inside of this function I grabbed the edit button and activated it. An `editPartnerPopup` function is for rendering the form for the user to edit the data in each list. Only with the data it does not work. While working on that, I managed to add eventListenr on the cancel and the submit button for the user to choose whether the want to submit the change they have made or cancel it. - Then, for the delete fuction, I managed to grab the delete button and create sort of little form, which contains cancel and delete buttons, that reassures to the user if they really want to delete the list or not. - On top of taht, I succeeded in adding a new list of person from the user's value. - I tried to divide the huge function into many files, such as edit function, delete function and addList but only for the html for dispaying the lists that I could manage to do. I still have difficulty with this part.",
+    "main": "script.js",
+    "directories": {
+        "lib": "lib"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "parcel index.html --open"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Tanosimboangy/birthday-app.git"
+    },
+    "browserslist": [
+        "last 1 Chrome version"
+    ],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Tanosimboangy/birthday-app/issues"
+    },
+    "homepage": "https://github.com/Tanosimboangy/birthday-app#readme",
+    "devDependencies": {
+        "sass": "^1.30.0"
+    }
 }
