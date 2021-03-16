@@ -424,7 +424,7 @@ async function fetchPeopleList() {
 						<h2>Are you sure you want to delete this?</h2>
 					</li>
 					<li>
-						<button type="submit" class="delete">delete</button>
+						<button type="button" class="remove_btn">delete</button>
 						<button type="button" class="cancel">cancel</button>
 					</li>
 				</ul>`); // Append the deletePopup inside of the html 
@@ -434,17 +434,12 @@ async function fetchPeopleList() {
       window.addEventListener('click', e => {
         if (e.target.closest('button.cancel')) {
           destroyPopup(deletePopup);
-        }
-      });
-      deletePopup.addEventListener('click', e => {
-        if (e.target.closest('button.delete')) {
-          destroyPopup(deletePopup); // e.preventDefault();
-
+        } else if (e.target.closest('button.remove_btn')) {
+          destroyPopup(deletePopup);
           const myPersons = persons.filter(person => person.id != id);
           persons = myPersons;
           showPeople(myPersons);
           localStorage.setItem('persons', JSON.stringify(persons));
-          console.log(destroyPopup, "I am deleted");
         }
       });
     });

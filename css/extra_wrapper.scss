@@ -4,7 +4,8 @@
     font-style: normal;
     font-weight: 500;
     padding: 20px;
-    background-color: rgba(246, 245, 245, 0.985) transparent;
+    background-color: white;
+    border-radius: 8px;
     li:first-of-type {
         h2 {
             color: #094067;
@@ -31,7 +32,7 @@
             border: none;
             margin-bottom: 10px;
         }
-        .delete {
+        .remove_btn {
             background: #EF4565;
             color: #FFFFFE;
         }
