@@ -15,29 +15,33 @@
     <main class="main">
         <form class="form">
             <ul class="form_lists">
-                <li>
-                    <label>Name of the person</label>
-                    <input type="text" placeholder="Type a name" class="input">
+                <li class="name_list">
+                    <label>Name of the person</label><br>
+                    <div class="input_name">
+                        <input type="text" placeholder="Type a name">
+                    </div>
                 </li>
-                <li>
-                    <label>Month</label>
-                    <select name="month" id="month">Month
-						<option value="" disabled="" selected="">Select a month</option>
-						<option value="January">January</option>
-						<option value="February">February</option>
-						<option value="March">March</option>
-						<option value="April">April</option>
-						<option value="May">May</option>
-						<option value="June">June</option>
-						<option value="July">July</option>
-						<option value="August">August</option>
-						<option value="September">September</option>
-						<option value="October">October</option>
-						<option value="November">November</option>
-						<option value="December">December</option>
-					</select>
+                <li class="month_list">
+                    <label>Month</label><br>
+                    <div class="select_month">
+                        <select name="month" id="month">Month
+                            <option value="" disabled="" selected="">Select a month</option>
+                            <option value="January">January</option>
+                            <option value="February">February</option>
+                            <option value="March">March</option>
+                            <option value="April">April</option>
+                            <option value="May">May</option>
+                            <option value="June">June</option>
+                            <option value="July">July</option>
+                            <option value="August">August</option>
+                            <option value="September">September</option>
+                            <option value="October">October</option>
+                            <option value="November">November</option>
+                            <option value="December">December</option>
+                        </select>
+                    </div>
                 </li>
-                <li>
+                <li class="adding_list">
                     <button class="add" type="button">Add somebody</button>
                 </li>
             </ul>

@@ -50,6 +50,11 @@
                 flex-direction: column;
                 margin-bottom: 0;
                 padding: 0;
+                li {
+                    svg {
+                        cursor: pointer;
+                    }
+                }
                 li:first-of-type {
                     padding-bottom: 10px;
                     line-height: 28px;

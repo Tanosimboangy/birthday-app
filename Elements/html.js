@@ -1,6 +1,17 @@
+import {differenceInCalendarYears, differenceInCalendarDays, compareAsc} from 'date-fns';
+import {getNextBirthday} from "./util.js"
+
 // Create a function to store the html so that you can reuse it again
 export function populatePersons(people) {
-    return people.map(person => {
+    let sortedPeople = people;
+
+    sortedPeople.sort((a, b) => {
+        let dayToBirthdayA = differenceInCalendarDays(getNextBirthday(a.birthday), new Date());
+        let dayToBirthdayB = differenceInCalendarDays(getNextBirthday(b.birthday), new Date());
+        return compareAsc(dayToBirthdayA, dayToBirthdayB);
+    })
+
+    return sortedPeople.map(person => {
         function nthDate(day) {
             if (day > 3 && day < 21) return "th";
             switch (day % 10) {

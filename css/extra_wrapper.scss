@@ -4,17 +4,17 @@
     font-style: normal;
     font-weight: 500;
     padding: 20px;
-    background-color: white;
+    background-color: #0000009e;
     border-radius: 8px;
-    li:first-of-type {
+    .text {
         h2 {
-            color: #094067;
-            font-size: 32px;
-            line-height: 35px;
+            color: #e2eaf0;
+            font-size: 30px;
+            line-height: 32px;
             padding-bottom: 10px;
         }
     }
-    li:nth-of-type(2) {
+    .btns {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
@@ -36,7 +36,7 @@
             background: #EF4565;
             color: #FFFFFE;
         }
-        .cancel {
+        .cancel_btn {
             color: #5F6C7B;
             border-radius: 5px;
             background: #FFFFFF;

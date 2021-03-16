@@ -9,6 +9,10 @@
         color: #094067;
         padding-top: 63px;
         padding-bottom: 42px;
+        @media(max-width: 320px) {
+            font-size: 34px;
+            line-height: 46px;
+        }
     }
 }
 

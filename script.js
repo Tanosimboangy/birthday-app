@@ -124,12 +124,12 @@ async function fetchPeopleList() {
 			// Insert the html inside the popup form
 			deletePopup.insertAdjacentHTML('afterbegin',
 				`<ul class="extra_wrapper">
-					<li>
+					<li class="text">
 						<h2>Are you sure you want to delete this?</h2>
 					</li>
-					<li>
+					<li class="btns">
 						<button type="button" class="remove_btn">delete</button>
-						<button type="button" class="cancel">cancel</button>
+						<button type="button" class="cancel_btn">cancel</button>
 					</li>
 				</ul>`);
 			// Append the deletePopup inside of the html 
@@ -137,7 +137,7 @@ async function fetchPeopleList() {
 			deletePopup.classList.add('open');
 
 			window.addEventListener('click', e => {
-				if (e.target.closest('button.cancel')) {
+				if (e.target.closest('button.cancel_btn')) {
 					destroyPopup(deletePopup);
 				} else if (e.target.closest('button.remove_btn')) {
 					destroyPopup(deletePopup);
