@@ -1,10 +1,7 @@
 .form {
     .form_lists {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        align-items: flex-end;
+        display: grid;
+        grid-template-rows: repeat(3, 1fr);
         padding-top: 10px;
         font-family: "Rubik";
         font-weight: 500;
@@ -24,7 +21,9 @@
         }
         .name_list {
             .input_name {
-                max-width: 264px;
+                // max-width: 264px;
+                // margin: auto;
+                width: 100%;
                 margin: auto;
                 input {
                     padding: 12px;
@@ -51,6 +50,8 @@
         }
         .month_list {
             .select_month {
+                width: 100%;
+                margin: auto;
                 select {
                     padding: 12px;
                     border-radius: 5px;
@@ -61,7 +62,11 @@
                     line-height: 21px;
                     color: #5F6C7B;
                     margin-bottom: 17px;
-                    width: 90%;
+                    width: 95%;
+                }
+                @media(max-width: 320px) {
+                    max-width: 100%;
+                    margin: auto;
                 }
             }
         }
@@ -85,35 +90,14 @@
     }
 }
 
-// .form {
-//     .form_lists {
-//         li {
-//             select {
-//                 padding: 12px;
-//                 border-radius: 5px;
-//                 border: none;
-//                 cursor: pointer;
-//                 outline: none;
-//                 font-size: 18px;
-//                 line-height: 21px;
-//                 color: #5F6C7B;
-//                 margin-bottom: 17px;
-//             }
-// button {
-//     padding: 12px;
-//     background: #EF4565;
-//     border-radius: 5px;
-//     margin-bottom: 17px;
-//     cursor: pointer;
-//     outline: none;
-//     border: none;
-//     font-family: "Rubik";
-//     font-style: normal;
-//     font-weight: 500;
-//     font-size: 18px;
-//     line-height: 21px;
-//     color: #FFFFFE;
-// }
-//         }
-//     }
-// }
+@media(min-width: 630px) {
+    .form {
+        .form_lists {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            // flex-wrap: wrap;
+            align-items: flex-end;
+        }
+    }
+}
