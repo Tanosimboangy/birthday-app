@@ -1,9 +1,9 @@
 @font-face {
   font-family: "Rubik";
-  src: local(Rubik), url(/Rubik-Regular.3e635f3a.woff2) format("woff2"), url(/Rubik-Regular.d8384832.woff) format("woff");
+  src: local(Rubik), url(/Rubik-Regular.d8384832.woff) format("woff"), url(/Rubik-Regular.3e635f3a.woff2) format("woff2");
 }
 body {
-  font-family: sans-serif;
+  font-family: "Rubik";
   background: #D8EEFE;
   margin: 0;
 }
@@ -230,13 +230,16 @@ body .main {
   font-style: normal;
   font-weight: 500;
   padding: 20px;
-  background-color: #0000009e;
   border-radius: 8px;
+  margin-left: 16px;
+  margin-right: 16px;
+  box-shadow: 0px 0px 8px #0000009e;
 }
 .extra_wrapper .text h2 {
-  color: #e2eaf0;
-  font-size: 30px;
+  color: #0091ff;
+  font-size: 26px;
   line-height: 32px;
+  text-align: center;
   padding-bottom: 10px;
 }
 .extra_wrapper .btns {

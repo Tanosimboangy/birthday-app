@@ -1,10 +1,10 @@
 @font-face {
     font-family: "Rubik";
-    src: local(Rubik), url(/fonts/Rubik-Regular.woff2) format("woff2"), url(/fonts/Rubik-Regular.woff) format("woff"),
+    src: local(Rubik), url(/fonts/Rubik-Regular.woff) format("woff"), url(/fonts/Rubik-Regular.woff2) format("woff2"),
 }
 
 body {
-    font-family: sans-serif;
+    font-family: "Rubik";
     background: #D8EEFE;
     margin: 0;
     ul {

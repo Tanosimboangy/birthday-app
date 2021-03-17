@@ -14,13 +14,12 @@ Template for the student report :
 - I wanted to understand more the use of parcel, like when we use it, what are the benefits of using it in every project we do.
 
 ## Anything new I learn while working on this project:
-- I learn to use another strategy to get the date from using the number.
+- I learn to use another strategy to get the date from using the number. I tried to use date.fns and it worked. 
 
 ## The most challenging part for me were:
 - To translate the number into dates and to split the big file by using import, those were the most challenging parts for me.
 
 ## New explanation I would like about a specific topic:
 - I would like a new explanation about `date fns` and using module with import to split a big file into many files.
-- A way of accessing the list of the persons from the big scoped function
-
-## Any other comments
+- A way of accessing the list of the persons from the big scoped function.
+- Apart from that, I struggled a lot while adding the local storage , but at the end of the project I managed to finish it.
