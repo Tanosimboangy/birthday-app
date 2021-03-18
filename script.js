@@ -1,5 +1,15 @@
 import { container, inputSearchName, filterByMonth } from './containers/elements.js';
 import { populatePersons } from './containers/html.js';
+// hideScrollbar when the popup appears
+
+const body = document.body;
+function HideScrollbar() {
+	body.style.overflowY = "hidden";
+}
+
+function resetScrollBar() {
+	body.style.overflowY = "unset";
+}
 
 // Fetching the data from the people.json
 async function fetchPeopleList() {
@@ -36,6 +46,7 @@ async function fetchPeopleList() {
 		popup.classList.remove('open');
 		popup.remove();
 		popup = null;
+		resetScrollBar();
 	}
 
 	// Creating an edit function in order to give access to the user to edit the lists
@@ -87,6 +98,7 @@ async function fetchPeopleList() {
 			window.addEventListener('click', e => {
 				if (e.target.closest('button.cancel')) {
 					destroyPopup(popup);
+					resetScrollBar();
 				}
 			});
 
@@ -98,15 +110,16 @@ async function fetchPeopleList() {
 				editpersons.birthday = popup.birthday.value;
 				showPeople(editpersons);
 				container.dispatchEvent(new CustomEvent('listUpdated'));
-				destroyPopup(popup)
+				destroyPopup(popup);
+				resetScrollBar();
 			}, { once: true });
 			// Adding the popup in the html
 			document.body.appendChild(popup);
 			// Adding the open class to the popup form
 			popup.classList.add('open');
+			HideScrollbar();
 		});
 	}
-
 	// Creating the delete function
 	const deletePartner = e => {
 		// Grabbing the delete button with event delegation
@@ -137,16 +150,19 @@ async function fetchPeopleList() {
 			// Append the deletePopup inside of the html 
 			document.body.appendChild(deletePopup);
 			deletePopup.classList.add('open');
+			HideScrollbar();
 
 			window.addEventListener('click', e => {
 				if (e.target.closest('button.cancel_btn')) {
 					destroyPopup(deletePopup);
+					resetScrollBar();
 				} else if (e.target.closest('button.remove_btn')) {
 					destroyPopup(deletePopup);
 					const myPersons = persons.filter(person => person.id != id);
 					persons = myPersons;
 					showPeople(myPersons);
 					localStorage.setItem('persons', JSON.stringify(persons));
+					resetScrollBar();
 				}
 			});
 		});
@@ -189,6 +205,7 @@ async function fetchPeopleList() {
 		window.addEventListener('click', e => {
 			if (e.target.closest('button.cancel_list')) {
 				destroyPopup(popupAdd);
+				resetScrollBar();
 			}
 		})
 
@@ -207,9 +224,11 @@ async function fetchPeopleList() {
 			container.dispatchEvent(new CustomEvent('listUpdated'));
 			showPeople(persons);
 			destroyPopup(popupAdd);
+			resetScrollBar();
 		});
 		document.body.appendChild(popupAdd);
 		popupAdd.classList.add('open');
+		HideScrollbar();
 	};
 	const addBtn = document.querySelector('.add');
 	addBtn.addEventListener('click', newList);

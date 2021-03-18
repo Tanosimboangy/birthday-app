@@ -18710,7 +18710,18 @@ var _elements = require("./containers/elements.js");
 
 var _html = require("./containers/html.js");
 
-// Fetching the data from the people.json
+// hideScrollbar when the popup appears
+const body = document.body;
+
+function HideScrollbar() {
+  body.style.overflowY = "hidden";
+}
+
+function resetScrollBar() {
+  body.style.overflowY = "unset";
+} // Fetching the data from the people.json
+
+
 async function fetchPeopleList() {
   const response = await fetch("https://gist.githubusercontent.com/Pinois/e1c72b75917985dc77f5c808e876b67f/raw/93debb7463fbaaec29622221b8f9e719bd5b119f/birthdayPeople.json");
   const data = await response.json();
@@ -18748,6 +18759,7 @@ async function fetchPeopleList() {
     popup.classList.remove('open');
     popup.remove();
     popup = null;
+    resetScrollBar();
   } // Creating an edit function in order to give access to the user to edit the lists
 
 
@@ -18797,6 +18809,7 @@ async function fetchPeopleList() {
       window.addEventListener('click', e => {
         if (e.target.closest('button.cancel')) {
           destroyPopup(popup);
+          resetScrollBar();
         }
       }); // Adding eventListener in the popup form
 
@@ -18810,6 +18823,7 @@ async function fetchPeopleList() {
         _elements.container.dispatchEvent(new CustomEvent('listUpdated'));
 
         destroyPopup(popup);
+        resetScrollBar();
       }, {
         once: true
       }); // Adding the popup in the html
@@ -18817,6 +18831,7 @@ async function fetchPeopleList() {
       document.body.appendChild(popup); // Adding the open class to the popup form
 
       popup.classList.add('open');
+      HideScrollbar();
     });
   }; // Creating the delete function
 
@@ -18850,15 +18865,18 @@ async function fetchPeopleList() {
 
       document.body.appendChild(deletePopup);
       deletePopup.classList.add('open');
+      HideScrollbar();
       window.addEventListener('click', e => {
         if (e.target.closest('button.cancel_btn')) {
           destroyPopup(deletePopup);
+          resetScrollBar();
         } else if (e.target.closest('button.remove_btn')) {
           destroyPopup(deletePopup);
           const myPersons = persons.filter(person => person.id != id);
           persons = myPersons;
           showPeople(myPersons);
           localStorage.setItem('persons', JSON.stringify(persons));
+          resetScrollBar();
         }
       });
     });
@@ -18899,6 +18917,7 @@ async function fetchPeopleList() {
     window.addEventListener('click', e => {
       if (e.target.closest('button.cancel_list')) {
         destroyPopup(popupAdd);
+        resetScrollBar();
       }
     });
     popupAdd.addEventListener('submit', e => {
@@ -18917,9 +18936,11 @@ async function fetchPeopleList() {
 
       showPeople(persons);
       destroyPopup(popupAdd);
+      resetScrollBar();
     });
     document.body.appendChild(popupAdd);
     popupAdd.classList.add('open');
+    HideScrollbar();
   };
 
   const addBtn = document.querySelector('.add');
@@ -18982,7 +19003,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63914" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50581" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
