@@ -55,7 +55,7 @@ async function fetchPeopleList() {
 			// Creating a form element to contain the form
 			const popup = document.createElement('form');
 			popup.classList.add('popup');
-			const newDate = new Date(editpersons.birthday).toLocaleDateString();
+			const newDate = new Date(editpersons.birthday).toISOString().slice(0, 10);
 			popup.insertAdjacentHTML('afterbegin',
 				`<fieldset>
 					<ul>
@@ -72,7 +72,7 @@ async function fetchPeopleList() {
 						</li>
 						<li>
 							<label>Date of birthday:</label>
-							<input type="text" name="birthday" value="${newDate}">
+							<input type="date" name="birthday" value="${newDate}" max = ${new Date().toISOString().slice(0,10)}>
 						</li>
 						<li>
 							<button class="submit" type="submit" data-id="${editpersons.id}">Save changes</button>
@@ -94,7 +94,7 @@ async function fetchPeopleList() {
 				e.preventDefault();
 				editpersons.firstName = popup.firstName.value;
 				editpersons.lastName = popup.lastName.value;
-				editpersons.birthday= popup.birthday.value;
+				editpersons.birthday = popup.birthday.value;
 				showPeople(editpersons);
 				container.dispatchEvent(new CustomEvent('listUpdated'));
 				destroyPopup(popup)
