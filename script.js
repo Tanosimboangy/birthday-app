@@ -1,5 +1,5 @@
-import { container, inputSearchName, filterByMonth, formFilter } from './Elements/elements.js';
-import { populatePersons } from './Elements/html.js';
+import { container, inputSearchName, filterByMonth } from './containers/elements.js';
+import { populatePersons } from './containers/html.js';
 
 // Fetching the data from the people.json
 async function fetchPeopleList() {
@@ -61,6 +61,7 @@ async function fetchPeopleList() {
 					<ul>
 						<li>
 							<h2>Edit ${editpersons.lastName} ${editpersons.firstName}</h2>
+							<button type="button" class="cancel close">X</button>
 						</li>
 						<li>
 							<label>First Name:</label>
@@ -126,6 +127,7 @@ async function fetchPeopleList() {
 				`<ul class="extra_wrapper">
 					<li class="text">
 						<h2>Are you sure you want to delete this?</h2>
+						<button type="button" class="remove_btn close">X</button>
 					</li>
 					<li class="btns">
 						<button type="button" class="remove_btn">delete</button>
@@ -229,16 +231,6 @@ async function fetchPeopleList() {
 		const html = populatePersons(filterPeople);
 		container.innerHTML = html;
 	}
-
-	// const filterMonth = () => {
-		// const select = filterByMonth.value;
-	// 	const filterPeople = persons.filter(person => {
-	// 		const month = new Date(person.birthday).toLocaleString("en-US", { month: "long" });
-	// 		return month.toLowerCase().includes(select.toLowerCase());
-	// 	});
-	// 	const html = populatePersons(filterPeople);
-	// 	container.innerHTML = html;
-	// }
 
 	// Adding event Listener to the edit fuction, delete fuction
 	window.addEventListener("click", editFunction);

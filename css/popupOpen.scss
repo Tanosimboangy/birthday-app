@@ -8,15 +8,30 @@
         font-style: normal;
         font-weight: 500;
         ul {
-            li {
-                padding-bottom: 10px;
-                color: #094067;
+            li:first-of-type {
+                display: flex;
+                flex-direction: row;
+                align-items: baseline;
+                justify-content: space-between;
+                gap: 4%;
                 h2 {
                     padding-top: 0;
                     font-size: 48px;
                     line-height: 57px;
                     color: #094067;
                 }
+                .close {
+                    outline: none;
+                    border: none;
+                    background-color: white;
+                    font-weight: bolder;
+                    font-size: 22px;
+                    cursor: pointer;
+                }
+            }
+            li {
+                padding-bottom: 10px;
+                color: #094067;
                 label {
                     font-size: 18px;
                     line-height: 21px;

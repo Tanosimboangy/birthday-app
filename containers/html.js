@@ -51,8 +51,7 @@ export function populatePersons(people) {
                 </li>
                 <li>
                     <ul>
-                        <li>
-                            in ${dayLeft < 0 ? dayLeft + 365 + " " + "days" : dayLeft + " days"}</li>
+                        <li>${dayLeft === 0 ? "Happy birthday" : dayLeft < 0 ? "in " + (dayLeft + 365) + " " + "days" : "in " + dayLeft + " days"}</li>
                         </li>
                         <li>
                         <div class="edit" value="${person.id}" data-id="${person.id}">

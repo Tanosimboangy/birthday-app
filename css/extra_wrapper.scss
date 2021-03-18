@@ -9,12 +9,24 @@
     margin-right: 16px;
     box-shadow: 0px 0px 8px #0000009e;
     .text {
+        display: flex;
+        flex-direction: row;
+        align-items: baseline;
+        justify-content: space-between;
         h2 {
             color: #0091ff;
             font-size: 26px;
             line-height: 32px;
             text-align: center;
             padding-bottom: 10px;
+        }
+        .close {
+            outline: none;
+            border: none;
+            background-color: white;
+            font-weight: bolder;
+            font-size: 22px;
+            cursor: pointer;
         }
     }
     .btns {
