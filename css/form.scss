@@ -85,6 +85,11 @@
                 font-size: 18px;
                 line-height: 21px;
                 color: #FFFFFE;
+                width: 95%;
+                @media(min-width: 630px) {
+                    width: 160px;
+                    display: block;
+                }
             }
         }
     }

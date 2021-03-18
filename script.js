@@ -176,7 +176,7 @@ async function fetchPeopleList() {
 				</li>
 				<li>
 					<label>The birthday date: </label><br> 
-					<input type="date" name="birthday" required>
+					<input type="date" name="birthday" max = ${new Date().toISOString().slice(0,10)} required>
 				</li>
 				<li>
 					<button type="submit" class="save">save list</button>

@@ -229,6 +229,13 @@ body .main {
   font-size: 18px;
   line-height: 21px;
   color: #FFFFFE;
+  width: 95%;
+}
+@media (min-width: 630px) {
+  .form .form_lists .adding_list .add {
+    width: 160px;
+    display: block;
+  }
 }
 
 @media (min-width: 630px) {
