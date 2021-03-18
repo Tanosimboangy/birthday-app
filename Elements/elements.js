@@ -4,5 +4,6 @@ export const dataJson = './people.json';
 export const container = document.querySelector(".container");
 export const inputSearchName = document.querySelector(".input");
 export const filterByMonth = document.querySelector("#month");
-export const resetBtn = document.querySelector("reset");
+console.log(inputSearchName, filterByMonth);
+// export const resetBtn = document.querySelector("reset");
 export const formFilter = document.querySelector("form.new_list");

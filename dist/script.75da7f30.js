@@ -123,7 +123,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.formFilter = exports.resetBtn = exports.filterByMonth = exports.inputSearchName = exports.container = exports.dataJson = void 0;
+exports.formFilter = exports.filterByMonth = exports.inputSearchName = exports.container = exports.dataJson = void 0;
 // Import the data from people.json
 const dataJson = './people.json'; // Grabbing the container element
 
@@ -134,8 +134,8 @@ const inputSearchName = document.querySelector(".input");
 exports.inputSearchName = inputSearchName;
 const filterByMonth = document.querySelector("#month");
 exports.filterByMonth = filterByMonth;
-const resetBtn = document.querySelector("reset");
-exports.resetBtn = resetBtn;
+console.log(inputSearchName, filterByMonth); // export const resetBtn = document.querySelector("reset");
+
 const formFilter = document.querySelector("form.new_list");
 exports.formFilter = formFilter;
 },{}],"node_modules/date-fns/esm/_lib/toInteger/index.js":[function(require,module,exports) {
@@ -18926,35 +18926,41 @@ async function fetchPeopleList() {
   const addBtn = document.querySelector('.add');
   addBtn.addEventListener('click', newList); // Filter the list by searching the lastName or the firstName of the person
 
-  const filterName = () => {
+  const filteringPeople = () => {
     // Grabbing the value of the input
     const input = _elements.inputSearchName.value;
     const inputSearch = input.toLowerCase();
     const filterPersName = persons.filter(person => person.lastName.toLowerCase().includes(inputSearch) || person.firstName.toLowerCase().includes(inputSearch));
-    const myHTML = (0, _html.populatePersons)(filterPersName);
-    _elements.container.innerHTML = myHTML;
-  };
-
-  const filterMonth = () => {
     const select = _elements.filterByMonth.value;
-    const filterPeople = persons.filter(person => {
+    const filterPeople = filterPersName.filter(person => {
       const month = new Date(person.birthday).toLocaleString("en-US", {
         month: "long"
       });
       return month.toLowerCase().includes(select.toLowerCase());
     });
+    const myHTML = (0, _html.populatePersons)(filterPersName);
+    _elements.container.innerHTML = myHTML;
     const html = (0, _html.populatePersons)(filterPeople);
     _elements.container.innerHTML = html;
-  }; // Adding event Listener to the edit fuction, delete fuction
+  }; // const filterMonth = () => {
+  // const select = filterByMonth.value;
+  // 	const filterPeople = persons.filter(person => {
+  // 		const month = new Date(person.birthday).toLocaleString("en-US", { month: "long" });
+  // 		return month.toLowerCase().includes(select.toLowerCase());
+  // 	});
+  // 	const html = populatePersons(filterPeople);
+  // 	container.innerHTML = html;
+  // }
+  // Adding event Listener to the edit fuction, delete fuction
 
 
   window.addEventListener("click", editFunction);
   window.addEventListener("click", deletePartner);
   window.addEventListener("submit", AddBtn); // Event listener for the input and search and reset
 
-  _elements.inputSearchName.addEventListener("input", filterName);
+  _elements.inputSearchName.addEventListener("input", filteringPeople);
 
-  _elements.filterByMonth.addEventListener("input", filterMonth);
+  _elements.filterByMonth.addEventListener("input", filteringPeople);
 }
 
 fetchPeopleList();

@@ -213,31 +213,39 @@ async function fetchPeopleList() {
 	addBtn.addEventListener('click', newList);
 
 	// Filter the list by searching the lastName or the firstName of the person
-	const filterName = () => {
+	const filteringPeople = () => {
 		// Grabbing the value of the input
 		const input = inputSearchName.value;
 		const inputSearch = input.toLowerCase();
 		const filterPersName = persons.filter(person => person.lastName.toLowerCase().includes(inputSearch) || person.firstName.toLowerCase().includes(inputSearch));
-		const myHTML = populatePersons(filterPersName);
-        container.innerHTML = myHTML;
-	}
 
-	const filterMonth = () => {
 		const select = filterByMonth.value;
-		const filterPeople = persons.filter(person => {
+		const filterPeople = filterPersName.filter(person => {
 			const month = new Date(person.birthday).toLocaleString("en-US", { month: "long" });
 			return month.toLowerCase().includes(select.toLowerCase());
 		});
+		const myHTML = populatePersons(filterPersName);
+        container.innerHTML = myHTML;
 		const html = populatePersons(filterPeople);
 		container.innerHTML = html;
 	}
+
+	// const filterMonth = () => {
+		// const select = filterByMonth.value;
+	// 	const filterPeople = persons.filter(person => {
+	// 		const month = new Date(person.birthday).toLocaleString("en-US", { month: "long" });
+	// 		return month.toLowerCase().includes(select.toLowerCase());
+	// 	});
+	// 	const html = populatePersons(filterPeople);
+	// 	container.innerHTML = html;
+	// }
 
 	// Adding event Listener to the edit fuction, delete fuction
 	window.addEventListener("click", editFunction);
 	window.addEventListener("click", deletePartner);
 	window.addEventListener("submit", AddBtn);
 	// Event listener for the input and search and reset
-	inputSearchName.addEventListener("input", filterName);
-	filterByMonth.addEventListener("input", filterMonth);
+	inputSearchName.addEventListener("input", filteringPeople);
+	filterByMonth.addEventListener("input", filteringPeople);
 }
 fetchPeopleList();
