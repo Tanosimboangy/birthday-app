@@ -4,6 +4,17 @@
     background-color: #0000006b;
     overflow-y: scroll;
     fieldset {
+        // --scale: 1;
+        // font-family: "Rubik";
+        // font-style: normal;
+        // font-weight: 500;
+        // background-color: white;
+        // padding: 10%;
+        // border-radius: 5px;
+        // margin: 16px;
+        // position: relative;
+        // padding-top: 10%;
+        // padding-bottom: 4%;
         --scale: 1;
         font-family: "Rubik";
         font-style: normal;
@@ -11,10 +22,10 @@
         background-color: white;
         padding: 10%;
         border-radius: 5px;
-        margin: 16px;
         position: relative;
-        padding-top: 19%;
-        padding-bottom: 4%;
+        padding-top: 4%;
+        padding-bottom: 2%;
+        margin-top: 2%;
         @media(max-width: 240px) {
             padding: 10px;
         }
@@ -30,7 +41,6 @@
                     font-size: 48px;
                     line-height: 57px;
                     color: #094067;
-                    // white-space: nowrap;
                     @media(max-width: 500px) {
                         font-size: 28px;
                         line-height: 37px;
@@ -44,7 +54,7 @@
                     font-size: 22px;
                     cursor: pointer;
                     position: absolute;
-                    top: 4%;
+                    top: 3%;
                     right: 4%;
                 }
             }
