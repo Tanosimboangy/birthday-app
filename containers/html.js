@@ -42,10 +42,10 @@ export function populatePersons(people) {
         <article data-id="${person.id}" value="${person.id}" class="article">
             <ul>
                 <li><img src="${person.picture}"></li>
-                <li>
+                <li class="text_content">
                     <h2>${person.lastName} ${person.firstName}</h2> 
                     <p>
-                        Turns <span>${futureAge === 0 ? futureAge + 1 : futureAge}</span> on ${new Date(person.birthday).toLocaleString("en-US", { month: "long" })} <time datetime="${fullDate}"> ${new Date(person.birthday).toLocaleString("en-Us", { day: "numeric" })}${nthDate(date)}</time>
+                        Turns <span>${futureAge}</span> on ${new Date(person.birthday).toLocaleString("en-US", { month: "long" })} <time datetime="${fullDate}"> ${new Date(person.birthday).toLocaleString("en-Us", { day: "numeric" })}${nthDate(date)}</time>
                          
                     </p>    
                 </li>
@@ -54,11 +54,12 @@ export function populatePersons(people) {
                         <li>${dayLeft === 0 ? "Happy birthday" : dayLeft < 0 ? "in " + (dayLeft + 365) + " " + "days" : "in " + dayLeft + " days"}</li>
                         </li>
                         <li>
-                        <div class="edit" value="${person.id}" data-id="${person.id}">
-                            <svg class="w-6 h-6" fill="none" fill="blue" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/200/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
-                        </div>
-                        <div class="delete" data-id="${person.id}">
-                            <svg class="w-6 h-6" fill="none" fill="red" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/200/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2M3 12l6.414 6.414a2 2 0 001.414.586H19a2 2 0 002-2V7a2 2 0 00-2-2h-8.172a2 2 0 00-1.414.586L3 12z"></path></svg>
+                            <div class="edit" value="${person.id}" data-id="${person.id}">
+                                <svg class="w-6 h-6" fill="none" fill="blue" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/200/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+                            </div>
+                            <div class="delete" data-id="${person.id}">
+                                <svg class="w-6 h-6" fill="none" fill="red" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/200/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2M3 12l6.414 6.414a2 2 0 001.414.586H19a2 2 0 002-2V7a2 2 0 00-2-2h-8.172a2 2 0 00-1.414.586L3 12z"></path></svg>
+                            </div>
                         </li>
                     </ul>
                 </li>

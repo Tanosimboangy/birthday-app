@@ -77,9 +77,8 @@ body .main {
   padding-right: 25px;
   padding-top: 22px;
   padding-left: 42px;
-  background-color: white;
-  justify-content: space-between;
-  border-radius: 4px;
+  background: #FFFFFE;
+  border-radius: 5px;
 }
 .container article ul li img {
   width: 92px;
@@ -89,10 +88,10 @@ body .main {
 .container article ul li svg {
   width: 40px;
 }
-.container article ul li:nth-of-type(2) {
-  padding-left: 4px;
+.container article ul li:first-of-type {
+  margin-right: 10px;
 }
-.container article ul li:nth-of-type(2) h2 {
+.container article ul .text_content h2 {
   font-size: 30px;
   line-height: 43px;
   color: #000000;
@@ -103,13 +102,23 @@ body .main {
   font-style: normal;
   font-weight: 500;
 }
-.container article ul li:nth-of-type(2) p {
+@media (max-width: 400px) {
+  .container article ul .text_content h2 {
+    white-space: normal;
+  }
+}
+.container article ul .text_content p {
   font-size: 24px;
   line-height: 28px;
   color: #5F6C7B;
 }
-.container article ul li:nth-of-type(2) p span {
+.container article ul .text_content p span {
   color: #EF4565;
+}
+@media (max-width: 400px) {
+  .container article ul .text_content p {
+    white-space: normal;
+  }
 }
 .container article ul li:last-of-type ul {
   display: flex;
@@ -131,7 +140,7 @@ body .main {
 .container article ul li:last-of-type ul li:last-of-type {
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-self: flex-end;
   justify-content: space-between;
   margin-bottom: 0;
 }
@@ -146,19 +155,31 @@ body .main {
 }
 
 @media (min-width: 660px) {
-  .container article ul li:nth-of-type(2) h2 {
+  .container article ul .text_content {
+    margin-right: auto;
+  }
+  .container article ul .text_content h2 {
     font-size: 36px;
     line-height: 43px;
   }
-  .container article ul li:nth-of-type(2) p {
+  .container article ul .text_content p {
     font-size: 24px;
     line-height: 28px;
-    color: #5F6C7B;
   }
-  .container article ul li:nth-of-type(2) p span {
+  .container article ul .text_content p span {
     font-size: 24px;
     line-height: 28px;
-    color: orangered;
+  }
+}
+@media (min-width: 720px) {
+  .container article ul {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: baseline;
+  }
+  .container article ul .text_content {
+    padding-left: 39px;
   }
 }
 .form .form_lists {
