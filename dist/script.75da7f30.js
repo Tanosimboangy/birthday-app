@@ -18790,8 +18790,8 @@ async function fetchPeopleList() {
 						<li>
 							<label>First Name:</label>
 							<input type="text" name="lastName" value="${editpersons.lastName}">
-							</li>
-							<li>
+						</li>
+						<li>
 							<label>Last Name:</label>
 							<input type="text" name="firstName" value="${editpersons.firstName}">
 						</li>
@@ -18950,7 +18950,8 @@ async function fetchPeopleList() {
   const filteringPeople = () => {
     // Grabbing the value of the input
     const input = _elements.inputSearchName.value;
-    const inputSearch = input.toLowerCase();
+    const inputSearch = input.toLowerCase(); // I should have .trim() method in order to remove the white space.
+
     const filterPersName = persons.filter(person => person.lastName.toLowerCase().includes(inputSearch) || person.firstName.toLowerCase().includes(inputSearch));
     const select = _elements.filterByMonth.value;
     const filterPeople = filterPersName.filter(person => {

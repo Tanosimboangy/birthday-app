@@ -307,6 +307,7 @@ body .main {
   background-color: white;
   box-shadow: 0px 0px 8px #0000009e;
   position: relative;
+  margin: auto;
 }
 .extra_wrapper .text {
   display: flex;
@@ -371,8 +372,6 @@ body .main {
   transition: all 0.25s;
   top: 0;
   display: grid;
-  justify-content: center;
-  align-items: center;
   pointer-events: none;
   --opacity: 1;
   opacity: var(--opacity);
@@ -430,9 +429,12 @@ body .main {
   padding: 10%;
   border-radius: 5px;
   position: relative;
-  padding-top: 4%;
-  padding-bottom: 2%;
-  margin-top: 2%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-left: 15%;
+  margin-right: 15%;
+  margin-top: 10.5%;
+  margin-bottom: 2%;
 }
 @media (max-width: 240px) {
   .popup.open fieldset {

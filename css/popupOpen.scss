@@ -4,17 +4,6 @@
     background-color: #0000006b;
     overflow-y: scroll;
     fieldset {
-        // --scale: 1;
-        // font-family: "Rubik";
-        // font-style: normal;
-        // font-weight: 500;
-        // background-color: white;
-        // padding: 10%;
-        // border-radius: 5px;
-        // margin: 16px;
-        // position: relative;
-        // padding-top: 10%;
-        // padding-bottom: 4%;
         --scale: 1;
         font-family: "Rubik";
         font-style: normal;
@@ -23,9 +12,12 @@
         padding: 10%;
         border-radius: 5px;
         position: relative;
-        padding-top: 4%;
-        padding-bottom: 2%;
-        margin-top: 2%;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        margin-left: 15%;
+        margin-right: 15%;
+        margin-top: 10.5%;
+        margin-bottom: 2%;
         @media(max-width: 240px) {
             padding: 10px;
         }
