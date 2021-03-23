@@ -248,7 +248,7 @@ body .main {
   line-height: 21px;
   color: #5F6C7B;
   margin-bottom: 17px;
-  width: 95%;
+  width: 255px;
 }
 @media (max-width: 320px) {
   .form .form_lists .month_list .select_month {
