@@ -206,6 +206,7 @@ body .main {
 .form .form_lists .name_list .input_name {
   width: 100%;
   margin: auto;
+  margin-top: 13px;
 }
 .form .form_lists .name_list .input_name input {
   padding: 12px;
@@ -235,6 +236,7 @@ body .main {
 .form .form_lists .month_list .select_month {
   width: 100%;
   margin: auto;
+  margin-top: 13px;
 }
 .form .form_lists .month_list .select_month select {
   padding: 12px;
@@ -281,8 +283,14 @@ body .main {
   .form .form_lists {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
     align-items: flex-end;
+    flex-wrap: wrap;
+  }
+  .form .form_lists .name_list {
+    margin-right: 35px;
+  }
+  .form .form_lists .month_list {
+    margin-right: auto;
   }
 }
 .extra_wrapper {

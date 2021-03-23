@@ -23,6 +23,7 @@
             .input_name {
                 width: 100%;
                 margin: auto;
+                margin-top: 13px;
                 input {
                     padding: 12px;
                     border-radius: 5px;
@@ -50,6 +51,7 @@
             .select_month {
                 width: 100%;
                 margin: auto;
+                margin-top: 13px;
                 select {
                     padding: 12px;
                     border-radius: 5px;
@@ -98,9 +100,14 @@
         .form_lists {
             display: flex;
             flex-direction: row;
-            justify-content: space-between;
-            // flex-wrap: wrap;
             align-items: flex-end;
+            flex-wrap: wrap;
+            .name_list {
+                margin-right: 35px;
+            }
+            .month_list {
+                margin-right: auto;
+            }
         }
     }
 }
