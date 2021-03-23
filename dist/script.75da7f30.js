@@ -18606,7 +18606,7 @@ function populatePersons(people) {
                 <li>
                     <h2>${person.lastName} ${person.firstName}</h2> 
                     <p>
-                        Turns <span>${futureAge + 1}</span> on ${new Date(person.birthday).toLocaleString("en-US", {
+                        Turns <span>${futureAge === 0 ? futureAge + 1 : futureAge}</span> on ${new Date(person.birthday).toLocaleString("en-US", {
       month: "long"
     })} <time datetime="${fullDate}"> ${new Date(person.birthday).toLocaleString("en-Us", {
       day: "numeric"
@@ -19003,7 +19003,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58898" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57955" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

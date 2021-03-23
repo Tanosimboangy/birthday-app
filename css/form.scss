@@ -21,8 +21,6 @@
         }
         .name_list {
             .input_name {
-                // max-width: 264px;
-                // margin: auto;
                 width: 100%;
                 margin: auto;
                 input {
@@ -37,7 +35,7 @@
                     font-size: 18px;
                     line-height: 21px;
                     color: #5F6C7B;
-                    margin-right: 20px;
+                    margin-right: 35px;
                     @media(max-width: 310px) {
                         margin-right: 0;
                     }

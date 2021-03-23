@@ -45,7 +45,7 @@ export function populatePersons(people) {
                 <li>
                     <h2>${person.lastName} ${person.firstName}</h2> 
                     <p>
-                        Turns <span>${futureAge + 1}</span> on ${new Date(person.birthday).toLocaleString("en-US", { month: "long" })} <time datetime="${fullDate}"> ${new Date(person.birthday).toLocaleString("en-Us", { day: "numeric" })}${nthDate(date)}</time>
+                        Turns <span>${futureAge === 0 ? futureAge + 1 : futureAge}</span> on ${new Date(person.birthday).toLocaleString("en-US", { month: "long" })} <time datetime="${fullDate}"> ${new Date(person.birthday).toLocaleString("en-Us", { day: "numeric" })}${nthDate(date)}</time>
                          
                     </p>    
                 </li>

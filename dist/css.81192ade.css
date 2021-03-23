@@ -4,7 +4,7 @@
 }
 body {
   font-family: "Rubik";
-  background: #D8EEFE;
+  background: #b9ddf7;
   margin: 0;
 }
 body ul {
@@ -33,7 +33,7 @@ body .main {
 @media (min-width: 820px) {
   body .main {
     padding: 0px 0px;
-    max-width: 800px;
+    max-width: 779px;
     margin: auto;
   }
 }
@@ -44,11 +44,11 @@ body .main {
   font-family: "Rubik";
   font-style: normal;
   font-weight: bold;
-  font-size: 54px;
-  line-height: 66px;
-  color: #094067;
-  padding-top: 42px;
+  font-size: 64px;
+  line-height: 76px;
+  padding-top: 63px;
   padding-bottom: 42px;
+  color: #094067;
 }
 @media (max-width: 320px) {
   .header .title {
@@ -81,11 +81,6 @@ body .main {
   justify-content: space-between;
   border-radius: 4px;
 }
-.container article ul li {
-  font-family: "Rubik";
-  font-style: normal;
-  font-weight: 500;
-}
 .container article ul li img {
   width: 92px;
   height: 94px;
@@ -104,6 +99,9 @@ body .main {
   max-width: 300px;
   text-align: left;
   white-space: nowrap;
+  font-family: "Rubik";
+  font-style: normal;
+  font-weight: 500;
 }
 .container article ul li:nth-of-type(2) p {
   font-size: 24px;
@@ -111,9 +109,7 @@ body .main {
   color: #5F6C7B;
 }
 .container article ul li:nth-of-type(2) p span {
-  font-size: 24px;
-  line-height: 28px;
-  color: orangered;
+  color: #EF4565;
 }
 .container article ul li:last-of-type ul {
   display: flex;
@@ -143,16 +139,26 @@ body .main {
   color: red;
 }
 .container article ul li:last-of-type ul li:last-of-type .edit {
-  margin-right: 20px;
+  margin-right: 10px;
 }
 .container article:hover {
   box-shadow: 0px 0px 6px black;
 }
 
 @media (min-width: 660px) {
-  .container article ul {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+  .container article ul li:nth-of-type(2) h2 {
+    font-size: 36px;
+    line-height: 43px;
+  }
+  .container article ul li:nth-of-type(2) p {
+    font-size: 24px;
+    line-height: 28px;
+    color: #5F6C7B;
+  }
+  .container article ul li:nth-of-type(2) p span {
+    font-size: 24px;
+    line-height: 28px;
+    color: orangered;
   }
 }
 .form .form_lists {
@@ -192,7 +198,7 @@ body .main {
   font-size: 18px;
   line-height: 21px;
   color: #5F6C7B;
-  margin-right: 20px;
+  margin-right: 35px;
 }
 @media (max-width: 310px) {
   .form .form_lists .name_list .input_name input {
