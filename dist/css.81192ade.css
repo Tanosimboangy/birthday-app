@@ -144,6 +144,11 @@ body .main {
   justify-content: space-between;
   margin-bottom: 0;
 }
+@media (max-width: 450px) {
+  .container article ul li:last-of-type ul li:last-of-type {
+    align-self: flex-start;
+  }
+}
 .container article ul li:last-of-type ul li:last-of-type .delete svg {
   color: red;
 }
@@ -525,6 +530,7 @@ body .main {
   font-style: normal;
   font-weight: 500;
   background-color: white;
+  margin: auto;
 }
 .wrapper li {
   margin-bottom: 1rem;
