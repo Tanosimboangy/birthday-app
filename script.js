@@ -244,7 +244,7 @@ async function fetchPeopleList() {
 		const select = filterByMonth.value;
 		const filterPeople = filterPersName.filter(person => {
 			const month = new Date(person.birthday).toLocaleString("en-US", { month: "long" });
-			return month.toLowerCase().includes(select.toLowerCase());
+			return select === "empty" ? true : month.toLowerCase().includes(select.toLowerCase());
 		});
 		const myHTML = populatePersons(filterPersName);
         container.innerHTML = myHTML;

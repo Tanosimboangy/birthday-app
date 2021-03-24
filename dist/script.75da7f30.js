@@ -18958,7 +18958,7 @@ async function fetchPeopleList() {
       const month = new Date(person.birthday).toLocaleString("en-US", {
         month: "long"
       });
-      return month.toLowerCase().includes(select.toLowerCase());
+      return select === "empty" ? true : month.toLowerCase().includes(select.toLowerCase());
     });
     const myHTML = (0, _html.populatePersons)(filterPersName);
     _elements.container.innerHTML = myHTML;
