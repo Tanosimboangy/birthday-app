@@ -29,6 +29,9 @@
   - This is from Netlify but if you want to look at the solution here is the link: 
 <div><a href="https://github.com/Tanosimboangy/birthday-app">Github</a></div>.
 
+  - This is the design for this Birthday App: 
+<div><a href="https://www.figma.com/file/bb1Mie5R3mUhR77PtGG8bJ/Birthday-App?node-id=0%3A1">Figma</a></div>.
+
 #   **My experience:**
 
     -  Since this project is based upon Javascript, displaying each item can be complicated.
