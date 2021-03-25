@@ -242,6 +242,7 @@ body .main {
   width: 100%;
   margin: auto;
   margin-top: 13px;
+  position: relative;
 }
 .form .form_lists .month_list .select_month select {
   padding: 12px;
@@ -255,6 +256,17 @@ body .main {
   margin-bottom: 17px;
   width: 95%;
   padding-right: 112px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url(/arrow-drop-down-line.31b4ecb0.png);
+  background-repeat: no-repeat;
+  background-position: 90% 50%;
+  background-size: 40px;
+}
+@media (min-width: 630px) {
+  .form .form_lists .month_list .select_month {
+    width: 117%;
+  }
 }
 @media (max-width: 320px) {
   .form .form_lists .month_list .select_month {
@@ -579,7 +591,7 @@ body .main {
   padding-top: 14px;
   padding-bottom: 15px;
   padding-left: 20px;
-  width: 60%;
+  width: 70%;
   padding-right: 16px;
 }
 .wrapper li button {

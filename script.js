@@ -188,19 +188,19 @@ async function fetchPeopleList() {
 					<label>Last Name</label><br>
 					<input type="text" class="last_name" name="lastName" value="" placeholder="last name" required>
 				</li>
+				<li>
+				<label>First Name</label><br>
+				<input type="text" class="first_name" name="firstName" placeholder="first name" value="" required>
+				</li>
+				<li>
+				<label>The birthday date: </label><br> 
+				<input type="date" name="birthday" max = ${new Date().toISOString().slice(0,10)} required>
+				</li>
+				<li>
+				<button type="submit" class="save">save list</button>
+				<button type="button" class="cancel_list">cancel</button>
+				</li>
 				<li><button type="button" class="cancel_list rmv">X</button></li>
-				<li>
-					<label>First Name</label><br>
-					<input type="text" class="first_name" name="firstName" placeholder="first name" value="" required>
-				</li>
-				<li>
-					<label>The birthday date: </label><br> 
-					<input type="date" name="birthday" max = ${new Date().toISOString().slice(0,10)} required>
-				</li>
-				<li>
-					<button type="submit" class="save">save list</button>
-					<button type="button" class="cancel_list">cancel</button>
-				</li>
 			</ul>`);
 
 		window.addEventListener('click', e => {

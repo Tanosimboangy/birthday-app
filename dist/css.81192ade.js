@@ -189,7 +189,7 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"C:\\Users\\Jaccquit\\code\\JAVASCRIPT\\birthday-app\\fonts\\Rubik-Regular.woff":[["Rubik-Regular.d8384832.woff","fonts/Rubik-Regular.woff"],"fonts/Rubik-Regular.woff"],"C:\\Users\\Jaccquit\\code\\JAVASCRIPT\\birthday-app\\fonts\\Rubik-Regular.woff2":[["Rubik-Regular.3e635f3a.woff2","fonts/Rubik-Regular.woff2"],"fonts/Rubik-Regular.woff2"],"_css_loader":"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"C:\\Users\\Jaccquit\\code\\JAVASCRIPT\\birthday-app\\fonts\\Rubik-Regular.woff":[["Rubik-Regular.d8384832.woff","fonts/Rubik-Regular.woff"],"fonts/Rubik-Regular.woff"],"C:\\Users\\Jaccquit\\code\\JAVASCRIPT\\birthday-app\\fonts\\Rubik-Regular.woff2":[["Rubik-Regular.3e635f3a.woff2","fonts/Rubik-Regular.woff2"],"fonts/Rubik-Regular.woff2"],"./..\\img\\arrow-drop-down-line.png":[["arrow-drop-down-line.31b4ecb0.png","img/arrow-drop-down-line.png"],"img/arrow-drop-down-line.png"],"_css_loader":"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;

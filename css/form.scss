@@ -52,6 +52,7 @@
                 width: 100%;
                 margin: auto;
                 margin-top: 13px;
+                position: relative;
                 select {
                     padding: 12px;
                     border-radius: 5px;
@@ -64,6 +65,15 @@
                     margin-bottom: 17px;
                     width: 95%;
                     padding-right: 112px;
+                    -webkit-appearance: none;
+                    -moz-appearance: none;
+                    background-image: url(../img/arrow-drop-down-line.png);
+                    background-repeat: no-repeat;
+                    background-position: 90% 50%;
+                    background-size: 40px;
+                }
+                @media(min-width: 630px) {
+                    width: 117%;
                 }
                 @media(max-width: 320px) {
                     max-width: 100%;
