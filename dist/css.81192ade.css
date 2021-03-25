@@ -314,6 +314,12 @@ body .main {
   position: relative;
   margin: auto;
 }
+@media (max-width: 480px) {
+  .extra_wrapper {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+}
 .extra_wrapper .text {
   display: flex;
   flex-direction: row;
@@ -326,17 +332,6 @@ body .main {
   line-height: 32px;
   text-align: center;
   padding-bottom: 10px;
-}
-.extra_wrapper .text .close {
-  outline: none;
-  border: none;
-  background-color: white;
-  font-weight: bolder;
-  font-size: 22px;
-  cursor: pointer;
-  position: absolute;
-  top: 4%;
-  right: 4%;
 }
 .extra_wrapper .btns {
   display: flex;
@@ -367,6 +362,17 @@ body .main {
   background: #FFFFFF;
   box-sizing: border-box;
   border: 2px solid #5F6C7B;
+}
+.extra_wrapper .close {
+  outline: none;
+  border: none;
+  background-color: white;
+  font-weight: bolder;
+  font-size: 22px;
+  cursor: pointer;
+  position: absolute;
+  top: 4%;
+  right: 4%;
 }
 
 .popup {
@@ -438,8 +444,14 @@ body .main {
   padding-bottom: 10px;
   margin-left: 15%;
   margin-right: 15%;
-  margin-top: 10.5%;
-  margin-bottom: 2%;
+  margin-top: 4%;
+  margin-bottom: 4%;
+}
+@media (max-width: 500px) {
+  .popup.open fieldset {
+    margin-left: 5%;
+    margin-right: 5%;
+  }
 }
 @media (max-width: 240px) {
   .popup.open fieldset {
@@ -523,14 +535,29 @@ body .main {
 }
 
 .wrapper {
-  padding: 20px 40px;
-  background-color: blue;
+  display: grid;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   border-radius: 5px;
   font-family: "Rubik";
   font-style: normal;
   font-weight: 500;
   background-color: white;
-  margin: auto;
+  padding-bottom: 5%;
+  padding-top: 5%;
+  margin-left: 15%;
+  margin-right: 15%;
+  margin-top: 4%;
+  margin-bottom: 4%;
+  position: relative;
+}
+@media (max-width: 530px) {
+  .wrapper {
+    margin-left: 5%;
+    margin-right: 5%;
+    padding: 16px;
+  }
 }
 .wrapper li {
   margin-bottom: 1rem;
@@ -552,7 +579,8 @@ body .main {
   padding-top: 14px;
   padding-bottom: 15px;
   padding-left: 20px;
-  width: 100%;
+  width: 60%;
+  padding-right: 16px;
 }
 .wrapper li button {
   outline: none;
@@ -578,6 +606,19 @@ body .main {
   border-radius: 5px;
   background: #FFFFFF;
   box-sizing: border-box;
+}
+.wrapper li .rmv {
+  outline: none;
+  border: none;
+  background-color: white;
+  font-weight: bolder;
+  font-size: 22px;
+  cursor: pointer;
+  position: absolute;
+  top: 2%;
+  right: 6%;
+  width: 0;
+  height: 0;
 }
 
 /*# sourceMappingURL=/css.81192ade.css.map */

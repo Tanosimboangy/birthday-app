@@ -18856,12 +18856,12 @@ async function fetchPeopleList() {
       deletePopup.insertAdjacentHTML('afterbegin', `<ul class="extra_wrapper">
 					<li class="text">
 						<h2>Are you sure you want to delete this?</h2>
-						<button type="button" class="remove_btn close">X</button>
 					</li>
 					<li class="btns">
 						<button type="button" class="remove_btn">delete</button>
 						<button type="button" class="cancel_btn">cancel</button>
 					</li>
+					<li><button type="button" class="cancel_btn close">X</button></li>
 				</ul>`); // Append the deletePopup inside of the html 
 
       document.body.appendChild(deletePopup);
@@ -18902,6 +18902,7 @@ async function fetchPeopleList() {
 					<label>Last Name</label><br>
 					<input type="text" class="last_name" name="lastName" value="" placeholder="last name" required>
 				</li>
+				<li><button type="button" class="cancel_list rmv">X</button></li>
 				<li>
 					<label>First Name</label><br>
 					<input type="text" class="first_name" name="firstName" placeholder="first name" value="" required>
