@@ -1,5 +1,6 @@
 import { container, inputSearchName, filterByMonth } from './containers/elements.js';
 import { populatePersons } from './containers/html.js';
+import close from "./img/close_popup.png";
 // hideScrollbar when the popup appears
 
 const body = document.body;
@@ -72,7 +73,7 @@ async function fetchPeopleList() {
 					<ul>
 						<li>
 							<h2>Edit ${editpersons.lastName} ${editpersons.firstName}</h2>
-							<button type="button" class="cancel close">X</button>
+							<button type="button" class="cancel close"><img src=${close} alt="closing_edit_popup"/></button>
 						</li>
 						<li>
 							<label>First Name:</label>
@@ -145,7 +146,7 @@ async function fetchPeopleList() {
 						<button type="button" class="remove_btn">delete</button>
 						<button type="button" class="cancel_btn">cancel</button>
 					</li>
-					<li><button type="button" class="cancel_btn close">X</button></li>
+					<li><button type="button" class="cancel_btn close"><img src=${close} alt="closing_delete_popup"/></button></li>
 				</ul>`);
 			// Append the deletePopup inside of the html 
 			document.body.appendChild(deletePopup);

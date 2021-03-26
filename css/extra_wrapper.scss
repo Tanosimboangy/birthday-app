@@ -63,11 +63,13 @@
         outline: none;
         border: none;
         background-color: white;
-        font-weight: bolder;
-        font-size: 22px;
         cursor: pointer;
         position: absolute;
         top: 4%;
         right: 4%;
+        img {
+            width: 29px;
+            height: 29px;
+        }
     }
 }

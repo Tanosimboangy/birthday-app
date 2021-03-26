@@ -18704,12 +18704,18 @@ function populatePersons(people) {
 //         )
 //         .join('');
 // }
-},{"date-fns":"node_modules/date-fns/esm/index.js","./util.js":"containers/util.js"}],"script.js":[function(require,module,exports) {
+},{"date-fns":"node_modules/date-fns/esm/index.js","./util.js":"containers/util.js"}],"img/close_popup.png":[function(require,module,exports) {
+module.exports = "/close_popup.2ea1c7c7.png";
+},{}],"script.js":[function(require,module,exports) {
 "use strict";
 
 var _elements = require("./containers/elements.js");
 
 var _html = require("./containers/html.js");
+
+var _close_popup = _interopRequireDefault(require("./img/close_popup.png"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // hideScrollbar when the popup appears
 const body = document.body;
@@ -18785,7 +18791,7 @@ async function fetchPeopleList() {
 					<ul>
 						<li>
 							<h2>Edit ${editpersons.lastName} ${editpersons.firstName}</h2>
-							<button type="button" class="cancel close">X</button>
+							<button type="button" class="cancel close"><img src=${_close_popup.default} alt="closing_edit_popup"/></button>
 						</li>
 						<li>
 							<label>First Name:</label>
@@ -18861,7 +18867,7 @@ async function fetchPeopleList() {
 						<button type="button" class="remove_btn">delete</button>
 						<button type="button" class="cancel_btn">cancel</button>
 					</li>
-					<li><button type="button" class="cancel_btn close">X</button></li>
+					<li><button type="button" class="cancel_btn close"><img src=${_close_popup.default} alt="closing_delete_popup"/></button></li>
 				</ul>`); // Append the deletePopup inside of the html 
 
       document.body.appendChild(deletePopup);
@@ -18978,7 +18984,7 @@ async function fetchPeopleList() {
 }
 
 fetchPeopleList();
-},{"./containers/elements.js":"containers/elements.js","./containers/html.js":"containers/html.js"}],"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./containers/elements.js":"containers/elements.js","./containers/html.js":"containers/html.js","./img/close_popup.png":"img/close_popup.png"}],"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -19006,7 +19012,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57764" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59765" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
