@@ -507,8 +507,8 @@ body .main {
   background-color: white;
   cursor: pointer;
   position: absolute;
-  top: 3%;
-  right: 4%;
+  top: 5%;
+  right: 3%;
 }
 .popup.open fieldset ul li:first-of-type .close img {
   width: 29px;
@@ -641,7 +641,7 @@ body .main {
   font-size: 22px;
   cursor: pointer;
   position: absolute;
-  top: 2%;
+  top: 4%;
   right: 6%;
   width: 0;
   height: 0;
