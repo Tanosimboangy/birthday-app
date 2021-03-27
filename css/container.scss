@@ -12,17 +12,18 @@
         background: #FFFFFE;
         border-radius: 5px;
         li {
+            svg {
+                width: 28px;
+                height: 28px;
+            }
+        }
+        .profile_list {
+            margin-right: 10px;
             img {
                 width: 92px;
                 height: 94px;
                 border-radius: 5px;
             }
-            svg {
-                width: 40px;
-            }
-        }
-        li:first-of-type {
-            margin-right: 10px;
         }
         .text_content {
             h2 {

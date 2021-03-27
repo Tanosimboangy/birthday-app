@@ -18602,7 +18602,7 @@ function populatePersons(people) {
     return `
         <article data-id="${person.id}" value="${person.id}" class="article">
             <ul>
-                <li><img src="${person.picture}"></li>
+                <li class="profile_list"><img src="${person.picture}"></li>
                 <li class="text_content">
                     <h2>${person.lastName} ${person.firstName}</h2> 
                     <p>
@@ -19012,7 +19012,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59765" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53148" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

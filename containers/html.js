@@ -41,7 +41,7 @@ export function populatePersons(people) {
         return `
         <article data-id="${person.id}" value="${person.id}" class="article">
             <ul>
-                <li><img src="${person.picture}"></li>
+                <li class="profile_list"><img src="${person.picture}"></li>
                 <li class="text_content">
                     <h2>${person.lastName} ${person.firstName}</h2> 
                     <p>

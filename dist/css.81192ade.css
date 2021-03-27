@@ -80,16 +80,17 @@ body .main {
   background: #FFFFFE;
   border-radius: 5px;
 }
-.container article ul li img {
+.container article ul li svg {
+  width: 28px;
+  height: 28px;
+}
+.container article ul .profile_list {
+  margin-right: 10px;
+}
+.container article ul .profile_list img {
   width: 92px;
   height: 94px;
   border-radius: 5px;
-}
-.container article ul li svg {
-  width: 40px;
-}
-.container article ul li:first-of-type {
-  margin-right: 10px;
 }
 .container article ul .text_content h2 {
   font-size: 30px;
@@ -223,7 +224,6 @@ body .main {
   font-size: 18px;
   line-height: 21px;
   color: #5F6C7B;
-  margin-right: 35px;
   padding-left: 20px;
   padding-top: 15px;
   padding-bottom: 14px;
@@ -231,6 +231,11 @@ body .main {
 @media (max-width: 310px) {
   .form .form_lists .name_list .input_name input {
     margin-right: 0;
+  }
+}
+@media (min-width: 630px) {
+  .form .form_lists .name_list .input_name input {
+    margin-right: 35px;
   }
 }
 @media (max-width: 320px) {
