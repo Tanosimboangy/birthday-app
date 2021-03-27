@@ -18618,7 +18618,7 @@ function populatePersons(people) {
                     <ul>
                         <li>${dayLeft === 0 ? "Happy birthday" : dayLeft < 0 ? "in " + (dayLeft + 365) + " " + "days" : "in " + dayLeft + " days"}</li>
                         </li>
-                        <li>
+                        <li class="buttons_lists">
                             <div class="edit" value="${person.id}" data-id="${person.id}">
                                 <svg class="w-6 h-6" fill="none" fill="blue" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/200/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
                             </div>
@@ -18805,7 +18805,7 @@ async function fetchPeopleList() {
 							<label>Date of birthday:</label>
 							<input type="date" name="birthday" value="${newDate}" max = ${new Date().toISOString().slice(0, 10)}>
 						</li>
-						<li>
+						<li class="buttons_lists">
 							<button class="submit" type="submit" data-id="${editpersons.id}">Save changes</button>
 							<button class="cancel" type="button" data-id="${editpersons.id}">Cancel</button>
 						</li>
@@ -18909,16 +18909,16 @@ async function fetchPeopleList() {
 					<input type="text" class="last_name" name="lastName" value="" placeholder="last name" required>
 				</li>
 				<li>
-				<label>First Name</label><br>
-				<input type="text" class="first_name" name="firstName" placeholder="first name" value="" required>
+					<label>First Name</label><br>
+					<input type="text" class="first_name" name="firstName" placeholder="first name" value="" required>
 				</li>
 				<li>
-				<label>The birthday date: </label><br> 
-				<input type="date" name="birthday" max = ${new Date().toISOString().slice(0, 10)} required>
+					<label>The birthday date: </label><br> 
+					<input type="date" name="birthday" max = ${new Date().toISOString().slice(0, 10)} required>
 				</li>
-				<li>
-				<button type="submit" class="save">save list</button>
-				<button type="button" class="cancel_list">cancel</button>
+				<li class="buttons_lists">
+					<button type="submit" class="save">save list</button>
+					<button type="button" class="cancel_list">cancel</button>
 				</li>
 				<li><button type="button" class="cancel_list rmv">X</button></li>
 			</ul>`);
@@ -19012,7 +19012,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53148" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54595" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
