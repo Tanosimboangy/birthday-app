@@ -201,7 +201,7 @@ async function fetchPeopleList() {
 					<button type="submit" class="save">save list</button>
 					<button type="button" class="cancel_list">cancel</button>
 				</li>
-				<li><button type="button" class="cancel_list rmv">X</button></li>
+				<li><button type="button" class="cancel_list rmv"><img src=${close} alt="closing_delete_popup"/></button></li>
 			</ul>`);
 
 		window.addEventListener('click', e => {

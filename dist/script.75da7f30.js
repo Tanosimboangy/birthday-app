@@ -18920,7 +18920,7 @@ async function fetchPeopleList() {
 					<button type="submit" class="save">save list</button>
 					<button type="button" class="cancel_list">cancel</button>
 				</li>
-				<li><button type="button" class="cancel_list rmv">X</button></li>
+				<li><button type="button" class="cancel_list rmv"><img src=${_close_popup.default} alt="closing_delete_popup"/></button></li>
 			</ul>`);
     window.addEventListener('click', e => {
       if (e.target.closest('button.cancel_list')) {
@@ -19012,7 +19012,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54595" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60974" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
