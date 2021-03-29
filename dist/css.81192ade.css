@@ -57,7 +57,7 @@ body .main {
   }
 }
 
-@media (min-width: 720px) {
+@media (min-width: 832px) {
   body .header {
     padding: 0px 0px;
   }
@@ -79,10 +79,6 @@ body .main {
   padding-left: 42px;
   background: #FFFFFE;
   border-radius: 5px;
-}
-.container article ul li svg {
-  width: 28px;
-  height: 28px;
 }
 .container article ul .profile_list {
   margin-right: 10px;
@@ -152,9 +148,13 @@ body .main {
 }
 .container article ul li:last-of-type ul li:last-of-type .delete svg {
   color: red;
+  width: 30px;
+  height: 30px;
 }
 .container article ul li:last-of-type ul li:last-of-type .edit {
   margin-right: 10px;
+  width: 30px;
+  height: 30px;
 }
 .container article:hover {
   box-shadow: 0px 0px 6px black;

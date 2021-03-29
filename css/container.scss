@@ -11,12 +11,6 @@
         padding-left: 42px;
         background: #FFFFFE;
         border-radius: 5px;
-        li {
-            svg {
-                width: 28px;
-                height: 28px;
-            }
-        }
         .profile_list {
             margin-right: 10px;
             img {
@@ -83,10 +77,14 @@
                     .delete {
                         svg {
                             color: red;
+                            width: 30px;
+                            height: 30px;
                         }
                     }
                     .edit {
                         margin-right: 10px;
+                        width: 30px;
+                        height: 30px;
                     }
                 }
             }
