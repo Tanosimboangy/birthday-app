@@ -643,8 +643,10 @@ body .main {
   font-size: 22px;
   cursor: pointer;
   position: absolute;
-  top: 0%;
-  right: 5%;
+  top: 1%;
+  right: 3%;
+  padding: 0;
+  max-width: fit-content;
 }
 .wrapper li .rmv img {
   width: 29px;
