@@ -1,135 +1,133 @@
 .form {
-    .form_lists {
-        display: grid;
-        grid-template-rows: repeat(3, 1fr);
-        font-family: "Rubik";
+  .form_lists {
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    font-family: 'Rubik';
+    font-weight: 500;
+    padding-bottom: 30px;
+    li {
+      font-style: normal;
+      label {
+        font-size: 20px;
+        font-family: 'Rubik';
+        font-style: normal;
         font-weight: 500;
-        padding-bottom: 30px;
-        li {
-            font-style: normal;
-            label {
-                font-size: 20px;
-                font-family: "Rubik";
-                font-style: normal;
-                font-weight: 500;
-                font-size: 18px;
-                line-height: 21px;
-                color: #094067;
-                margin-bottom: 13px;
-            }
-        }
-        .name_list {
-            .input_name {
-                width: 100%;
-                margin: auto;
-                margin-top: 13px;
-                input {
-                    border-radius: 5px;
-                    border: none;
-                    outline: none;
-                    cursor: pointer;
-                    width: 90%;
-                    margin-bottom: 17px;
-                    font-weight: 500;
-                    font-size: 18px;
-                    line-height: 21px;
-                    color: #5F6C7B;
-                    padding-left: 20px;
-                    padding-top: 15px;
-                    padding-bottom: 14px;
-                    @media(max-width: 310px) {
-                        margin-right: 0;
-                    }
-                    @media(min-width: 630px) {
-                        margin-right: 35px;
-                    }
-                }
-                @media(max-width: 320px) {
-                    max-width: 100%;
-                    margin: auto;
-                }
-            }
-        }
-        .month_list {
-            .select_month {
-                width: 100%;
-                margin: auto;
-                margin-top: 13px;
-                position: relative;
-                select {
-                    border-radius: 5px;
-                    border: none;
-                    cursor: pointer;
-                    outline: none;
-                    font-size: 18px;
-                    line-height: 21px;
-                    color: #5F6C7B;
-                    margin-bottom: 17px;
-                    padding-right: 112px;
-                    -webkit-appearance: none;
-                    -moz-appearance: none;
-                    background-image: url(../img/arrow-drop-down-line.png);
-                    background-repeat: no-repeat;
-                    background-position: 90% 50%;
-                    background-size: 30px 30px;
-                    padding-left: 20px;
-                    padding-top: 15px;
-                    padding-bottom: 14px;
-                    width: 95%;
-                }
-                @media(max-width: 320px) {
-                    max-width: 100%;
-                    margin: auto;
-                }
-            }
-        }
-        .adding_list {
-            .add {
-                background: #EF4565;
-                border-radius: 5px;
-                margin-bottom: 17px;
-                cursor: pointer;
-                outline: none;
-                border: none;
-                font-family: "Rubik";
-                font-style: normal;
-                font-weight: 500;
-                font-size: 18px;
-                line-height: 21px;
-                color: #FFFFFE;
-                width: 95%;
-                padding-left: 18px;
-                padding-bottom: 14px;
-                padding-top: 15px;
-                padding-right: 11px;
-                @media(min-width: 630px) {
-                    width: 160px;
-                    display: block;
-                }
-            }
-        }
+        font-size: 18px;
+        line-height: 21px;
+        color: #094067;
+        margin-bottom: 13px;
+      }
     }
+    .name_list {
+      .input_name {
+        width: 100%;
+        margin: auto;
+        margin-top: 13px;
+        input {
+          border-radius: 5px;
+          border: none;
+          outline: none;
+          cursor: pointer;
+          width: 90%;
+          margin-bottom: 17px;
+          font-weight: 500;
+          font-size: 18px;
+          line-height: 21px;
+          color: #5f6c7b;
+          padding-left: 20px;
+          padding-top: 15px;
+          padding-bottom: 14px;
+          @media (max-width: 310px) {
+            margin-right: 0;
+          }
+        }
+        @media (max-width: 320px) {
+          max-width: 100%;
+          margin: auto;
+        }
+      }
+    }
+    .month_list {
+      .select_month {
+        width: 100%;
+        margin: auto;
+        margin-top: 13px;
+        position: relative;
+        select {
+          border-radius: 5px;
+          border: none;
+          cursor: pointer;
+          outline: none;
+          font-size: 18px;
+          line-height: 21px;
+          color: #5f6c7b;
+          margin-bottom: 17px;
+          padding-right: 112px;
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          background-image: url(../img/arrow-drop-down-line.png);
+          background-repeat: no-repeat;
+          background-position: 90% 50%;
+          background-size: 30px 30px;
+          padding-left: 20px;
+          padding-top: 15px;
+          padding-bottom: 14px;
+          width: 95%;
+          background-color: white;
+        }
+        @media (max-width: 320px) {
+          max-width: 100%;
+          margin: auto;
+        }
+      }
+    }
+    .adding_list {
+      .add {
+        background: #ef4565;
+        border-radius: 5px;
+        margin-bottom: 17px;
+        cursor: pointer;
+        outline: none;
+        border: none;
+        font-family: 'Rubik';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 21px;
+        color: #fffffe;
+        width: 95%;
+        padding-left: 18px;
+        padding-bottom: 14px;
+        padding-top: 15px;
+        padding-right: 11px;
+        @media (min-width: 630px) {
+          width: 160px;
+          display: block;
+        }
+      }
+    }
+  }
 }
 
-@media(min-width: 630px) {
-    .form {
-        .form_lists {
-            display: flex;
-            flex-direction: row;
-            align-items: flex-end;
-            flex-wrap: wrap;
-            .name_list {
-                margin-right: 35px;
-            }
-            .month_list {
-                margin-right: auto;
-                .select_month {
-                    select {
-                        width: 100%;
-                        margin-right: auto;
-                    }
-                }
-            }
+@media (min-width: 630px) {
+  .form {
+    .form_lists {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      .name_list {
+        margin-right: 35px;
+      }
+      .month_list {
+        margin-right: auto;
+        .select_month {
+          select {
+            width: 100%;
+            margin-right: auto;
+          }
         }
+      }
     }
+  }
 }

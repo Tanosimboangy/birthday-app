@@ -1,0 +1,22 @@
+var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+_parcelHelpers.defineInteropFlag(exports);
+_parcelHelpers.export(exports, "dataJson", function () {
+  return dataJson;
+});
+_parcelHelpers.export(exports, "container", function () {
+  return container;
+});
+_parcelHelpers.export(exports, "inputSearchName", function () {
+  return inputSearchName;
+});
+_parcelHelpers.export(exports, "filterByMonth", function () {
+  return filterByMonth;
+});
+_parcelHelpers.export(exports, "formFilter", function () {
+  return formFilter;
+});
+const dataJson = './people.json';
+const container = document.querySelector(".container");
+const inputSearchName = document.querySelector(".input");
+const filterByMonth = document.querySelector("#month");
+const formFilter = document.querySelector("form.new_list");

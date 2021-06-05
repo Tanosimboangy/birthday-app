@@ -1,0 +1,21 @@
+var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+_parcelHelpers.defineInteropFlag(exports);
+_parcelHelpers.export(exports, "getNextBirthday", function () {
+  return getNextBirthday;
+});
+var _dateFns = require('date-fns');
+function getNextBirthday(birthday) {
+  const birthdayDate = new Date(birthday);
+  const today = new Date();
+  // we check when is their next birthday. we check the date with the same month and day as their birthday, and add this year.
+  let nextBirthDay = _dateFns.setYear(birthdayDate, today.getFullYear());
+  // if it's today, we return the value
+  if (_dateFns.isToday(nextBirthDay)) {
+    return nextBirthDay;
+  }
+  // if the date is already behind us, we add + 1 to the year
+  if (_dateFns.isPast(nextBirthDay)) {
+    nextBirthDay = _dateFns.addYears(nextBirthDay, 1);
+  }
+  return nextBirthDay;
+}
